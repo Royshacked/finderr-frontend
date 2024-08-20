@@ -3,12 +3,13 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 
 import { HomePage } from './pages/HomePage'
 import { AboutUs } from './pages/AboutUs'
-import { GigIndex } from './pages/GigIndex.jsx'
+// import { GigIndex } from './pages/GigIndex.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
 
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { LoginSignup } from './cmps/LoginSignup.jsx'
+import { GigSearch } from './pages/GigSearch.jsx'
 
 export function RootCmp() {
     return (
@@ -19,8 +20,8 @@ export function RootCmp() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/about" element={<AboutUs />} />
-
-                        <Route path="/gig" element={<GigIndex />} />
+                        <Route path="/search" element={<GigSearch />} />
+                        {/* <Route path="/gig" element={<GigIndex />} /> */}
                         <Route path="/gig/:gigId" element={<GigDetails />} />
                         <Route path="/login" element={<LoginSignup />} />
                     </Routes>

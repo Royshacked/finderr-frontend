@@ -1,10 +1,20 @@
+import { GigList } from "../cmps/GigList.jsx";
+import { GigListFilter } from "../cmps/GigListFilter.jsx";
+import { GigListSort } from "../cmps/GigListSort.jsx";
+
 export function GigIndex() {
 
     return (
-        <main className="gig-index">
-            <header>
-                <h2>Gig index</h2>
-            </header>
-        </main>
+        <section className="gig-index">
+            <h2>Results for <b>css</b></h2>
+            <GigListFilter />
+
+            <div>
+                <span>results</span>
+                <GigListSort />
+            </div>
+
+            <GigList />
+        </section>
     )
 }
