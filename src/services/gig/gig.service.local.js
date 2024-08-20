@@ -1,6 +1,6 @@
 
-import { storageService } from '../async-storage.service'
-import { makeId } from '../util.service'
+import { storageService } from '../async-storage.service.js'
+import { utilService } from '../util.service.js'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
@@ -19,6 +19,9 @@ window.cs = gigService
 
 async function query(filterBy = { txt: '', price: 0 }) {
     var gigs = await storageService.query(STORAGE_KEY)
+
+    if (!gigs.length) gigs = _createDemoGigs(3)
+
     const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
 
     if (txt) {
@@ -118,4 +121,48 @@ const gig = {
             },
         },
     ],
+}
+
+function _createDemoGig() {
+    return {
+        _id: utilService.makeId(),
+        title: utilService.makeLorem(2),
+        price: utilService.getRandomIntInclusive(10, 1000),
+        owner: {
+            _id: utilService.makeId(),
+            fullname: utilService.makeLorem(1),
+            imgUrl: '',
+            level: 'basic',
+            rate: utilService.getRandomIntInclusive(1, 5),
+        },
+        daysToMake: utilService.getRandomIntInclusive(1, 30),
+        description: utilService.makeLorem(10),
+        avgResponseTime: utilService.getRandomIntInclusive(1, 30),
+        loc: utilService.makeLorem(1),
+        imgUrls: [],
+        tags: categories[utilService.getRandomIntInclusive(0, 5)],
+        likedByUsers: [],
+        // reviews: [
+        //     {
+        //         id: 'madeId',
+        //         txt: 'Did an amazing work',
+        //         rate: 4,
+        //         by: {
+        //             _id: 'u102',
+        //             fullname: 'user2',
+        //             imgUrl: '/img/img2.jpg',
+        //         },
+        //     },
+        // ],
+    }
+}
+
+function _createDemoGigs(num) {
+    const gigs = []
+
+    for (const i = 0; i < num; i++) {
+        gigs.push(_createDemoGig())
+    }
+
+    return gigs
 }
