@@ -5,6 +5,8 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
 
+const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible']
+
 export const gigService = {
     query,
     getById,
@@ -84,4 +86,36 @@ async function addGigMsg(gigId, txt) {
     await storageService.put(STORAGE_KEY, gig)
 
     return msg
+}
+
+const gig = {
+    _id: 'g101',
+    title: 'I will design your logo',
+    price: 12.16,
+    owner: {
+        _id: 'u101',
+        fullname: 'Dudu Da',
+        imgUrl: 'url',
+        level: 'basic/premium',
+        rate: 4,
+    },
+    daysToMake: 3,
+    description: 'Make unique logo...',
+    avgResponseTime: 1,
+    loc: 'Ghana',
+    imgUrls: ['/img/img1.jpg'],
+    tags: ['Arts And Crafts', 'Logo Design'],
+    likedByUsers: ['mini-user'],
+    reviews: [
+        {
+            id: 'madeId',
+            txt: 'Did an amazing work',
+            rate: 4,
+            by: {
+                _id: 'u102',
+                fullname: 'user2',
+                imgUrl: '/img/img2.jpg',
+            },
+        },
+    ],
 }
