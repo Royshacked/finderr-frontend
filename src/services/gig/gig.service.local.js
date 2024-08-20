@@ -1,6 +1,6 @@
 
 import { storageService } from '../async-storage.service.js'
-import { utilService } from '../util.service.js'
+import { makeId, makeLorem, getRandomIntInclusive } from '../util.service.js'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
@@ -22,25 +22,25 @@ async function query(filterBy = { txt: '', price: 0 }) {
 
     if (!gigs.length) gigs = _createDemoGigs(3)
 
-    const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
+    // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
 
-    if (txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        gigs = gigs.filter(gig => regex.test(gig.vendor) || regex.test(gig.description))
-    }
-    if (minSpeed) {
-        gigs = gigs.filter(gig => gig.speed >= minSpeed)
-    }
-    if (sortField === 'vendor' || sortField === 'owner') {
-        gigs.sort((gig1, gig2) =>
-            gig1[sortField].localeCompare(gig2[sortField]) * +sortDir)
-    }
-    if (sortField === 'price' || sortField === 'speed') {
-        gigs.sort((gig1, gig2) =>
-            (gig1[sortField] - gig2[sortField]) * +sortDir)
-    }
+    // if (txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     gigs = gigs.filter(gig => regex.test(gig.vendor) || regex.test(gig.description))
+    // }
+    // if (minSpeed) {
+    //     gigs = gigs.filter(gig => gig.speed >= minSpeed)
+    // }
+    // if (sortField === 'vendor' || sortField === 'owner') {
+    //     gigs.sort((gig1, gig2) =>
+    //         gig1[sortField].localeCompare(gig2[sortField]) * +sortDir)
+    // }
+    // if (sortField === 'price' || sortField === 'speed') {
+    //     gigs.sort((gig1, gig2) =>
+    //         (gig1[sortField] - gig2[sortField]) * +sortDir)
+    // }
 
-    gigs = gigs.map(({ _id, vendor, price, speed, owner }) => ({ _id, vendor, price, speed, owner }))
+    // gigs = gigs.map(({ _id, vendor, price, speed, owner }) => ({ _id, vendor, price, speed, owner }))
     return gigs
 }
 
@@ -125,22 +125,22 @@ const gig = {
 
 function _createDemoGig() {
     return {
-        _id: utilService.makeId(),
-        title: utilService.makeLorem(2),
-        price: utilService.getRandomIntInclusive(10, 1000),
+        _id: makeId(),
+        title: makeLorem(2),
+        price: getRandomIntInclusive(10, 1000),
         owner: {
-            _id: utilService.makeId(),
-            fullname: utilService.makeLorem(1),
+            _id: makeId(),
+            fullname: makeLorem(1),
             imgUrl: '',
             level: 'basic',
-            rate: utilService.getRandomIntInclusive(1, 5),
+            rate: getRandomIntInclusive(1, 5),
         },
-        daysToMake: utilService.getRandomIntInclusive(1, 30),
-        description: utilService.makeLorem(10),
-        avgResponseTime: utilService.getRandomIntInclusive(1, 30),
-        loc: utilService.makeLorem(1),
+        daysToMake: getRandomIntInclusive(1, 30),
+        description: makeLorem(10),
+        avgResponseTime: getRandomIntInclusive(1, 30),
+        loc: makeLorem(1),
         imgUrls: [],
-        tags: categories[utilService.getRandomIntInclusive(0, 5)],
+        tags: categories[getRandomIntInclusive(0, 5)],
         likedByUsers: [],
         // reviews: [
         //     {
@@ -160,7 +160,7 @@ function _createDemoGig() {
 function _createDemoGigs(num) {
     const gigs = []
 
-    for (const i = 0; i < num; i++) {
+    for (var i = 0; i < num; i++) {
         gigs.push(_createDemoGig())
     }
 
