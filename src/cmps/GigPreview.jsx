@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 
-export function GigPreview({ gig }) {
+export function GigPreview() {
     return <article className="preview">
-        <header>
-            <Link to={`/gig/${gig._id}`}></Link>
-        </header>
+        Gig preview
     </article>
 }
