@@ -12,35 +12,15 @@ export const gigService = {
     getById,
     save,
     remove,
-    addGigMsg
+    addGigMsg,
+    getDefaultFilter
 }
 window.cs = gigService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = {}) {
     var gigs = await storageService.query(STORAGE_KEY)
 
-    if (!gigs.length) gigs = _createDemoGigs(3)
-
-    // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
-
-    // if (txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     gigs = gigs.filter(gig => regex.test(gig.vendor) || regex.test(gig.description))
-    // }
-    // if (minSpeed) {
-    //     gigs = gigs.filter(gig => gig.speed >= minSpeed)
-    // }
-    // if (sortField === 'vendor' || sortField === 'owner') {
-    //     gigs.sort((gig1, gig2) =>
-    //         gig1[sortField].localeCompare(gig2[sortField]) * +sortDir)
-    // }
-    // if (sortField === 'price' || sortField === 'speed') {
-    //     gigs.sort((gig1, gig2) =>
-    //         (gig1[sortField] - gig2[sortField]) * +sortDir)
-    // }
-
-    // gigs = gigs.map(({ _id, vendor, price, speed, owner }) => ({ _id, vendor, price, speed, owner }))
     return gigs
 }
 
@@ -59,17 +39,17 @@ async function save(gig) {
         const gigToSave = {
             _id: gig._id,
             price: gig.price,
-            speed: gig.speed,
+            daysToMake: gig.daysToMake,
         }
         savedGig = await storageService.put(STORAGE_KEY, gigToSave)
     } else {
         const gigToSave = {
-            vendor: gig.vendor,
+            title: gig.title,
             price: gig.price,
-            speed: gig.speed,
+            daysToMake: gig.daysToMake,
             // Later, owner is set by the backend
             owner: userService.getLoggedinUser(),
-            msgs: []
+            msg: []
         }
         savedGig = await storageService.post(STORAGE_KEY, gigToSave)
     }
@@ -91,78 +71,67 @@ async function addGigMsg(gigId, txt) {
     return msg
 }
 
-const gig = {
-    _id: 'g101',
-    title: 'I will design your logo',
-    price: 12.16,
-    owner: {
-        _id: 'u101',
-        fullname: 'Dudu Da',
-        imgUrl: 'url',
-        level: 'basic/premium',
-        rate: 4,
-    },
-    daysToMake: 3,
-    description: 'Make unique logo...',
-    avgResponseTime: 1,
-    loc: 'Ghana',
-    imgUrls: ['/img/img1.jpg'],
-    tags: ['Arts And Crafts', 'Logo Design'],
-    likedByUsers: ['mini-user'],
-    reviews: [
-        {
-            id: 'madeId',
-            txt: 'Did an amazing work',
-            rate: 4,
-            by: {
-                _id: 'u102',
-                fullname: 'user2',
-                imgUrl: '/img/img2.jpg',
-            },
-        },
-    ],
-}
-
-function _createDemoGig() {
+function getDefaultFilter() {
     return {
-        _id: makeId(),
-        title: makeLorem(2),
-        price: getRandomIntInclusive(10, 1000),
+        title: '',
+        category: '',
         owner: {
-            _id: makeId(),
-            fullname: makeLorem(1),
-            imgUrl: '',
             level: 'basic',
-            rate: getRandomIntInclusive(1, 5),
+            rate: 0,
+            labguage: '',
+            loc: '',
         },
-        daysToMake: getRandomIntInclusive(1, 30),
-        description: makeLorem(10),
-        avgResponseTime: getRandomIntInclusive(1, 30),
-        loc: makeLorem(1),
-        imgUrls: [],
-        tags: categories[getRandomIntInclusive(0, 5)],
-        likedByUsers: [],
-        // reviews: [
-        //     {
-        //         id: 'madeId',
-        //         txt: 'Did an amazing work',
-        //         rate: 4,
-        //         by: {
-        //             _id: 'u102',
-        //             fullname: 'user2',
-        //             imgUrl: '/img/img2.jpg',
-        //         },
-        //     },
-        // ],
+        budget: Infinity,
+        daysToMake: Infinity,
+        sortBy: '',
+        sortDir: -1,
     }
 }
 
-function _createDemoGigs(num) {
-    const gigs = []
+// create demo data
 
-    for (var i = 0; i < num; i++) {
-        gigs.push(_createDemoGig())
-    }
+// _createDemoGigs(5)
 
-    return gigs
-}
+// async function _createDemoGig() {
+//     const gig = {
+//         // _id: makeId(),
+//         title: makeLorem(2),
+//         price: getRandomIntInclusive(10, 1000),
+//         owner: {
+//             _id: makeId(),
+//             fullname: makeLorem(1),
+//             imgUrl: '',
+//             level: 'basic',
+//             rate: getRandomIntInclusive(1, 5),
+//         },
+//         daysToMake: getRandomIntInclusive(1, 30),
+//         description: makeLorem(10),
+//         avgResponseTime: getRandomIntInclusive(1, 30),
+//         loc: makeLorem(1),
+//         imgUrls: [],
+//         tags: categories[getRandomIntInclusive(0, 5)],
+//         likedByUsers: [],
+//         // reviews: [
+//         //     {
+//         //         id: 'madeId',
+//         //         txt: 'Did an amazing work',
+//         //         rate: 4,
+//         //         by: {
+//         //             _id: 'u102',
+//         //             fullname: 'user2',
+//         //             imgUrl: '/img/img2.jpg',
+//         //         },
+//         //     },
+//         // ],
+//     }
+
+//     const savedGig = await storageService.post(STORAGE_KEY, gig)
+
+//     return savedGig
+// }
+
+// async function _createDemoGigs(num) {
+//     for (var i = 0; i < num; i++) {
+//         await _createDemoGig()
+//     }
+// }

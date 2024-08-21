@@ -19,8 +19,6 @@ export function GigIndex() {
             console.log(error)
         }
     }
-
-    console.log(gigs)
     return (
         <section className="gig-index">
             <h2>Results for <b>css</b></h2>
