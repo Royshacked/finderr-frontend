@@ -6,15 +6,16 @@ import { loadGigs } from "../store/actions/gig.actions.js";
 import { useEffect } from "react";
 
 export function GigIndex() {
-    var gigs = useSelector(state => state.gigModule.gigs)
+    const gigs = useSelector(state => state.gigModule.gigs)
+    const filterBy = useSelector(state => state.gigModule.filterBy)
 
     useEffect(() => {
-        setGigs()
-    }, [])
+        setGigs(filterBy)
+    }, [filterBy])
 
     async function setGigs() {
         try {
-            await loadGigs()
+            await loadGigs(filterBy)
         } catch (error) {
             console.log(error)
         }

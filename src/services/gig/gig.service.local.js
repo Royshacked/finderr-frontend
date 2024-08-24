@@ -20,6 +20,11 @@ window.cs = gigService
 
 async function query(filterBy = {}) {
     var gigs = await storageService.query(STORAGE_KEY)
+    const regEx = RegExp(filterBy.title, 'i')
+
+    if (filterBy.title) {
+        gigs = gigs.filter(gig => regEx.test(gig.title))
+    }
 
     return gigs
 }
