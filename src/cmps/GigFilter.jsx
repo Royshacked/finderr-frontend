@@ -22,6 +22,7 @@ export function GigFilter() {
 
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: value }))
     }
+
     return <section className="gig-filter">
         <form onSubmit={onSubmit}>
             <input type="text" name="title" onChange={onChange} value={filterByToEdit.title} />

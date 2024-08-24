@@ -4,13 +4,16 @@ import { GigListFilter } from "../cmps/GigListFilter.jsx";
 import { GigListSort } from "../cmps/GigListSort.jsx";
 import { loadGigs } from "../store/actions/gig.actions.js";
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export function GigIndex() {
     const gigs = useSelector(state => state.gigModule.gigs)
     const filterBy = useSelector(state => state.gigModule.filterBy)
+    const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
         setGigs(filterBy)
+        setSearchParams(filterBy)
     }, [filterBy])
 
     async function setGigs() {
