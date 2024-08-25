@@ -3,8 +3,40 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
 export function AppHeader() {
-	const navigate = useNavigate()
 
+
+
+
+
+
+	const navigate = useNavigate()
+	const [userSearchTxt, setUserSearchTxt] = useState('')
+
+
+	function handleChange({ target }) {
+		let { name, value } = target
+
+		switch (target.type) {
+
+			case 'search':
+				value = value
+				setUserSearchTxt(value)
+				break
+
+		}
+	}
+	async function onHandleSubmit(ev, values = false) {
+		var userFilterNavigate = ''
+		values ? userFilterNavigate = values : userFilterNavigate = userSearchTxt
+		ev.preventDefault()
+		console.log(userFilterNavigate)
+		try {
+			navigate(`/search-gigs?query=${userFilterNavigate}`)
+		} catch (error) {
+			console.log(error)
+
+		}
+	}
 
 	return (
 		<header className="app-header full">
@@ -33,7 +65,7 @@ export function AppHeader() {
 						</li>
 
 						<li className="nav-list-item nav-li-sign-in">
-							<a rel="nofollow" href="/login?source=top_nav" className="nav-link">Sign in</a>
+							{/* onClick={setCreateUser(true)} */}
 						</li>
 
 						<li className="nav-list-item nav-li-join">
@@ -60,9 +92,13 @@ export function AppHeader() {
 						programming_tech
 					</span>
 				</div>
+				{/* {createUser && <div className="cover-screen" onClick={() => closeModal()}> */}
+				{/* </div>} */}
 
 			</div>
-		</header>
+
+		</header >
+
 	)
 }
 
