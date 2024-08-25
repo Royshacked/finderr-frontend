@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react"
 import { gigService } from "../services/gig/gig.service.local"
+
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
 import { useNavigate } from "react-router"
+
+import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
+import Search from '../assets/svg/homepage/search.svg?react'
+
 
 export function GigFilter() {
     const filterBy = useSelector(state => state.gigModule.filterBy)
@@ -33,7 +37,7 @@ export function GigFilter() {
     return <section className="gig-filter">
         <form onSubmit={onSubmit}>
             <input type="text" name="title" onChange={onChange} value={filterByToEdit.title} />
-            <button>🔎</button>
+            <button><Search /></button>
         </form>
     </section>
 }
