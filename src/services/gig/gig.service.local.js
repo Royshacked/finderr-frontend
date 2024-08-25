@@ -10,7 +10,8 @@ export const gigService = {
     getById,
     save,
     remove,
-    addGigMsg
+    addGigMsg,
+    getImages
 }
 window.cs = gigService
 
@@ -84,4 +85,8 @@ async function addGigMsg(gigId, txt) {
     await storageService.put(STORAGE_KEY, gig)
 
     return msg
+}
+
+function getImages(params) {
+
 }
