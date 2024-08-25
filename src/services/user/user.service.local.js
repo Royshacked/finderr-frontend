@@ -100,5 +100,7 @@ const users = [
         username: 'user1',
         password: 'secret',
         level: 'basic/premium',
+        rate: '1',
+        location: 'Israel'
     },
 ]

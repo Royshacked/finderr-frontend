@@ -26,6 +26,10 @@ async function query(filterBy = {}) {
         gigs = gigs.filter(gig => regEx.test(gig.title))
     }
 
+    if (filterBy.owner.rate.length) {
+        gigs = gigs.filter(gig => filterBy.owner.rate.includes(gig.owner.rate))
+    }
+
     return gigs
 }
 
@@ -82,9 +86,9 @@ function getDefaultFilter() {
         category: '',
         owner: {
             level: 'basic',
-            rate: 0,
-            labguage: '',
-            loc: '',
+            rate: [],
+            language: [],
+            loc: [],
         },
         budget: Infinity,
         daysToMake: Infinity,
