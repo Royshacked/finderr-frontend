@@ -62,7 +62,7 @@ function DynamicCmp(props) {
 
 function SellerFilter({ filterBy, onHandleChange, onHandleSubmit }) {
 
-    return <section className="seller-filter">
+    return <section className="sub-filter seller">
         <h3>Seller level</h3>
         <form action="" onSubmit={onHandleSubmit}>
             <div>
@@ -98,18 +98,18 @@ function SellerFilter({ filterBy, onHandleChange, onHandleSubmit }) {
                 <label htmlFor="hindi">Hindi</label>
                 <input type="checkbox" id="hindi" name="language" value="hindi" onChange={onHandleChange} />
             </div>
-            <div>
-                <button type="button">Clear all</button>
-                <button>Apply</button>
+            <div className="btns">
+                <button className="btn-clear" type="button">Clear all</button>
+                <button className="btn-apply" >Apply</button>
             </div>
         </form>
     </section>
 }
 
 function BudgetFilter() {
-    return <section className="budget-filter">Budget</section>
+    return <section className="budget sub-filter">Budget</section>
 }
 
 function DelivertFilter() {
-    return <section className="delivery-filter">Deliver</section>
+    return <section className="delivery sub-filter">Deliver</section>
 }

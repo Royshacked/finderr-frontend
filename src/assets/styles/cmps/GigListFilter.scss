@@ -1,0 +1,46 @@
+.giglist-filter {
+    position: relative;
+
+    .sub-filter {
+        position: absolute;
+        top: 10;
+        left: 10;
+
+        padding: 1em;
+        border-radius: 1em;
+        box-shadow: 0px 0px 6px 0px;
+
+        background-color: white;
+
+        transition: 0.5s;
+
+        form {
+            div {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+
+    .btns {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-apply {
+        padding: 1em;
+        border-radius: 0.5em;
+
+        font-size: 1em;
+
+        background-color: black;
+    }
+
+    .btn-clear {
+        font-size: 1em;
+
+        color: gray;
+        background-color: white;
+
+    }
+}
