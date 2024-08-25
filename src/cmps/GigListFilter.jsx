@@ -15,13 +15,14 @@ export function GigListFilter() {
         setFilterByToEdit({ ...filterBy })
     }, [filterBy])
 
+
     function onHandleClick({ target }) {
         const { name } = target
         setCmpType(name)
     }
 
     function onHandleChange({ target }) {
-        var { name, value } = target
+        const { name, value } = target
 
         setFilterByToEdit(prevFilter => ({
             ...prevFilter, owner: {
@@ -38,8 +39,6 @@ export function GigListFilter() {
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit } })
         setCmpType('')
     }
-
-    console.log(filterByToEdit)
 
     return <article className="giglist-filter">
         <button name="seller" onClick={onHandleClick}>Seller Details</button>

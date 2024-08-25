@@ -1,14 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { gigService } from "../services/gig/gig.service.local"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
 import { useNavigate } from "react-router"
 
 export function GigFilter() {
+    const filterBy = useSelector(state => state.gigModule.filterBy)
+
     const [filterByToEdit, setFilterByToEdit] = useState(gigService.getDefaultFilter)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        setFilterByToEdit({ ...filterBy })
+    }, [filterBy])
+
 
     function onSubmit(ev) {
         ev.preventDefault()
