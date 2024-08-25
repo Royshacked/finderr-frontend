@@ -1,3 +1,32 @@
-.app-header {
-    display: flex;
+.search-form-header{
+  //  width: 50vw;
+ 
 }
+.search-form-line{
+    width: 50vw;
+    //flex-direction: row;
+   
+    & input{
+        width: 90%;
+    }
+}
+
+.fiverr-nav {
+
+    
+}
+.nav-list-item{
+    padding: 0 24px 0 0
+}
+
+.categories-bar{
+    height: 20px;
+ gap: 2vw;
+}
+.categories-bar-box{
+width: 200px;
+}
+.categories-bar-span{
+
+}
+

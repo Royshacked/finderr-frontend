@@ -13,7 +13,8 @@ export const gigService = {
     save,
     remove,
     addGigMsg,
-    getDefaultFilter
+    getDefaultFilter,
+    getImages
 }
 window.cs = gigService
 
@@ -144,3 +145,8 @@ function getDefaultFilter() {
 //         await _createDemoGig()
 //     }
 // }
+
+
+function getImages(params) {
+
+}

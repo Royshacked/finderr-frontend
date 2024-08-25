@@ -25,6 +25,16 @@ async function getUsers() {
 async function getById(userId) {
     return await storageService.get('user', userId)
 }
+// const users = [
+// 	{
+// 		_id: 'u101',
+// 		fullname: 'User 1',
+// 		imgUrl: '/img/img1.jpg',
+// 		username: 'user1',
+// 		password: 'secret',
+// 		level: 'basic/premium',
+// 	},
+// ]
 
 function remove(userId) {
     return storageService.remove('user', userId)
@@ -50,8 +60,8 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    userCred.score = 10000
+    //  if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    // userCred.score = 10000
 
     const user = await storageService.post('user', userCred)
     return saveLoggedinUser(user)
@@ -79,28 +89,14 @@ function saveLoggedinUser(user) {
 
 // To quickly create an admin user, uncomment the next line
 // _createAdmin()
-async function _createAdmin() {
-    const user = {
-        username: 'admin',
-        password: 'admin',
-        fullname: 'Mustafa Adminsky',
-        imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
-        score: 10000,
-    }
+// async function _createAdmin() {
+//     const user = {
+//         username: 'admin',
+//         password: 'admin',
+//         fullname: 'Mustafa Adminsky',
+//         imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+//         score: 10000,
+//     }
 
-    const newUser = await storageService.post('user', userCred)
-    console.log('newUser: ', newUser)
-}
-
-const users = [
-    {
-        _id: 'u101',
-        fullname: 'User 1',
-        imgUrl: '/img/img1.jpg',
-        username: 'user1',
-        password: 'secret',
-        level: 'basic/premium',
-        rate: '1',
-        location: 'Israel'
-    },
-]
+//const newUser = await storageService.post('user', userCred)
+//console.log('newUser: ', newUser)

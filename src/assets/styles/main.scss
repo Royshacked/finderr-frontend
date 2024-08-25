@@ -6,34 +6,36 @@
 
 // Basics
 @import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
+@import "basics/layout.scss";
+@import "basics/base.scss";
+@import "basics/links.scss";
+@import "basics/forms.scss";
 
 
 // pages
 @import "RootCmp";
 
-@import "pages/AboutUs";
+@import "pages/AboutUs.scss";
 @import "pages/HomePage";
-@import "pages/GigIndex";
-@import "pages/ReviewIndex";
-@import "pages/UserDetails";
-@import "pages/TaskDetails";
-@import "pages/LoginSignup";
+@import "pages/GigIndex.scss";
+@import "pages/ReviewIndex.scss";
+@import "pages/UserDetails.scss";
+@import "pages/TaskDetails.scss";
+@import "pages/LoginSignup.scss";
 
 // Components
-@import "cmps/list";
-@import "cmps/preview";
+@import "cmps/GigList.scss";
+@import "cmps/GigPreview.scss";
+@import "../styles/cmps/homepagecss/variables";
+@import "../styles/cmps/homepagecss/mixins";
 
-@import "cmps/AppHeader";
-@import "cmps/AppFooter";
-@import "cmps/UserMsg";
+@import "cmps/AppHeader.scss";
+@import "cmps/AppFooter.scss";
+@import "cmps/UserMsg.scss";
 
-@import "cmps/GigFilter";
-@import "cmps/ReviewEdit";
-@import "cmps/ReviewList";
-@import "cmps/ReviewPreview";
-@import "cmps/GigList";
-@import "cmps/GigPreview";
+@import "cmps/GigFilter.scss";
+@import "cmps/ReviewEdit.scss";
+@import "cmps/ReviewList.scss";
+@import "cmps/ReviewPreview.scss";
+//@import "cmps/GigList";
+//@import "cmps/GigPreview";
