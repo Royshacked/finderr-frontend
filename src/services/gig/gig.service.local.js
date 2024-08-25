@@ -27,6 +27,14 @@ async function query(filterBy = {}) {
         gigs = gigs.filter(gig => regEx.test(gig.title))
     }
 
+    if (filterBy.price) {
+        gigs = gigs.filter(gig => gig.price >= filterBy.price)
+    }
+
+    if (filterBy.daysToMake) {
+        gigs = gigs.filter(gig => gig.daysToMake <= filterBy.daysToMake)
+    }
+
     if (filterBy.owner.rate.length) {
         gigs = gigs.filter(gig => filterBy.owner.rate.includes(gig.owner.rate))
     }
@@ -91,8 +99,8 @@ function getDefaultFilter() {
             language: [],
             loc: [],
         },
-        budget: Infinity,
-        daysToMake: Infinity,
+        budget: 0,
+        daysToMake: 0,
         sortBy: '',
         sortDir: -1,
     }

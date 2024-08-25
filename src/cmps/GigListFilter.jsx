@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
+import { gigService } from "../services/gig/gig.service.local"
 
 export function GigListFilter() {
     const filterBy = useSelector(state => state.gigModule.filterBy)
@@ -22,15 +23,27 @@ export function GigListFilter() {
     }
 
     function onHandleChange({ target }) {
-        const { name, value } = target
+        const method = cmpType === 'seller' ? setSellerFilter : setGigFilter
+        method(target)
+    }
+
+    function setSellerFilter(target) {
+        var { name, value } = target
+        value = name === 'rate' ? +value : value
 
         setFilterByToEdit(prevFilter => ({
             ...prevFilter, owner: {
                 ...prevFilter.owner,
                 [name]: target.checked ?
-                    [...prevFilter.owner[name], +value] : prevFilter.owner[name] = prevFilter.owner[name].filter(item => item !== +value)
+                    [...prevFilter.owner[name], value] : prevFilter.owner[name] = prevFilter.owner[name].filter(item => item !== value)
             }
         }))
+    }
+
+    function setGigFilter(target) {
+        var { name, value } = target
+
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: +value }))
     }
 
     function onHandleSubmit(ev) {
@@ -40,12 +53,20 @@ export function GigListFilter() {
         setCmpType('')
     }
 
+    function onClearFilter({ target }) {
+        const { name } = target
+        const cleanFilter = gigService.getDefaultFilter()[name]
+
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: cleanFilter }))
+        setCmpType('')
+    }
+
     return <article className="giglist-filter">
         <button name="seller" onClick={onHandleClick}>Seller Details</button>
         <button name="budget" onClick={onHandleClick}>Budget</button>
         <button name="delivery" onClick={onHandleClick}>Delivery Time</button>
 
-        <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} />
+        <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} onClearFilter={onClearFilter} />
     </article>
 }
 
@@ -60,56 +81,99 @@ function DynamicCmp(props) {
     }
 }
 
-function SellerFilter({ filterBy, onHandleChange, onHandleSubmit }) {
+function SellerFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter }) {
 
     return <section className="sub-filter seller">
         <h3>Seller level</h3>
         <form action="" onSubmit={onHandleSubmit}>
             <div>
-                <label htmlFor="toplevel">Top Level</label>
-                <input type="checkbox" id="toplevel" name="rate" value={3} onChange={onHandleChange} checked={filterBy.owner.rate.includes(3)} />
-                <label htmlFor="level2">Level 2</label>
-                <input type="checkbox" id="level2" name="rate" value={2} onChange={onHandleChange} checked={filterBy.owner.rate.includes(2)} />
-                <label htmlFor="level1">Level 1</label>
-                <input type="checkbox" id="level1" name="rate" value={1} onChange={onHandleChange} checked={filterBy.owner.rate.includes(1)} />
-                <label htmlFor="level0">New Seller</label>
-                <input type="checkbox" id="level0" name="rate" value={0} onChange={onHandleChange} checked={filterBy.owner.rate.includes(0)} />
+                <label htmlFor="toplevel">Top Level
+                    <input type="checkbox" id="toplevel" name="rate" value={3} onChange={onHandleChange} checked={filterBy.owner.rate.includes(3)} />
+                </label>
+                <label htmlFor="level2">Level 2
+                    <input type="checkbox" id="level2" name="rate" value={2} onChange={onHandleChange} checked={filterBy.owner.rate.includes(2)} />
+                </label>
+                <label htmlFor="level1">Level 1
+                    <input type="checkbox" id="level1" name="rate" value={1} onChange={onHandleChange} checked={filterBy.owner.rate.includes(1)} />
+                </label>
+                <label htmlFor="level0">New Seller
+                    <input type="checkbox" id="level0" name="rate" value={0} onChange={onHandleChange} checked={filterBy.owner.rate.includes(0)} />
+                </label>
             </div>
             <h3>Seller speaks</h3>
             <div>
-                <label htmlFor="hebrew">Hebrew</label>
-                <input type="checkbox" id="hebrew" name="language" value="hebrew" onChange={onHandleChange} />
-                <label htmlFor="english">English</label>
-                <input type="checkbox" id="english" name="language" value="english" onChange={onHandleChange} />
-                <label htmlFor="urdu">Urdu</label>
-                <input type="checkbox" id="urdu" name="language" value="urdu" onChange={onHandleChange} />
-                <label htmlFor="hindi">Hindi</label>
-                <input type="checkbox" id="hindi" name="language" value="hindi" onChange={onHandleChange} />
+                <label htmlFor="hebrew">Hebrew
+                    <input type="checkbox" id="hebrew" name="language" value="hebrew" onChange={onHandleChange} checked={filterBy.owner.language.includes('hebrew')} />
+                </label>
+                <label htmlFor="english">English
+                    <input type="checkbox" id="english" name="language" value="english" onChange={onHandleChange} checked={filterBy.owner.language.includes('english')} />
+                </label>
+                <label htmlFor="urdu">Urdu
+                    <input type="checkbox" id="urdu" name="language" value="urdu" onChange={onHandleChange} checked={filterBy.owner.language.includes('urdu')} />
+                </label>
+                <label htmlFor="hindi">Hindi
+                    <input type="checkbox" id="hindi" name="language" value="hindi" onChange={onHandleChange} checked={filterBy.owner.language.includes('hindi')} />
+                </label>
             </div>
 
             <h3>Seller lives in</h3>
             <div>
-                <label htmlFor="hebrew">Hebrew</label>
-                <input type="checkbox" id="hebrew" name="language" value="hebrew" onChange={onHandleChange} />
-                <label htmlFor="english">English</label>
-                <input type="checkbox" id="english" name="language" value="english" onChange={onHandleChange} />
-                <label htmlFor="urdu">Urdu</label>
-                <input type="checkbox" id="urdu" name="language" value="urdu" onChange={onHandleChange} />
-                <label htmlFor="hindi">Hindi</label>
-                <input type="checkbox" id="hindi" name="language" value="hindi" onChange={onHandleChange} />
+                <label htmlFor="israel">Israel
+                    <input type="checkbox" id="israel" name="loc" value="israel" onChange={onHandleChange} checked={filterBy.owner.loc.includes('israel')} />
+                </label>
+                <label htmlFor="unitedstates">United States
+                    <input type="checkbox" id="unitedstates" name="loc" value="unitedstates" onChange={onHandleChange} checked={filterBy.owner.loc.includes('unitedstates')} />
+                </label>
+                <label htmlFor="unitedkingdom">United Kingdom
+                    <input type="checkbox" id="unitedkingdom" name="loc" value="unitedkingdom" onChange={onHandleChange} checked={filterBy.owner.loc.includes('unitedkingdom')} />
+                </label>
+                <label htmlFor="canada">Canada
+                    <input type="checkbox" id="canada" name="loc" value="canada" onChange={onHandleChange} checked={filterBy.owner.loc.includes('canada')} />
+                </label>
             </div>
             <div className="btns">
-                <button className="btn-clear" type="button">Clear all</button>
+                <button className="btn-clear" name="owner" type="button" onClick={onClearFilter}>Clear all</button>
                 <button className="btn-apply" >Apply</button>
             </div>
         </form>
     </section>
 }
 
-function BudgetFilter() {
-    return <section className="budget sub-filter">Budget</section>
+function BudgetFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter }) {
+
+    return <section className="budget sub-filter">
+        <form onSubmit={onHandleSubmit}>
+            <label htmlFor="price">
+                <input type="number" id="price" name="price" placeholder="Enter budget" value={filterBy.price || ''} onChange={onHandleChange} />
+            </label>
+            <div className="btns">
+                <button className="btn-clear" type="button" name="price" onClick={onClearFilter}>Clear all</button>
+                <button className="btn-apply" >Apply</button>
+            </div>
+        </form>
+    </section>
 }
 
-function DelivertFilter() {
-    return <section className="delivery sub-filter">Deliver</section>
+function DelivertFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter }) {
+
+    return <section className="delivery sub-filter">
+        <form onSubmit={onHandleSubmit}>
+            <label htmlFor="day1">Express 24H
+                <input type="radio" id="day1" name="daysToMake" value={1} onChange={onHandleChange} checked={filterBy.daysToMake === 1} />
+            </label>
+            <label htmlFor="day3">Up to 3 days
+                <input type="radio" id="day3" name="daysToMake" value={3} onChange={onHandleChange} checked={filterBy.daysToMake === 3} />
+            </label>
+            <label htmlFor="day7">Up to 7 days
+                <input type="radio" id="day7" name="daysToMake" value={7} onChange={onHandleChange} checked={filterBy.daysToMake === 7} />
+            </label>
+            <label htmlFor="anyday">Anytime
+                <input type="radio" id="anyday" name="daysToMake" value={1000} onChange={onHandleChange} checked={filterBy.daysToMake === 1000} />
+            </label>
+            <div className="btns">
+                <button className="btn-clear" type="button" name="daysToMake" onClick={onClearFilter}>Clear all</button>
+                <button className="btn-apply" >Apply</button>
+            </div>
+        </form>
+    </section>
 }
