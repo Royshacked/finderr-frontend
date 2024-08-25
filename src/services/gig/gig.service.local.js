@@ -118,7 +118,7 @@ function getDefaultFilter() {
 //         description: makeLorem(10),
 //         avgResponseTime: getRandomIntInclusive(1, 30),
 //         loc: makeLorem(1),
-//         imgUrls: [],
+//         imgUrls: '../assets/images/homepage/4.jpeg',
 //         tags: categories[getRandomIntInclusive(0, 5)],
 //         likedByUsers: [],
 //         // reviews: [
