@@ -2,10 +2,20 @@
     svg {
         cursor: pointer;
     }
+
+    .categories-bar {
+        display: flex;
+        justify-content: space-between;
+
+        gap: 1em;
+
+        width: 200px;
+
+        span {
+            border: 1px solid lightgray;
+        }
+    }
 }
-
-
-
 
 .search-form-line {
     width: 50vw;
@@ -21,11 +31,7 @@
     padding: 0 24px 0 0
 }
 
-.categories-bar {
-    height: 20px;
-    gap: 2vw;
-}
-
-.categories-bar-box {
-    width: 200px;
-}
+// .categories-bar {
+//     height: 20px;
+//     gap: 2vw;
+// }

@@ -2,4 +2,16 @@
     form {
         display: flex;
     }
+
+    input {
+        width: 30vw;
+    }
+
+    button {
+        background-color: black;
+
+        svg {
+            fill: white;
+        }
+    }
 }

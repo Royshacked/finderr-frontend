@@ -44,7 +44,7 @@ export function AppHeader() {
 				{/* <ul className="categories"></ul> */}
 
 			</nav>
-			<div className="categories-bar flex">
+			<div className="categories-bar">
 				<div className="categories-bar-box flex" onClick={(ev) => onHandleSubmit(ev, 'programming_tech')}>
 					<span className="categories-bar-span">
 						programming_tech
