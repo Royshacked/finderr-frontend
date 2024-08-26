@@ -27,11 +27,13 @@ export function GigIndex() {
         <section className="gig-index">
             {filterBy.title ? <h2>Results for "{filterBy.title}"</h2> : <h2>All results</h2>}
             <GigListFilter />
-
             <div>
+
                 <span>results</span>
                 <GigListSort />
             </div>
+
+
 
             <GigList gigs={gigs} />
         </section>

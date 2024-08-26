@@ -1,4 +1,7 @@
 .giglist-filter {
+    display: flex;
+
+    gap: 1em;
 
     .back-drop {
         position: absolute;
@@ -9,13 +12,37 @@
     &>button {
         position: relative;
         top: 0;
+
         z-index: 2;
+
+        width: max-content;
+        height: 40px;
+
+        margin: 0;
+        padding: 10px 20px;
+        border: 1px solid lightgray;
+        border-radius: 1em;
+
+        background-color: #fff;
+        color: #222325;
+
+        font-weight: bold;
+        font-size: 1rem;
+        font-family: Helvetica;
+
+        transition: 0.3s;
+
+        &:hover {
+            background: rgb(248, 244, 244);
+        }
     }
+
+
 
     .sub-filter {
         position: absolute;
-        top: 10;
-        left: 10px;
+        top: 220px;
+        left: 10;
         z-index: 2;
 
         padding: 1em;
