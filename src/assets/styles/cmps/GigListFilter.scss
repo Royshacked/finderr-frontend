@@ -1,10 +1,22 @@
 .giglist-filter {
-    position: relative;
+
+    .back-drop {
+        position: absolute;
+        inset: 0 0 0 0;
+        z-index: 1;
+    }
+
+    &>button {
+        position: relative;
+        top: 0;
+        z-index: 2;
+    }
 
     .sub-filter {
         position: absolute;
         top: 10;
         left: 10px;
+        z-index: 2;
 
         padding: 1em;
         border-radius: 1em;

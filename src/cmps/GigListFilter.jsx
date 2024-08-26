@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
@@ -63,9 +63,11 @@ export function GigListFilter() {
     }
 
     return <article className="giglist-filter">
-        <button name="seller" onClick={onHandleClick}>Seller Details</button>
-        <button name="budget" onClick={onHandleClick}>Budget</button>
-        <button name="delivery" onClick={onHandleClick}>Delivery Time</button>
+        {cmpType && <div className="back-drop" onClick={() => setCmpType('')}>hello</div>}
+
+        <button className={cmpType && 'in-front'} name="seller" onClick={onHandleClick}>Seller Details</button>
+        <button className={cmpType && 'in-front'} name="budget" onClick={onHandleClick}>Budget</button>
+        <button className={cmpType && 'in-front'} name="delivery" onClick={onHandleClick}>Delivery Time</button>
 
         <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} onClearFilter={onClearFilter} />
     </article>
@@ -84,7 +86,7 @@ function DynamicCmp(props) {
 
 function SellerFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter }) {
 
-    return <section className="sub-filter seller">
+    return <section className="sub-filter seller" >
         <h3>Seller level</h3>
         <form action="" onSubmit={onHandleSubmit}>
             <div>
@@ -142,7 +144,7 @@ function SellerFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter 
 
 function BudgetFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter }) {
 
-    return <section className="budget sub-filter">
+    return <section className="budget sub-filter" >
         <form onSubmit={onHandleSubmit}>
             <label htmlFor="price">
                 <input type="number" id="price" name="price" placeholder="Enter budget" value={filterBy.price || ''} onChange={onHandleChange} />
@@ -157,7 +159,7 @@ function BudgetFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter 
 
 function DelivertFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter }) {
 
-    return <section className="delivery sub-filter">
+    return <section className="delivery sub-filter" >
         <form onSubmit={onHandleSubmit}>
             <label htmlFor="day1">Express 24H
                 <input type="radio" id="day1" name="daysToMake" value={1} onChange={onHandleChange} checked={filterBy.daysToMake === 1} />
