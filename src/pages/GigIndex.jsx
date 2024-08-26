@@ -25,7 +25,7 @@ export function GigIndex() {
     }
     return (
         <section className="gig-index">
-            <h2>Results for <b>css</b></h2>
+            {filterBy.title ? <h2>Results for "{filterBy.title}"</h2> : <h2>All results</h2>}
             <GigListFilter />
 
             <div>
