@@ -16,11 +16,6 @@ export function GigFilter() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    useEffect(() => {
-        setFilterByToEdit({ ...filterBy })
-    }, [filterBy])
-
-
     function onSubmit(ev) {
         ev.preventDefault()
 

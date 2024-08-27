@@ -14,6 +14,7 @@ export const gigService = {
     remove,
     addGigMsg,
     getDefaultFilter,
+    getCategories,
     getImages
 }
 window.cs = gigService
@@ -25,6 +26,10 @@ async function query(filterBy = {}) {
 
     if (filterBy.title) {
         gigs = gigs.filter(gig => regEx.test(gig.title))
+    }
+
+    if (filterBy.category) {
+        gigs = gigs.filter(gig => gig.tags >= filterBy.category)
     }
 
     if (filterBy.price) {
@@ -106,6 +111,9 @@ function getDefaultFilter() {
     }
 }
 
+function getCategories() {
+    return categories
+}
 // create demo data
 
 // _createDemoGigs(5)

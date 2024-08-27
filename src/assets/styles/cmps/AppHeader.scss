@@ -2,19 +2,6 @@
     svg {
         cursor: pointer;
     }
-
-    .categories-bar {
-        display: flex;
-        justify-content: space-between;
-
-        gap: 1em;
-
-        width: 200px;
-
-        span {
-            border: 1px solid lightgray;
-        }
-    }
 }
 
 .search-form-line {
