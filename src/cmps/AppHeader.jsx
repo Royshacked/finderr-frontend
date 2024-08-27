@@ -1,9 +1,9 @@
 import { GigFilter } from "./GigFilter.jsx"
-import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { LoginSignup } from "./LoginSignup.jsx"
 import Hire from '../assets/svg/homepage/hire.svg?react'
 import FreeLancer from '../assets/svg/homepage/freelancer.svg?react'
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { GigCategoriesBar } from "./GigCategoriesBar.jsx"
 import { SimpleSlider } from '../cmps/Carusela copy.jsx'
 export function AppHeader() {
 
@@ -64,6 +64,7 @@ export function AppHeader() {
 						</div>
 
 
+						<GigFilter />
 
 						<ul className="fiverr-nav flex">
 							<li className="nav-list-item nav-li-fiverpro " onClick={onToggleProMenu}>
@@ -109,44 +110,17 @@ export function AppHeader() {
 								<a className="href fiverr-header-join" rel="nofollow" href="/join?source=top_nav">Join</a>
 							</li>
 						</ul>
-
 					</div>
 
-					{/* <ul className="categories"></ul> */}
+					<GigCategoriesBar />
 
 				</nav>
-				{/* {createUser && <div className="cover-screen" onClick={() => closeModal()}> */}
-				{/* </div>} */}
-
-				{/* <div className="categories-bar"> */}
-				{/* <div className="categories-bar-box flex" onClick={(ev) => onHandleSubmit(ev, 'programming_tech')}>
-						<span className="categories-bar-span">
-							programming_tech
-						</span>
-					</div>
-					<div className="categories-bar-box flex">
-						<span className="categories-bar-span">
-							programming_tech
-						</span>
-					</div>
-					<div className="categories-bar-box flex">
-						<span className="categories-bar-span">
-							programming_tech
-						</span>
-					</div>
-					{/* {createUser && <div className="cover-screen" onClick={() => closeModal()}> */}
-				{/* </div>} */}
-
-				{/* </div> */}
-
 			</header >
-			<LoginSignup />
-		</div>
 
-	)
+			)
 }
 
-{/* <svg xmlns="http://www.w3.org/2000/svg" width="23" height="19" viewBox="0 0 23 19"><rect y="16" width="23" height="3" rx="1.5" fill="#555"></rect><rect width="23" height="3" rx="1.5" fill="#555"></rect><rect y="8" width="23" height="3" rx="1.5" fill="#555"></rect></svg>
+			{/* <svg xmlns="http://www.w3.org/2000/svg" width="23" height="19" viewBox="0 0 23 19"><rect y="16" width="23" height="3" rx="1.5" fill="#555"></rect><rect width="23" height="3" rx="1.5" fill="#555"></rect><rect y="8" width="23" height="3" rx="1.5" fill="#555"></rect></svg>
 			<rect y="16" width="23" height="3" rx="1.5" fill="#555"></rect>
 			<rect width="23" height="3" rx="1.5" fill="#555"></rect>
 			<rect y="8" width="23" height="3" rx="1.5" fill="#555"></rect>

@@ -37,8 +37,6 @@
         }
     }
 
-
-
     .sub-filter {
         position: absolute;
         top: 220px;
@@ -51,14 +49,14 @@
 
         background-color: white;
 
-        transition: 0.5s;
-
         form {
             // div {
             //     display: grid;
             //     grid-template-columns: 1fr 1fr;
             // }
         }
+
+        transition: 1s;
     }
 
     .btns {

@@ -1,0 +1,22 @@
+.categories-bar {
+    border-block: 1px solid lightgray;
+    padding: 0.5rem, 0;
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+
+        gap: 1rem;
+
+        margin: 0;
+
+        color: #62646a;
+
+        font-size: 16px;
+
+        li {
+            padding: 0.5rem, 0;
+            cursor: pointer;
+        }
+    }
+}
