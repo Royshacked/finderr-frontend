@@ -1,5 +1,6 @@
 import { GigFilter } from "./GigFilter.jsx"
 import { useEffect, useState } from "react"
+import { LoginSignup } from "./LoginSignup.jsx"
 import Hire from '../assets/svg/homepage/hire.svg?react'
 import FreeLancer from '../assets/svg/homepage/freelancer.svg?react'
 import { Link, useNavigate, useParams } from "react-router-dom"
@@ -139,6 +140,7 @@ export function AppHeader() {
 				{/* </div> */}
 
 			</header >
+			<LoginSignup />
 		</div>
 
 	)

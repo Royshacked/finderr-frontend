@@ -1,4 +1,5 @@
 import { storageService } from '../async-storage.service'
+import { makeId, makeLorem } from '../util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -12,6 +13,7 @@ export const userService = {
     update,
     getLoggedinUser,
     saveLoggedinUser,
+    getEmptyUser
 }
 
 async function getUsers() {
@@ -35,6 +37,16 @@ async function getById(userId) {
 // 		level: 'basic/premium',
 // 	},
 // ]
+function getEmptyUser() {
+    return {
+        _id: makeId(),
+        fullname: '',
+        imgUrl: '',///img/img1.jpg
+        username: '',
+        password: '',
+        level: 'basic',
+    }
+}
 
 function remove(userId) {
     return storageService.remove('user', userId)
@@ -62,6 +74,7 @@ async function login(userCred) {
 async function signup(userCred) {
     //  if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     // userCred.score = 10000
+
 
     const user = await storageService.post('user', userCred)
     return saveLoggedinUser(user)

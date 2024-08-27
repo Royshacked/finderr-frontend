@@ -13,7 +13,7 @@ const initialState = {
     count: 10,
     user: userService.getLoggedinUser(),
     users: [],
-    watchedUser : null
+    watchedUser: null
 }
 
 export function userReducer(state = initialState, action) {
@@ -29,6 +29,7 @@ export function userReducer(state = initialState, action) {
             newState = { ...state, count: state.count + action.diff }
             break
         case SET_USER:
+            console.log(action.user);
             newState = { ...state, user: action.user }
             break
         case SET_WATCHED_USER:
