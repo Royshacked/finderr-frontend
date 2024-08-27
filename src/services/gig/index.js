@@ -1,4 +1,5 @@
 const { DEV, VITE_LOCAL } = import.meta.env
+import { useEffect } from 'react'
 
 import { getRandomIntInclusive, makeId, makeLorem } from '../util.service'
 
@@ -28,6 +29,24 @@ function getDefaultFilter() {
         sortDir: -1,
     }
 }
+addListnerr()
+useEffect(() => {
+
+
+
+}, [])
+// function addListnerr() {
+//     window.addEventListener('scroll', onScroll);
+//     const onScroll = (this) => console.info("scrolling", this);
+// }
+// window.scroll(function () {
+//     if ((this).scrollTop() > 50) {
+//         console.log('hhh');
+//         // $('#dynamic').addClass('newClass');
+//     }
+//     // else { $('#dynamic').removeClass('newClass');}
+// });
+
 
 const service = VITE_LOCAL === 'true' ? local : remote
 export const gigService = { getEmptyGig, getDefaultFilter, ...service }
