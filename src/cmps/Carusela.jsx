@@ -14,6 +14,7 @@ import Consulting from '../assets/svg/homepage/consulting.svg?react'
 
 export function DemoCarousel() {
 
+
     return (
 
         <div className="sugestion-categories">

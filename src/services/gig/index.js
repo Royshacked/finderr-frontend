@@ -29,12 +29,12 @@ function getDefaultFilter() {
         sortDir: -1,
     }
 }
-addListnerr()
-useEffect(() => {
+// addListnerr()
+// useEffect(() => {
 
 
 
-}, [])
+// }, [])
 // function addListnerr() {
 //     window.addEventListener('scroll', onScroll);
 //     const onScroll = (this) => console.info("scrolling", this);
