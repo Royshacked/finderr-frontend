@@ -6,8 +6,10 @@ export const storageService = {
     remove,
 }
 
-function query(entityType, delay = 500) {
+function query(entityType, delay = 10000) {
+
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
+    console.log(...entities);
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }
 
@@ -20,10 +22,17 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    newEntity._id = _makeId()
+    console.log(entityType, newEntity)
+    // var ent = []
+    // ent.push(newEntity)
+    // console.log(ent[0]);
+    //_save(entityType, ent)
+    // newEntity._id = _makeId()
     return query(entityType).then(entities => {
+        console.log(entities);
         entities.push(newEntity)
         _save(entityType, entities)
+
         return newEntity
     })
 }
@@ -32,7 +41,7 @@ function put(entityType, updatedEntity) {
     return query(entityType).then(entities => {
         const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
         if (idx < 0) throw new Error(`Update failed, cannot find entity with id: ${updatedEntity._id} in: ${entityType}`)
-        const entityToUpdate = {...entities[idx], ...updatedEntity}
+        const entityToUpdate = { ...entities[idx], ...updatedEntity }
         entities.splice(idx, 1, entityToUpdate)
         _save(entityType, entities)
         return entityToUpdate
@@ -51,6 +60,7 @@ function remove(entityType, entityId) {
 // Private functions
 
 function _save(entityType, entities) {
+    console.log(entityType, entities);
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 
