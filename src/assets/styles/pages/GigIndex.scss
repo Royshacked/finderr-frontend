@@ -1,6 +1,16 @@
 .gig-index {
-    &>div {
-        display: flex;
-        justify-content: space-between;
+
+    .index-header {
+        margin-block-start: 32px;
+
+        h2 {
+            font-weight: normal;
+
+            span {
+                font-weight: bold;
+            }
+        }
     }
+
+
 }
