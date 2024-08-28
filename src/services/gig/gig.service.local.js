@@ -5,7 +5,7 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
 
-const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible']
+const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
 
 export const gigService = {
     query,

@@ -62,6 +62,11 @@
 
                 font-family: 'macan-semi-bold';
                 font-size: 0.9rem;
+
+                &:hover {
+                    color: white;
+                    background-color: #1dbf73;
+                }
             }
         }
     }
@@ -69,10 +74,6 @@
     svg {
         cursor: pointer;
     }
-}
-
-.hover-green:hover {
-    color: rgb(28, 191, 115);
 }
 
 .nav-li-fiverpro {

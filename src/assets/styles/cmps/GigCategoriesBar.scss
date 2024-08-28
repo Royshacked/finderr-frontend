@@ -1,10 +1,11 @@
 .categories-bar {
     border-block: 1px solid lightgray;
-    padding: 0.5rem, 0;
+    padding: 0 78.5px;
 
     ul {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        align-items: center;
 
         gap: 1rem;
 
@@ -15,7 +16,9 @@
         font-size: 16px;
 
         li {
-            padding: 0.5rem, 0;
+            padding: 0.3rem;
+
+            font-size: 1.1rem;
             cursor: pointer;
         }
     }
