@@ -1,19 +1,21 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
     line-height: 1.6;
-    color: $clr2;
 }
 
 body {
     max-width: 1024px;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
 
-    font-family: 'Macan', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'macan', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     font-weight: 400;
-    font-size: rem(16px);
+    font-size: rem(18px);
 }
 
 // h1,
@@ -22,7 +24,7 @@ h3,
 h4,
 h5,
 h6 {
-//     margin: 0 0 0.6em;
+    //     margin: 0 0 0.6em;
 }
 
 img {
@@ -39,7 +41,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    // text-decoration: underline;
 }
 
 ul {

@@ -1,13 +1,68 @@
 .app-header {
 
-    .header {
+    header {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         height: 80px;
 
         ul {
             font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 2rem;
+
+            .fiverpro-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                gap: 0.5rem;
+
+                padding: 8px 16px;
+
+                font-family: 'macan-semi-bold';
+                font-size: 1.1rem;
+
+                color: #2a2b2e;
+                background-color: white;
+
+                svg {
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+
+            a {
+                color: #74767e;
+                transition: color .5s ease, border .5s ease;
+
+                &:hover {
+                    color: rgb(3, 212, 3);
+                }
+            }
+
+            .link-join {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: max-content;
+                height: 2rem;
+
+                padding: 10px 16px;
+                border: 1px solid #1dbf73;
+                border-radius: 4px;
+
+                color: #1dbf73;
+
+                font-family: 'macan-semi-bold';
+                font-size: 0.9rem;
+            }
         }
     }
 
@@ -15,22 +70,26 @@
         cursor: pointer;
     }
 }
-.hover-green:hover{
-    color: rgb(28,191,115);
+
+.hover-green:hover {
+    color: rgb(28, 191, 115);
 }
-.nav-li-fiverpro{
+
+.nav-li-fiverpro {
     position: relative;
 }
-.user-pro-menu-co{
-    width:  408px;
-   position: absolute;
-   top:20px;
-   flex-direction: column;
-   background-color: #fff;
-   border-radius: 8px;
+
+.user-pro-menu-co {
+    width: 408px;
+    position: absolute;
+    top: 20px;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
 
 }
-.user-pro-option{
+
+.user-pro-option {
     border: 1px solid #e4e5e7;
     border-radius: 8px;
     flex-direction: row-reverse;
@@ -40,19 +99,23 @@
     column-gap: 16px;
 
 }
-.user-pro-option-text{
+
+.user-pro-option-text {
     flex-direction: column;
-    & a{
-            font-weight: 600;
-            color: #404145;
+
+    & a {
+        font-weight: 600;
+        color: #404145;
     }
-    & p{
-            font-size: 14px;
-            line-height: 21px;
-            color: #62646a;      
+
+    & p {
+        font-size: 14px;
+        line-height: 21px;
+        color: #62646a;
     }
 }
-.user-pro-option-svg{
+
+.user-pro-option-svg {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,4 +151,3 @@
 //     color: #fff;
 //     margin: 0 15px;
 //     font-size: 4em;}
-
