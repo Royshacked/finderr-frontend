@@ -119,23 +119,25 @@ function getCategories() {
 
 // _createDemoGigs(5)
 
+_createDemoGig()
+
 async function _createDemoGig() {
     const gig = {
         // _id: makeId(),
-        title: makeLorem(2),
+        title: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
         price: getRandomIntInclusive(10, 1000),
         owner: {
             _id: makeId(),
-            fullname: makeLorem(1),
-            imgUrl: '',
+            fullname: 'Saurabh Chauhan',
+            imgUrl: 'https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/f5bbb58284bda105edb16f76a7e4521d-1623660993193/3a8d9cd3-f71d-4a87-bba3-70118594f220.jpg',
             level: 'basic',
-            rate: getRandomIntInclusive(1, 5),
+            rate: 2,
         },
-        daysToMake: getRandomIntInclusive(1, 30),
-        description: makeLorem(10),
-        avgResponseTime: getRandomIntInclusive(1, 30),
-        loc: makeLorem(1),
-        imgUrls: `././assets/images/preview/1.png`,
+        daysToMake: getRandomIntInclusive(1, 9),
+        description: 'Facing issues with your WordPress site due to Plugins, Themes or Custom CSS/JS? Need help with Page builders, or custom page design? Or that small button is not working properly on mobile devices We can help you with any weird issues/errors/bugs from WordPress or custom PHP.',
+        avgResponseTime: getRandomIntInclusive(1, 9),
+        loc: 'India',
+        imgUrls: ['https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/211302392/original/263b25077bcdb60c261267b515f822137c1d3b40.jpg'],
         tags: categories[getRandomIntInclusive(0, 5)],
         likedByUsers: [],
         // reviews: [
@@ -157,11 +159,11 @@ async function _createDemoGig() {
     return savedGig
 }
 
-async function _createDemoGigs(num) {
-    console.log('hi')
-    for (var i = 0; i < num; i++) {
-        await _createDemoGig()
-    }
-}
+// async function _createDemoGigs(num) {
+//     console.log('hi')
+//     for (var i = 0; i < num; i++) {
+//         await _createDemoGig()
+//     }
+// }
 
 
