@@ -46,6 +46,8 @@ function getDefaultFilter() {
 //     }
 //     // else { $('#dynamic').removeClass('newClass');}
 // });
+=======
+>>>>>>> main
 
 
 const service = VITE_LOCAL === 'true' ? local : remote

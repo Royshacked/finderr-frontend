@@ -31,7 +31,7 @@ export function GigFilter() {
 
     return <section className="gig-filter">
         <form onSubmit={onSubmit}>
-            <input type="text" name="title" onChange={onChange} value={filterByToEdit.title} />
+            <input type="text" name="title" onChange={onChange} value={filterByToEdit.title || ''} placeholder="What service are you looking for today?" />
             <button><Search /></button>
         </form>
     </section>
