@@ -1,8 +1,10 @@
+import { CustomCarousel } from "./CustomCarousel.jsx";
 
 export function GigPreview({ gig }) {
 
     return <article className="gig-preview">
-        <img src={gig.imgUrls} />
+        <CustomCarousel imgs={gig.imgUrls} />
+        {/* <img src={gig.imgUrls} /> */}
         <div className="gig-owner">
             <div className="gig-owner-name">
                 <img src={gig.owner.imgUrl} alt="" />
