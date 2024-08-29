@@ -114,53 +114,57 @@ function getDefaultFilter() {
 function getCategories() {
     return categories
 }
-// create demo data
+//create demo data
 
-// _createDemoGigs(5)
+_createDemoGigs(5)
 
-// async function _createDemoGig() {
-//     const gig = {
-//         // _id: makeId(),
-//         title: makeLorem(2),
-//         price: getRandomIntInclusive(10, 1000),
-//         owner: {
-//             _id: makeId(),
-//             fullname: makeLorem(1),
-//             imgUrl: '',
-//             level: 'basic',
-//             rate: getRandomIntInclusive(1, 5),
-//         },
-//         daysToMake: getRandomIntInclusive(1, 30),
-//         description: makeLorem(10),
-//         avgResponseTime: getRandomIntInclusive(1, 30),
-//         loc: makeLorem(1),
-//         imgUrls: '../assets/images/homepage/4.jpeg',
-//         tags: categories[getRandomIntInclusive(0, 5)],
-//         likedByUsers: [],
-//         // reviews: [
-//         //     {
-//         //         id: 'madeId',
-//         //         txt: 'Did an amazing work',
-//         //         rate: 4,
-//         //         by: {
-//         //             _id: 'u102',
-//         //             fullname: 'user2',
-//         //             imgUrl: '/img/img2.jpg',
-//         //         },
-//         //     },
-//         // ],
-//     }
+async function _createDemoGig() {
+    const gig = {
+        _id: makeId(),
+        title: makeLorem(2),
+        price: getRandomIntInclusive(10, 1000),
+        owner: {
+            _id: makeId(),
+            fullname: makeLorem(1),
+            imgUrl: '',
+            level: getRandomIntInclusive(1, 3),//'basic'
+            rate: getRandomIntInclusive(1, 5),
+        },
+        daysToMake: getRandomIntInclusive(1, 30),
+        description: makeLorem(10),
+        avgResponseTime: getRandomIntInclusive(1, 30),
+        loc: makeLorem(1),
+        imgUrls: [
+            'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png',
+            'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png',
+            'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png'
+        ],
+        tags: categories[getRandomIntInclusive(0, 5)],
+        likedByUsers: [],
+        // reviews: [
+        //     {
+        //         id: 'madeId',
+        //         txt: 'Did an amazing work',
+        //         rate: 4,
+        //         by: {
+        //             _id: 'u102',
+        //             fullname: 'user2',
+        //             : '/img/img2.jpg',
+        //         },
+        //     },
+        // ],
+    }
 
-//     const savedGig = await storageService.post(STORAGE_KEY, gig)
+    const savedGig = await storageService.post(STORAGE_KEY, gig)
 
-//     return savedGig
-// }
+    return savedGig
+}
 
-// async function _createDemoGigs(num) {
-//     for (var i = 0; i < num; i++) {
-//         await _createDemoGig()
-//     }
-// }
+async function _createDemoGigs(num) {
+    for (var i = 0; i < num; i++) {
+        await _createDemoGig()
+    }
+}
 
 
 function getImages(params) {

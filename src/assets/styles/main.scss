@@ -3,6 +3,7 @@
 @import "setup/functions";
 @import "setup/mixins";
 @import "setup/typography";
+@import "setup/fonts";
 
 // Basics
 @import "basics/helpers";
@@ -23,6 +24,7 @@
 @import "pages/UserDetails.scss";
 @import "pages/TaskDetails.scss";
 @import "pages/LoginSignup.scss";
+@import"../styles/pages/GigDetails.scss";
 
 // Components
 @import "cmps/GigList.scss";

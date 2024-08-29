@@ -53,7 +53,7 @@ export function AppHeader() {
 
 						<GigFilter />
 
-						<ul className="header-nav flex">
+						<ul className="header-nav flex fomt-front">
 							<li className="nav-list-item nav-li-fiverpro " onClick={onToggleProMenu}>
 								<span>Fiver pro</span>
 								{isShowProMenu && <ul className="user-pro-menu-co flex">

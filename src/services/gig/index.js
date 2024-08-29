@@ -29,6 +29,7 @@ function getDefaultFilter() {
         sortDir: -1,
     }
 }
+<<<<<<< HEAD
 // addListnerr()
 // useEffect(() => {
 
@@ -47,7 +48,8 @@ function getDefaultFilter() {
 //     // else { $('#dynamic').removeClass('newClass');}
 // });
 =======
->>>>>>> main
+>>>>>>>
+
 
 
 const service = VITE_LOCAL === 'true' ? local : remote
