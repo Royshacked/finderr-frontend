@@ -1,3 +1,5 @@
+import { GigListSort } from "./GigListSort.jsx"
+
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -62,13 +64,27 @@ export function GigListFilter() {
         setCmpType('')
     }
 
+    console.log(cmpType)
     return <article className="giglist-filter">
         {cmpType && <div className="back-drop" onClick={() => setCmpType('')}>hello</div>}
+        <div className="giglist-filter-btns">
+            <button className={cmpType && 'in-front'} name="seller" onClick={onHandleClick}>
+                Seller Details
+                <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
+            </button>
+            <button className={cmpType && 'in-front'} name="budget" onClick={onHandleClick}>
+                Budget
+                <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
+            </button>
+            <button className={cmpType && 'in-front'} name="delivery" onClick={onHandleClick}>
+                Delivery Time
+                <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
+            </button>
+        </div>
 
-        <button className={cmpType && 'in-front'} name="seller" onClick={onHandleClick}>Seller Details</button>
-        <button className={cmpType && 'in-front'} name="budget" onClick={onHandleClick}>Budget</button>
-        <button className={cmpType && 'in-front'} name="delivery" onClick={onHandleClick}>Delivery Time</button>
-
+        <div className="giglist-filter-pro">
+            Pro services
+        </div>
         <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} onClearFilter={onClearFilter} />
     </article>
 }

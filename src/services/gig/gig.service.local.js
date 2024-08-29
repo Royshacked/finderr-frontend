@@ -5,6 +5,8 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
 
+const gImgCount = 1
+
 const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
 
 export const gigService = {
@@ -15,7 +17,6 @@ export const gigService = {
     addGigMsg,
     getDefaultFilter,
     getCategories,
-    getImages
 }
 window.cs = gigService
 
@@ -118,51 +119,49 @@ function getCategories() {
 
 // _createDemoGigs(5)
 
-// async function _createDemoGig() {
-//     const gig = {
-//         // _id: makeId(),
-//         title: makeLorem(2),
-//         price: getRandomIntInclusive(10, 1000),
-//         owner: {
-//             _id: makeId(),
-//             fullname: makeLorem(1),
-//             imgUrl: '',
-//             level: 'basic',
-//             rate: getRandomIntInclusive(1, 5),
-//         },
-//         daysToMake: getRandomIntInclusive(1, 30),
-//         description: makeLorem(10),
-//         avgResponseTime: getRandomIntInclusive(1, 30),
-//         loc: makeLorem(1),
-//         imgUrls: '../assets/images/homepage/4.jpeg',
-//         tags: categories[getRandomIntInclusive(0, 5)],
-//         likedByUsers: [],
-//         // reviews: [
-//         //     {
-//         //         id: 'madeId',
-//         //         txt: 'Did an amazing work',
-//         //         rate: 4,
-//         //         by: {
-//         //             _id: 'u102',
-//         //             fullname: 'user2',
-//         //             imgUrl: '/img/img2.jpg',
-//         //         },
-//         //     },
-//         // ],
-//     }
+async function _createDemoGig() {
+    const gig = {
+        // _id: makeId(),
+        title: makeLorem(2),
+        price: getRandomIntInclusive(10, 1000),
+        owner: {
+            _id: makeId(),
+            fullname: makeLorem(1),
+            imgUrl: '',
+            level: 'basic',
+            rate: getRandomIntInclusive(1, 5),
+        },
+        daysToMake: getRandomIntInclusive(1, 30),
+        description: makeLorem(10),
+        avgResponseTime: getRandomIntInclusive(1, 30),
+        loc: makeLorem(1),
+        imgUrls: `././assets/images/preview/1.png`,
+        tags: categories[getRandomIntInclusive(0, 5)],
+        likedByUsers: [],
+        // reviews: [
+        //     {
+        //         id: 'madeId',
+        //         txt: 'Did an amazing work',
+        //         rate: 4,
+        //         by: {
+        //             _id: 'u102',
+        //             fullname: 'user2',
+        //             imgUrl: '/img/img2.jpg',
+        //         },
+        //     },
+        // ],
+    }
 
-//     const savedGig = await storageService.post(STORAGE_KEY, gig)
+    const savedGig = await storageService.post(STORAGE_KEY, gig)
 
-//     return savedGig
-// }
-
-// async function _createDemoGigs(num) {
-//     for (var i = 0; i < num; i++) {
-//         await _createDemoGig()
-//     }
-// }
-
-
-function getImages(params) {
-
+    return savedGig
 }
+
+async function _createDemoGigs(num) {
+    console.log('hi')
+    for (var i = 0; i < num; i++) {
+        await _createDemoGig()
+    }
+}
+
+
