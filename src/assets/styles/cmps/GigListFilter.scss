@@ -162,22 +162,6 @@
             }
         }
 
-
-        .seller {
-            form {
-                max-height: 300px;
-                overflow-y: scroll;
-            }
-        }
-
-        .budget {
-            left: calc(242.5px + 1rem)
-        }
-
-        .delivery {
-            left: calc(242.5px + 117.11px + 2rem)
-        }
-
         .btns {
             display: flex;
             justify-content: space-between;
@@ -204,5 +188,22 @@
                 background-color: white;
             }
         }
+
     }
+
+    .seller {
+        form {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+    }
+
+    .budget {
+        left: calc(242.5px + 1rem)
+    }
+
+    .delivery {
+        left: calc(242.5px + 117.11px + 2rem)
+    }
+
 }

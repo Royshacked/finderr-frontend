@@ -60,9 +60,12 @@ export function GigListFilter() {
     function onClearFilter({ target }) {
         const { name } = target
         const cleanFilter = gigService.getDefaultFilter()[name]
+        const newFilter = { ...filterByToEdit, [name]: cleanFilter }
 
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: cleanFilter }))
-        dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit, [name]: cleanFilter } })
+        setFilterByToEdit({ ...newFilter })
+        dispatch({ type: SET_FILTER_BY, filterBy: { ...newFilter } })
+        // setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: cleanFilter }))
+        // dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit, [name]: cleanFilter } })
         setCmpType('')
     }
 
