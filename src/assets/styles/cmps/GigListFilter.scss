@@ -1,22 +1,21 @@
 .giglist-filter {
-    position: sticky;
-    top: 0;
-
     display: flex;
     justify-content: space-between;
     align-items: end;
 
     height: 72px;
 
-    gap: 1em;
+    gap: 1rem;
 
     .back-drop {
         position: absolute;
         inset: 0 0 0 0;
-        z-index: 1;
+
+        z-index: 0;
     }
 
     .giglist-filter-btns {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -24,9 +23,6 @@
         gap: 1rem;
 
         button {
-            position: relative;
-            top: 0;
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -48,7 +44,7 @@
 
             font-weight: bold;
             font-size: 1rem;
-            font-family: Helvetica;
+            font-family: macan;
 
             transition: 0.3s;
 
@@ -64,44 +60,149 @@
     }
 
     .giglist-filter-pro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 0.5rem;
         color: #62646a;
         font-family: macan-semi-bold;
+
+        .pro-btn {
+            display: flex;
+            align-items: center;
+            width: 32px;
+            height: 18px;
+
+            border-radius: 8px;
+            background-color: lightgray;
+
+            cursor: pointer;
+
+            .pro-small-btn {
+                width: 50%;
+                height: 14px;
+
+                border-radius: 50%;
+                background-color: white;
+
+                transition: 0.2s;
+            }
+
+            .pro-btn-on {
+                translate: 100%;
+            }
+        }
     }
 
     .sub-filter {
         position: absolute;
-        top: 220px;
-        left: 10;
+        top: 275px;
+        left: 80px;
         z-index: 2;
 
-        padding: 1em;
         border-radius: 1em;
         box-shadow: 0px 0px 6px 0px;
 
         background-color: white;
 
-
+        font-size: 1rem;
         transition: 1s;
-    }
 
-    .btns {
-        display: flex;
-        justify-content: space-between;
-    }
+        h3 {
+            text-align: start;
 
-    .btn-apply {
-        padding: 1em;
-        border-radius: 0.5em;
+            font-size: 1rem;
+        }
 
-        font-size: 1em;
+        form {
+            padding: 2rem 2rem 0 2rem;
+        }
 
-        background-color: black;
-    }
+        .sub-inputs {
+            display: grid;
 
-    .btn-clear {
-        font-size: 1em;
+            gap: 1.5rem;
 
-        color: gray;
-        background-color: white;
+            padding: 1.5rem;
+            border-block-end: 1px solid rgb(235, 233, 233);
+
+            label:nth-child(even):not(.labal-delivery) {
+                grid-column: 2;
+            }
+
+            label {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+
+                gap: 1rem;
+
+                color: #222325;
+
+                font-size: 0.9rem;
+                font-weight: bold;
+
+                input {
+                    width: 24px;
+                    height: 24px;
+
+                    border: 1px solid lightgray;
+                }
+
+                .price {
+                    width: 278px;
+                    height: 40px;
+
+                    padding: 8px 12px;
+
+                    font-family: macan;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+        .seller {
+            form {
+                max-height: 300px;
+                overflow-y: scroll;
+            }
+        }
+
+        .budget {
+            left: calc(242.5px + 1rem)
+        }
+
+        .delivery {
+            left: calc(242.5px + 117.11px + 2rem)
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 0.8rem 1rem;
+            border-block-start: 1px solid lightgray;
+
+            .btn-apply {
+                padding: 1em;
+                border-radius: 0.5em;
+
+                font-size: 1em;
+                font-weight: bold;
+
+                background-color: black;
+                color: white;
+            }
+
+            .btn-clear {
+                font-size: 1em;
+                font-weight: bold;
+
+                color: gray;
+                background-color: white;
+            }
+        }
     }
 }
