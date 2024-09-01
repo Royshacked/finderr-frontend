@@ -7,7 +7,7 @@ $clr3: #fff;
 }
 
 .bunner-container {
-    margin-block-end: 2rem;
+    margin-block: 2rem;
 }
 
 .bunner {
@@ -183,6 +183,7 @@ $clr3: #fff;
     position: relative;
     //  scroll-snap-type: x;
     display: grid;
+    justify-content: space-around;
     gap: 1vw;
     grid-auto-flow: column;
     grid-template-columns: auto;
@@ -257,6 +258,11 @@ $clr3: #fff;
 
 }
 
+.sugestion-categories {
+
+    margin-block-end: 2rem;
+}
+
 .categorie-container {
     position: relative;
 }
@@ -268,18 +274,12 @@ $clr3: #fff;
     padding-left: 10px;
     padding-top: 10px;
 
+    cursor: pointer;
+
     &:hover {
         background: radial-gradient(63.44% 63.44% at 50% 50%, #c2ffe2 0, $clr3 100%), $clr3;
         border-radius: 16px;
-        bottom: 0;
-        content: "";
-        left: 0;
-        opacity: 0;
-        //  position: absolute;
-        right: 0;
-        top: 0;
         transition: opacity .25s cubic-bezier(.75, 0, .25, 1);
-        z-index: -1;
     }
 
     & .categorie-txt {
@@ -289,7 +289,6 @@ $clr3: #fff;
 
     }
 
-    //cursor: pointer;
     @include for-mobile-layout() {
         padding-left: 0;
         padding-top: 0;
@@ -349,6 +348,25 @@ $clr3: #fff;
 @mixin for-medium-layout {
     @media (min-width: $break-mid) {
         @content;
+    }
+}
+
+.hompage-video {
+    & h2 {
+        font-size: 2.5rem;
+        font-family: macan;
+        font-weight: normal;
+
+    }
+
+
+    video {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        border-radius: 0.5rem;
     }
 }
 

@@ -11,7 +11,7 @@ export function GigList({ gigs }) {
     // }
     if (!gigs.length) return <h2>loading...</h2>
     return <section>
-        <ul className="gig-list">
+        <ul className="gig-list main-layout">
             {gigs.map((gig) =>
                 <li key={gig._id}>
                     <GigPreview gig={gig} />

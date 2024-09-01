@@ -80,7 +80,7 @@ export function AppHeader() {
 				</nav>
 			</header >
 
-			<GigCategoriesBar />
+			{/* <GigCategoriesBar /> */}
 
 
 		</div>
