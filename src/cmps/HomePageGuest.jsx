@@ -14,13 +14,13 @@ export function HomePageGuest() {
 
     return (
         <section >
-
             <div className="bunner-container">
                 <div className="bunner flex">
                     {/* <div className="bunner-top"></div> */}
 
                     <div className="search-bunner-container flex">
-                        <h1>Find the right  <em>freelance </em>  service, right away</h1>
+                        <h1>Find the right <span>freelance</span> <br />service, right away
+                        </h1>
                         <div className="stam">
                             <GigFilter />
                         </div>

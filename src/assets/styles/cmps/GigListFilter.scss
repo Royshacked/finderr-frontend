@@ -1,4 +1,6 @@
 .giglist-filter {
+    position: relative;
+
     display: flex;
     justify-content: space-between;
     align-items: end;
@@ -7,15 +9,9 @@
 
     gap: 1rem;
 
-    .back-drop {
-        position: absolute;
-        inset: 0 0 0 0;
-
-        z-index: 0;
-    }
-
     .giglist-filter-btns {
         position: relative;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -74,7 +70,7 @@
             width: 32px;
             height: 18px;
 
-            border-radius: 8px;
+            border-radius: 10px;
             background-color: lightgray;
 
             cursor: pointer;
@@ -86,19 +82,21 @@
                 border-radius: 50%;
                 background-color: white;
 
+                translate: 10%;
                 transition: 0.2s;
             }
 
             .pro-btn-on {
-                translate: 100%;
+                translate: 90%;
             }
         }
     }
 
     .sub-filter {
         position: absolute;
-        top: 275px;
-        left: 80px;
+        // top: 275px;
+        // left: 80px;
+        top: calc(72px + 1rem);
         z-index: 2;
 
         border-radius: 1em;
@@ -199,11 +197,18 @@
     }
 
     .budget {
-        left: calc(242.5px + 1rem)
+        left: calc(162.64px + 1rem)
     }
 
     .delivery {
-        left: calc(242.5px + 117.11px + 2rem)
+        left: calc(162.64px + 117.11px + 2rem)
     }
 
+}
+
+.back-drop {
+    position: absolute;
+    inset: 0 0 0 0;
+
+    z-index: 1;
 }

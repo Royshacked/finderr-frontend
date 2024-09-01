@@ -71,32 +71,34 @@ export function GigListFilter() {
 
     var proBtnClass = isPro ? 'pro-btn-on' : ''
 
-    return <article className="giglist-filter">
+    return <>
         {cmpType && <div className="back-drop" onClick={() => setCmpType('')}></div>}
-        <div className="giglist-filter-btns">
-            <button className={cmpType && 'in-front'} name="seller" onClick={onHandleClick}>
-                Seller Details
-                <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
-            </button>
-            <button className={cmpType && 'in-front'} name="budget" onClick={onHandleClick}>
-                Budget
-                <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
-            </button>
-            <button className={cmpType && 'in-front'} name="delivery" onClick={onHandleClick}>
-                Delivery Time
-                <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
-            </button>
-        </div>
-
-        <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} onClearFilter={onClearFilter} />
-
-        <div className="giglist-filter-pro">
-            <div className="pro-btn" style={{ backgroundColor: isPro ? 'green' : 'lightgray' }} onClick={() => setIsPro(!isPro)}>
-                <div className={`pro-small-btn ${proBtnClass}`}></div>
+        <article className="giglist-filter">
+            <div className="giglist-filter-btns">
+                <button className={cmpType && 'in-front'} name="seller" onClick={onHandleClick}>
+                    Seller Details
+                    <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
+                </button>
+                <button className={cmpType && 'in-front'} name="budget" onClick={onHandleClick}>
+                    Budget
+                    <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
+                </button>
+                <button className={cmpType && 'in-front'} name="delivery" onClick={onHandleClick}>
+                    Delivery Time
+                    <svg width="16" height="16" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M.19 1.272.81.653a.375.375 0 0 1 .53 0L7 6.3 12.66.653a.375.375 0 0 1 .53 0l.62.62a.375.375 0 0 1 0 .53L7.264 8.346a.375.375 0 0 1-.53 0L.19 1.802a.375.375 0 0 1 0-.53Z"></path></svg>
+                </button>
             </div>
-            Pro services
-        </div>
-    </article>
+
+            <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} onClearFilter={onClearFilter} />
+
+            <div className="giglist-filter-pro">
+                <div className="pro-btn" style={{ backgroundColor: isPro ? 'green' : 'lightgray' }} onClick={() => setIsPro(!isPro)}>
+                    <div className={`pro-small-btn ${proBtnClass}`}></div>
+                </div>
+                Pro services
+            </div>
+        </article>
+    </>
 }
 
 function DynamicCmp(props) {

@@ -2,35 +2,36 @@
 
     form {
         display: flex;
-    }
+        justify-content: center;
 
-    input {
-        width: 30vw;
-        height: 2.625rem;
+        input {
+            width: 45vw;
+            height: 2.625rem;
 
-        margin: 0;
-        padding: 10px 2px 10px 16px;
-        border: 1px solid #c5c6c9;
-        border-top-left-radius: 0.25rem;
-        border-bottom-left-radius: 0.25rem;
+            margin: 0;
+            padding: 10px 2px 10px 16px;
+            border: 1px solid #c5c6c9;
+            border-top-left-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
 
-        font-family: 'macan-semi-bold';
-        font-size: 1rem;
+            font-family: 'macan-semi-bold';
+            font-size: 1rem;
 
-        cursor: text;
+            cursor: text;
 
-        transition: .15s ease-in-out;
-    }
+            transition: .15s ease-in-out;
+        }
 
-    button {
-        width: 3.125rem;
+        button {
+            width: 3.125rem;
 
-        margin: 0;
-        border-radius: 0 4px 4px 0;
-        background-color: black;
+            margin: 0;
+            border-radius: 0 4px 4px 0;
+            background-color: black;
 
-        svg {
-            fill: white;
+            svg {
+                fill: white;
+            }
         }
     }
 }
