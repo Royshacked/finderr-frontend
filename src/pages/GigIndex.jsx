@@ -25,13 +25,13 @@ export function GigIndex() {
         }
     }
     return (
-        <section className="gig-index ">
+        <section className="gig-index main-layout">
             <GigCategoriesBar />
-            <div className="index-header main-layout">
+            <div className="index-header">
                 {filterBy.title ? <h2>Results for <span>{filterBy.title}</span></h2> : <h2>All results</h2>}
                 <GigListFilter />
             </div>
-            <div className="index-sort main-layout">
+            <div className="index-sort">
                 <span>{gigs.length} results</span>
                 <GigListSort />
             </div>

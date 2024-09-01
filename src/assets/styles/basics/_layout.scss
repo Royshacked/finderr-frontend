@@ -1,12 +1,21 @@
 .main-layout {
-    margin: 0;
-    padding: 0 78.5px;
+    display: grid;
+    grid-template-columns:
+        minmax(80px, 1fr) minmax(auto, 1250px) minmax(80px, 1fr);
+
+    >*:not(.full) {
+        grid-column: 2;
+    }
+
+    >*.full {
+        grid-column: 1 / -1;
+    }
 }
 
-.full {
-    margin: 0;
-    padding: 0;
-}
+// .full {
+//     margin: 0;
+//     padding: 0;
+// }
 
 
 // .main-container {
