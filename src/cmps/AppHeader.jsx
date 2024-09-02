@@ -1,46 +1,21 @@
 import { GigFilter } from "./GigFilter.jsx"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { LoginSignup } from "./LoginSignup.jsx"
 import Hire from '../assets/svg/homepage/hire.svg?react'
 import FreeLancer from '../assets/svg/homepage/freelancer.svg?react'
 import { GigCategoriesBar } from "./GigCategoriesBar.jsx"
-import { SimpleSlider } from '../cmps/Carusela copy.jsx'
 import { useState } from "react"
 
 export function AppHeader() {
 	const [isShowProMenu, setIsShowProMenu] = useState(null)
-	const [userSearchTxt, setUserSearchTxt] = useState('')
 	//const [createUser, setCreateUser] = useState(false)
 	const navigate = useNavigate()
 
-	function handleChange({ target }) {
-		let { name, value } = target
 
-		switch (target.type) {
-
-			case 'search':
-				value = value
-				setUserSearchTxt(value)
-				break
-
-		}
-	}
 	function onToggleProMenu() {
 		setIsShowProMenu(!isShowProMenu)
 	}
-	// function onScrollPage(event) {
-	// 	document.getElementsByClassName('wrapper')[0].addEventListener('scroll', (e) => console.log(e.target.scrollTop))
-	// 	document.getElementsByClassName('wrapper')[0].removeEventListener('scroll', (e) => console.log(e.target.scrollTop))
-	// 	if (event.target.scrollTop > 20) {
-	// 		console.log('jjjj');
 
-	// 		setisShowCategoriesBar(true)
-
-	// 	}
-	// 	else {
-	// 		setisShowCategoriesBar(false)
-	// 	}
-	// }
 	return (
 		<div className="app-header main-layout full">
 			<header className="main-layout">
@@ -75,14 +50,12 @@ export function AppHeader() {
 					</button>
 
 					<a href="/start_selling?source=top_nav" rel="nofollow">Become a Seller</a>
+					<Link to="/order">Orders</Link>
 					<a rel="nofollow" href="/login?source=top_nav">Sign in</a>
 					<a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>
 				</nav>
 			</header >
-
 			{/* <GigCategoriesBar /> */}
-
-
 		</div>
 
 	)
