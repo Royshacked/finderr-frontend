@@ -19,7 +19,7 @@
 @import "pages/AboutUs.scss";
 @import "pages/HomePage";
 @import "pages/GigIndex.scss";
-@import "pages/GigOrder.scss";
+@import "pages/GigOrderIndex.scss";
 @import "pages/ReviewIndex.scss";
 @import "pages/UserDetails.scss";
 @import "pages/TaskDetails.scss";
@@ -42,5 +42,8 @@
 @import "cmps/ReviewEdit.scss";
 @import "cmps/ReviewList.scss";
 @import "cmps/ReviewPreview.scss";
+
+@import "cmps/GigOrderList.scss";
+@import "cmps/GigOrderPreview.scss";
 //@import "cmps/GigList";
 //@import "cmps/GigPreview";
