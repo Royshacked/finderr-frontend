@@ -12,19 +12,22 @@ import { LoginSignup } from './cmps/LoginSignup.jsx'
 import { Provider } from 'react-redux'
 import { store } from './store/store.js'
 
+import { GigOrderIndex } from './pages/GigOrderIndex.jsx'
+
 
 
 export function RootCmp() {
     return (
         <Provider store={store}>
             <Router>
-                <div className="main-container">
+                <div className="">
                     <AppHeader />
                     <main>
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/about" element={<AboutUs />} />
                             <Route path="/gig" element={<GigIndex />} />
+                            <Route path="/order" element={<GigOrderIndex />} />
                             <Route path="/gig/:gigId" element={<GigDetails />} />
                             <Route path="/login" element={<LoginSignup />} />
                         </Routes>

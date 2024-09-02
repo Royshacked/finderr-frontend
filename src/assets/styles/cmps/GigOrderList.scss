@@ -1,0 +1,28 @@
+.gig-order-list {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+
+    background-color: white;
+
+    &>div {
+        border-block-end: 1px solid lightgray;
+
+        h3 {
+            padding: 1rem;
+
+            font-size: 1rem;
+        }
+    }
+
+    ul {
+        border-block-end: 1px solid lightgray;
+
+        li {
+            font-size: 1rem;
+            border-block-end: 1px solid lightgray;
+            color: gray;
+        }
+    }
+
+
+}

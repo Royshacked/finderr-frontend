@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { GigList } from "../cmps/GigList.jsx";
 import { GigListFilter } from "../cmps/GigListFilter.jsx";
+import { GigCategoriesBar } from "../cmps/GigCategoriesBar.jsx";
 import { loadGigs } from "../store/actions/gig.actions.js";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -12,11 +13,11 @@ export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
-        setGigs(filterBy)
+        getGigs()
         setSearchParams(filterBy)
     }, [filterBy])
 
-    async function setGigs() {
+    async function getGigs() {
         try {
             await loadGigs(filterBy)
         } catch (error) {
@@ -25,6 +26,7 @@ export function GigIndex() {
     }
     return (
         <section className="gig-index main-layout">
+            <GigCategoriesBar />
             <div className="index-header">
                 {filterBy.title ? <h2>Results for <span>{filterBy.title}</span></h2> : <h2>All results</h2>}
                 <GigListFilter />
