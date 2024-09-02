@@ -13,11 +13,11 @@ export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
-        setGigs(filterBy)
+        getGigs()
         setSearchParams(filterBy)
     }, [filterBy])
 
-    async function setGigs() {
+    async function getGigs() {
         try {
             await loadGigs(filterBy)
         } catch (error) {

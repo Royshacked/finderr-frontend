@@ -1,0 +1,32 @@
+.gig-orders {
+    background-color: rgb(243, 242, 242);
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        gap: 1.5rem;
+
+        padding: 1rem;
+        border-block-end: 1px solid lightgray;
+
+        h2 {
+            font-size: 3rem;
+            font-weight: normal;
+
+            color: #3d4042;
+        }
+
+        nav {
+            display: flex;
+            justify-content: start;
+
+            gap: 1.5rem;
+
+            color: gray;
+
+            cursor: pointer;
+        }
+    }
+}

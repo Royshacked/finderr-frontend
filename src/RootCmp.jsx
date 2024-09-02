@@ -11,7 +11,8 @@ import { AppFooter } from './cmps/AppFooter'
 import { LoginSignup } from './cmps/LoginSignup.jsx'
 import { Provider } from 'react-redux'
 import { store } from './store/store.js'
-import { GigOrders } from './pages/GigOrders.jsx'
+
+import { GigOrderIndex } from './pages/GigOrderIndex.jsx'
 
 
 
@@ -26,7 +27,7 @@ export function RootCmp() {
                             <Route path="/" element={<HomePage />} />
                             <Route path="/about" element={<AboutUs />} />
                             <Route path="/gig" element={<GigIndex />} />
-                            <Route path="/order" element={<GigOrders />} />
+                            <Route path="/order" element={<GigOrderIndex />} />
                             <Route path="/gig/:gigId" element={<GigDetails />} />
                             <Route path="/login" element={<LoginSignup />} />
                         </Routes>
