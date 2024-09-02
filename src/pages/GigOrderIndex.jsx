@@ -5,17 +5,22 @@ import { GigOrderList } from "../cmps/GigOrderList.jsx";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 
 export function GigOrderIndex() {
     const orders = useSelector(state => state.orderModule.orders)
     const filterBy = useSelector(state => state.orderModule.filterBy)
+    const [searchParams, setSearchParams] = useSearchParams()
+
     const status = orderService.getStatus()
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         loadGigOrders()
+        setSearchParams(filterBy)
     }, [filterBy])
 
     async function loadGigOrders() {
