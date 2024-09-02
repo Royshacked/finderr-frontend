@@ -11,7 +11,7 @@ export function GigOrderPreview({ order }) {
         <div>
             <span>{order.createdAt}</span>
             <span>{order.gig.price}$</span>
-            <span>{order.status}</span>
+            <span>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
         </div>
     </article>
 }
