@@ -2,13 +2,19 @@ import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { SimpleSlider } from "../cmps/Carusela copy"
 
+import { ReviewDetailes } from "../cmps/details/Reviews.jsx"
+
+
 import { gigService } from "../services/gig/gig.service.local"
 import StarFull from '../assets/svg/details/star-full.svg?react'
 import StarEmpty from '../assets/svg/details/star-empty.svg?react'
 import Heart from '../assets/svg/details/heart.svg?react'
+import Share from '../assets/svg/details/share.svg?react'
+import { PlansDescription } from "../cmps/details/PlansDescription"
+import { UserDetailsRevies } from "../cmps/details/UserDetails&Revies"
 export function GigDetails() {
   const [gig, setGig] = useState(null)
-  const [userPlan, setUserPlan] = useState('basic')
+  const [userPlan, setUserPlan] = useState('entry')
   const { gigId } = useParams()
 
 
@@ -25,14 +31,16 @@ export function GigDetails() {
       })
   }
   // console.log(gig)
-
+  function setPlan(plan) {
+    setUserPlan(plan)
+  }
   if (!gig) return <div>Loading...</div>
 
   return <article className="gig-page flex">
     <main class="gig-main-layout">
 
 
-
+      {/* <aside className="sidebar-content">hhhhh</aside> */}
       <h1 className="gig-title-details flex">{gig.title}</h1>
       <div className="mini-user-container flex">
         <div className="user-details-container flex">
@@ -82,19 +90,45 @@ export function GigDetails() {
       {/* <img src="../assets/images/homepage/4.jpeg" alt="" /> */}
       {/* <span><b>Rate </b>{gig.owner.rate}</span> */}
       {/* <span><b>From</b> {gig.price}$</span> */}
+      {gig && <UserDetailsRevies gig={gig} />}
+      {gig && <ReviewDetailes gig={gig} />}
     </main>
     <div className="side-bar-container">
       <div className="side-bar-inner-container">
         <div className="side-bar-content">
-          <div className="side-bar-header">
+          <div className="side-bar-header flex">
+            <div className="side-bar-header-collect flex">
+              <div className="heart-container">
+                <Heart />
+              </div>
+              <span className="collect-num">509</span>
+            </div>
+            <span className="collect-num">
+              <Share />
+            </span>
 
           </div>
           <div className="side-bar-plans">
+            <div className="plans-picker flex">
+              <div className={userPlan === 'entry' ? 'entry active' : 'entry'} onClick={() => setPlan('entry')} >entry</div>
+              <div className={userPlan === 'commun' ? 'commun active' : 'commun'} onClick={() => setPlan('commun')} >commun</div>
+              <div className={userPlan === 'premium' ? 'premium active' : 'premium'} onClick={() => setPlan('premium')}>premium</div>
+            </div>
+            {gig.price && <PlansDescription planType={userPlan} gig={gig} />}
+
 
           </div>
-          <div className="side-bar-contact"></div>
+          <div className="side-bar-contact flex">
+
+            <div className='contact-container-inner flex'>
+              <button>contact me</button>
+            </div>
+
+
+          </div>
         </div>
       </div>
     </div>
+
   </article>
 }

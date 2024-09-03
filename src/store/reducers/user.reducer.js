@@ -29,7 +29,7 @@ export function userReducer(state = initialState, action) {
             newState = { ...state, count: state.count + action.diff }
             break
         case SET_USER:
-            console.log(action.user);
+            // console.log(action.user);
             newState = { ...state, user: action.user }
             break
         case SET_WATCHED_USER:

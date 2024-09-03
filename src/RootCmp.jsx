@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage'
 import { AboutUs } from './pages/AboutUs'
 import { GigIndex } from './pages/GigIndex.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
+import { ReviewEdit } from './cmps/ReviewEdit.jsx'
 
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
@@ -25,6 +26,9 @@ export function RootCmp() {
                             <Route path="/" element={<HomePage />} />
                             <Route path="/about" element={<AboutUs />} />
                             <Route path="/gig" element={<GigIndex />} />
+                            <Route path="/gig/createreview/:gigId" element={<ReviewEdit />} />
+                            <Route path="/gig/:gigId/:reviewId" element={<ReviewEdit />} />
+
                             <Route path="/gig/:gigId" element={<GigDetails />} />
                             <Route path="/login" element={<LoginSignup />} />
                         </Routes>

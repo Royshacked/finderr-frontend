@@ -1,0 +1,84 @@
+.plans-desc-co{
+    padding-top: 32px;}
+
+.plans-main{
+        position: relative;
+     padding-left: 24px;
+        padding-right: 24px;
+   } 
+.plans-desc-h{
+    line-height: 21px;
+    padding-bottom: 10px;
+   }
+   .tooltip-price-container{
+    font-size: 24px;
+    font-weight: 700;
+   }
+.detailes-plan{
+    & li{
+gap:8px;
+font-size: 14px;
+    }
+}
+.save-subscribe{
+    gap:3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding-bottom: 10px;
+    & > .XBRgVA8{
+        color: #026a5d;
+    }
+}
+
+.additional-info{
+    gap:8px;
+    & > *{
+        gap:5px
+    }
+}
+.footer-plan{
+    flex-direction: column;
+}
+.time-span-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.plans-price{
+    justify-content: space-between;
+}
+.continue-plan-b{
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+    padding: 12px 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: 70ms cubic-bezier(.75,0,.25,1);
+    transition: 70ms cubic-bezier(.75,0,.25,1);
+    background-color: black;
+    color: whitesmoke;
+    & span{
+        float: right;
+    }
+
+}
+.compare-button{
+        font-size: 14px;
+        line-height: 21px;
+        display: flex;
+        justify-content: center;
+        color: black;
+        background-color: white;
+}
+.side-bar-plans{
+   border: 1px solid #dadbdd
+}

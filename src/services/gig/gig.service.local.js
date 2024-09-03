@@ -11,6 +11,7 @@ export const gigService = {
     query,
     getById,
     save,
+    getEmptyReview,
     remove,
     addGigMsg,
     getDefaultFilter,
@@ -55,15 +56,54 @@ async function remove(gigId) {
     // throw new Error('Nope')
     await storageService.remove(STORAGE_KEY, gigId)
 }
+function getEmptyReview() {
+    var review = {
+        id: makeId(),
+        title: '',
+        txt: '',
+        rate: '',
+        price: '',
+        duration: 'getRandomIntInclusive(1, 4)',
+        date: '',
+        by: {
+            _id: 'u102',
+            fullname: 'user2',
+            country: 'usa',
+            img: 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png'
+
+        },
+
+
+    }
+    //console.log(review)
+    return review
+}
 
 async function save(gig) {
     var savedGig
     if (gig._id) {
         const gigToSave = {
             _id: gig._id,
+            title: gig.title,
             price: gig.price,
+            owner: gig.owner,
+            Languages: gig.language,
             daysToMake: gig.daysToMake,
+            LastDelivery: gig.LastDelivery,
+            description: gig.description,
+            avgResponseTime: gig.avgResponseTime,
+            memberSince: gig.memberSince,
+            loc: gig.loc,
+            imgUrls: gig.imgUrls,
+            tags: gig.tags,
+            likedByUsers: [],
+            reviews: gig.reviews,
+
+
         }
+        console.log(gigToSave);
+
+
         savedGig = await storageService.put(STORAGE_KEY, gigToSave)
     } else {
         const gigToSave = {
@@ -121,7 +161,7 @@ _createDemoGigs(5)
 async function _createDemoGig() {
     const gig = {
         _id: makeId(),
-        title: makeLorem(2),
+        title: makeLorem(5),
         price: getRandomIntInclusive(10, 1000),
         owner: {
             _id: makeId(),
@@ -129,10 +169,25 @@ async function _createDemoGig() {
             imgUrl: '',
             level: getRandomIntInclusive(1, 3),//'basic'
             rate: getRandomIntInclusive(1, 5),
+            about: makeLorem(60)
         },
+        //         From
+        // Pakistan
+        // Member since
+        // Jun 2018
+        // Avg. response time
+        // 1 hour
+        // Last delivery
+        // about 24 minutes
+        // Languages
+
+        // English
+        Languages: 'English',
         daysToMake: getRandomIntInclusive(1, 30),
-        description: makeLorem(10),
+        LastDelivery: getRandomIntInclusive(1, 24),
+        description: makeLorem(50),
         avgResponseTime: getRandomIntInclusive(1, 30),
+        memberSince: makeLorem(5),
         loc: makeLorem(1),
         imgUrls: [
             'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png',
@@ -141,6 +196,7 @@ async function _createDemoGig() {
         ],
         tags: categories[getRandomIntInclusive(0, 5)],
         likedByUsers: [],
+        reviews: createReviews(5)
         // reviews: [
         //     {
         //         id: 'madeId',
@@ -158,6 +214,38 @@ async function _createDemoGig() {
     const savedGig = await storageService.post(STORAGE_KEY, gig)
 
     return savedGig
+}
+function createReviews(num) {
+    var reviews = []
+    for (var i = 0; i < num; i++) {
+        var review = _createDemoReview()
+        reviews.push(review)
+    }
+    return reviews
+}
+
+function _createDemoReview() {
+    var review = {
+        id: makeId(),
+        title: 'Did an amazing work',
+        txt: makeLorem(50),
+        rate: getRandomIntInclusive(0, 5),
+        price: getRandomIntInclusive(100, 1000),
+        duration: getRandomIntInclusive(1, 4),
+        date: 'lo mizman',
+        by: {
+            _id: 'u102',
+            fullname: 'user2',
+            country: 'usa',
+            img: 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png'
+
+        },
+
+
+    }
+    //console.log(review)
+    return review
+
 }
 
 async function _createDemoGigs(num) {
