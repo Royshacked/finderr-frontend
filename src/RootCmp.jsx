@@ -27,7 +27,7 @@ export function RootCmp() {
                             <Route path="/about" element={<AboutUs />} />
                             <Route path="/gig" element={<GigIndex />} />
                             <Route path="/gig/createreview/:gigId" element={<ReviewEdit />} />
-                            <Route path="/gig/:gigId/:reviewId" element={<ReviewEdit />} />
+                            <Route path="/review/:gigId/:reviewId" element={<ReviewEdit />} />
 
                             <Route path="/gig/:gigId" element={<GigDetails />} />
                             <Route path="/login" element={<LoginSignup />} />

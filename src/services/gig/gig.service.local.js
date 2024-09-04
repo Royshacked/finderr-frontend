@@ -63,7 +63,7 @@ function getEmptyReview() {
         txt: '',
         rate: '',
         price: '',
-        duration: 'getRandomIntInclusive(1, 4)',
+        duration: getRandomIntInclusive(1, 4),
         date: '',
         by: {
             _id: 'u102',

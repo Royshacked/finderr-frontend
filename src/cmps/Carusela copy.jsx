@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 
 import { gigService } from "../services/gig/gig.service.local"
@@ -12,6 +13,7 @@ import StarEmpty from '../assets/svg/details/star-empty.svg?react'
 export function SimpleSlider() {
     const [gig, setGig] = useState(null)
     const { gigId } = useParams()
+    const navigate = useNavigate()
 
 
     useEffect(() => {

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { SimpleSlider } from "../cmps/Carusela copy"
 
 import { ReviewDetailes } from "../cmps/details/Reviews.jsx"
+import { useNavigate } from "react-router-dom"
 
 
 import { gigService } from "../services/gig/gig.service.local"
@@ -16,11 +17,13 @@ export function GigDetails() {
   const [gig, setGig] = useState(null)
   const [userPlan, setUserPlan] = useState('entry')
   const { gigId } = useParams()
+  const navigate = useNavigate()
 
 
   useEffect(() => {
     if (gigId) loadGig()
   }, [gigId])
+
 
   function loadGig() {
     gigService.getById(gigId)
@@ -30,7 +33,7 @@ export function GigDetails() {
         navigate('/gig')
       })
   }
-  // console.log(gig)
+
   function setPlan(plan) {
     setUserPlan(plan)
   }

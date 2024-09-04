@@ -18,7 +18,7 @@ export function ReviewEdit() {
 	useEffect(() => {
 		if (gigId) loadGig()
 
-		console.log(gig);
+		console.log(review);
 
 
 
@@ -47,7 +47,15 @@ export function ReviewEdit() {
 
 	//     },
 	function onSubmit() {
-		console.log(gig.reviews, review)
+
+		review.by = {
+			_id: 'u102',
+			fullname: 'user2',
+			country: 'usa',
+			img: 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png'
+
+		}
+		console.log(review.by)
 		if (!reviewId) gig.reviews.push(review)
 		gig.reviews[gig.reviews.findIndex(review => review.id === reviewId)] = review
 		//console.log(gig.reviews[0]);
@@ -59,14 +67,57 @@ export function ReviewEdit() {
 		gigService.save(gig)
 
 
-		navigate(`/gig/`)
+		navigate(`/gig/${gig._id}`)
 		// ${gig._id}
 	}
 
 	function onChange({ target }) {
 		const { name, value } = target
+		console.log(review);
+
 
 		setReview(prevReview => ({ ...prevReview, [name]: value }))
+		console.log(review);
+
+	}
+	// var review = {
+	//     id: makeId(),
+	//     title: '',
+	//     txt: '',
+	//     rate: '',
+	//     price: '',
+	//     duration: getRandomIntInclusive(1, 4),
+	//     date: '',
+	//     by: {
+	//         _id: 'u102',
+	//         fullname: 'user2',
+	//         country: 'usa',
+	//         img: 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png'
+
+	//     },
+	function loadGig() {
+		gigService.getById(gigId)
+			.then(gig => {
+				setGig(gig)
+				return gig
+			}).then(gig => {
+				var revieww = gig.reviews.find(review => review.id === reviewId)
+				var trye = gigService.getEmptyReview()
+				//console.log(trye, revieww);
+
+				if (revieww === undefined) {
+					setReview(trye)
+					console.log('hear', review);
+				}
+				else setReview(revieww)
+				//setReview(trye)
+				console.log(review, revieww, trye);
+			})
+
+			.catch(err => {
+				console.log('Had issues in gig details', err)
+				navigate('/gig')
+			})
 	}
 	if (!gig) return <div>Loading...</div>
 
@@ -81,25 +132,7 @@ export function ReviewEdit() {
 		</form>
 	</section>
 
-	function loadGig() {
-		gigService.getById(gigId)
-			.then(gig => {
-				setGig(gig)
-				return gig
-			}).then(gig => {
-				var revieww = gig.reviews.find(review => review.id === reviewId)
-				if (!revieww) setReview(gigService.getEmptyReview)
 
-
-				setReview(revieww)
-				console.log(review);
-			})
-
-			.catch(err => {
-				console.log('Had issues in gig details', err)
-				navigate('/gig')
-			})
-	}
 
 
 

@@ -1,6 +1,28 @@
 import Star from '../src/assets/svg/details/star.svg?react'
 import { Link } from 'react-router-dom';
+import { gigService } from '../../services/gig/gig.service.local';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 export function ReviewDetailes(gig) {
+    const navigate = useNavigate()
+
+
+
+
+    function onDeleteReview(reviewId) {
+        console.log(reviewId);
+
+        var reviews = gig.gig.reviews.filter(review => review.id !== reviewId)
+        gig.gig.reviews = reviews
+        console.log(gig.gig.reviews)
+
+        gigService.save(gig.gig)
+
+
+
+        navigate(`/gig/${gig._id}`)
+
+    }
 
 
 
@@ -110,7 +132,8 @@ export function ReviewDetailes(gig) {
                                     <p>{review.txt}</p>
                                 </div>
 
-                                <span> <Link to={`/gig/${gig.gig._id}/${review.id}`}>Edit</Link> </span>
+                                <span> <Link to={`/review/${gig.gig._id}/${review.id}`}>Edit</Link> </span>
+                                <span onClick={ev => onDeleteReview(review.id)}>delete</span>
 
                             </div>
                             <div className='review-helpfool'></div>
