@@ -20,7 +20,7 @@ export function RootCmp() {
     return (
         <Provider store={store}>
             <Router>
-                <div className="">
+                <div >
                     <AppHeader />
                     <main>
                         <Routes>

@@ -38,12 +38,13 @@ export function CustomCarousel({ imgs }) {
             showThumbs={false}
             showStatus={false}
             infiniteLoop={true}
+
         // renderArrowPrev={renderArrowPrev}
         // renderArrowNext={renderArrowNext}
         // Add other Carousel props as needed
         >
             {imgs.map(img =>
-                <div className='carousel-img'>
+                <div key={img} className='carousel-img'>
                     <img src={img} alt="Slide 1" />
                 </div>
             )}

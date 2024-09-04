@@ -188,14 +188,14 @@ $clr3: #fff;
     grid-auto-flow: column;
     grid-template-columns: auto;
 
-    @include for-mobile-layout() {
-        -webkit-box-sizing: border-box;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 70px;
-        grid-auto-flow: dense;
-        word-break: keep-all;
-        left: 10px;
-    }
+    // @include for-mobile-layout() {
+    //     -webkit-box-sizing: border-box;
+    //     grid-template-columns: repeat(4, 1fr);
+    //     gap: 70px;
+    //     grid-auto-flow: dense;
+    //     word-break: keep-all;
+    //     left: 10px;
+    // }
 
     &>* {
         border: 0.5px black solid;
@@ -289,19 +289,19 @@ $clr3: #fff;
 
     }
 
-    @include for-mobile-layout() {
-        padding-left: 0;
-        padding-top: 0;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+    // @include for-mobile-layout() {
+    //     padding-left: 0;
+    //     padding-top: 0;
+    //     align-items: center;
+    //     justify-content: center;
+    //     position: relative;
 
-        & .categorie-txt {
-            position: absolute;
-            top: 120px;
-            left: 10%;
-        }
-    }
+    //     & .categorie-txt {
+    //         position: absolute;
+    //         top: 120px;
+    //         left: 10%;
+    //     }
+    // }
 
 }
 
@@ -333,23 +333,23 @@ $clr3: #fff;
     max-width: 1400px;
 }
 
-@mixin for-mobile-layout {
-    @media (max-width: $break-narrow) {
-        @content;
-    }
-}
+// @mixin for-mobile-layout {
+//     @media (max-width: $break-narrow) {
+//         @content;
+//     }
+// }
 
-@mixin for-wide-layout {
-    @media (min-width: $break-normal) {
-        @content;
-    }
-}
+// @mixin for-wide-layout {
+//     @media (min-width: $break-normal) {
+//         @content;
+//     }
+// }
 
-@mixin for-medium-layout {
-    @media (min-width: $break-mid) {
-        @content;
-    }
-}
+// @mixin for-medium-layout {
+//     @media (min-width: $break-mid) {
+//         @content;
+//     }
+// }
 
 .hompage-video {
     & h2 {

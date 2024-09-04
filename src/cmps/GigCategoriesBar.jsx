@@ -17,7 +17,9 @@ export function GigCategoriesBar() {
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterBy, category } })
         navigate('/gig')
     }
+
     return <section className="categories-bar main-layout full">
+
         <ul className="main-layout">
             {categories.map(category =>
                 <li key={category} onClick={() => onHandleCategory(category)}>
