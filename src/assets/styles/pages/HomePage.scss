@@ -333,26 +333,26 @@ $clr3: #fff;
     max-width: 1400px;
 }
 
-// @mixin for-mobile-layout {
-//     @media (max-width: $break-narrow) {
-//       @content;
-//     }
-  // }
-  // @mixin for-medium-layout {
+@mixin for-mobile-layout {
+    @media (max-width: $break-narrow) {
+      @content;
+    }
+  }
+  @mixin for-medium-layout {
     @media (max-width: $break-mid) {
       @content;
     }
   }
   @mixin for-normal-layout {
-//     @media (max-width: $break-normal) {
-//       @content;
-//     }
-  // }
-  // @mixin for-wide-layout {
-//     @media (max-width: $break-wide) {
-//       @content;
-//     }
-// }
+    @media (max-width: $break-normal) {
+      @content;
+    }
+  }
+  @mixin for-wide-layout {
+    @media (max-width: $break-wide) {
+      @content;
+    }
+}
 
 .hompage-video {
     & h2 {
