@@ -20,6 +20,7 @@
 @import "pages/AboutUs.scss";
 @import "pages/HomePage";
 @import "pages/GigIndex.scss";
+@import "pages/GigOrderIndex.scss";
 @import "pages/ReviewIndex.scss";
 @import "pages/UserDetails.scss";
 @import "pages/TaskDetails.scss";
@@ -30,6 +31,7 @@
 @import "cmps/GigList.scss";
 @import "cmps/GigPreview.scss";
 @import "cmps/GigListFilter.scss";
+@import "cmps/GigListSort.scss";
 @import "cmps/GigCategoriesBar.scss";
 @import "../styles/cmps/homepagecss/variables";
 @import "../styles/cmps/homepagecss/mixins";
@@ -45,5 +47,10 @@
 @import "cmps/ReviewEdit.scss";
 @import "cmps/ReviewList.scss";
 @import "cmps/ReviewPreview.scss";
+
+@import "cmps/GigOrderList.scss";
+@import "cmps/GigOrderPreview.scss";
+
+@import "cmps/PopularServices.scss";
 //@import "cmps/GigList";
 //@import "cmps/GigPreview";

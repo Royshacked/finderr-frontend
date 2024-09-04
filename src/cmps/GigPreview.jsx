@@ -1,5 +1,5 @@
-//import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { CustomCarousel } from "./CustomCarousel.jsx";
+
 export function GigPreview({ gig }) {
 
     // const navigate = useNavigate()
@@ -8,14 +8,21 @@ export function GigPreview({ gig }) {
     // }
 
     return <article className="gig-preview">
-        <img src='https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png' alt="" />
-        <span><b>Ad By</b> {gig.owner.fullname}</span>
+        <CustomCarousel imgs={gig.imgUrls} />
+        <div className="gig-owner">
+            <div className="gig-owner-name">
+                <img src={gig.owner.imgUrl} alt="" />
+                <span>Ad By <b>{gig.owner.fullname}</b></span>
+            </div>
+            <div className="gig-owner-rate">
+                <b>Level</b> {gig.owner.rate}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="currentColor"><path d="M4.839.22a.2.2 0 0 1 .322 0l1.942 2.636a.2.2 0 0 0 .043.043L9.782 4.84a.2.2 0 0 1 0 .322L7.146 7.105a.2.2 0 0 0-.043.043L5.161 9.784a.2.2 0 0 1-.322 0L2.897 7.148a.2.2 0 0 0-.043-.043L.218 5.163a.2.2 0 0 1 0-.322l2.636-1.942a.2.2 0 0 0 .043-.043L4.839.221Z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="currentColor"><path d="M4.839.22a.2.2 0 0 1 .322 0l1.942 2.636a.2.2 0 0 0 .043.043L9.782 4.84a.2.2 0 0 1 0 .322L7.146 7.105a.2.2 0 0 0-.043.043L5.161 9.784a.2.2 0 0 1-.322 0L2.897 7.148a.2.2 0 0 0-.043-.043L.218 5.163a.2.2 0 0 1 0-.322l2.636-1.942a.2.2 0 0 0 .043-.043L4.839.221Z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="currentColor"><path d="M4.839.22a.2.2 0 0 1 .322 0l1.942 2.636a.2.2 0 0 0 .043.043L9.782 4.84a.2.2 0 0 1 0 .322L7.146 7.105a.2.2 0 0 0-.043.043L5.161 9.784a.2.2 0 0 1-.322 0L2.897 7.148a.2.2 0 0 0-.043-.043L.218 5.163a.2.2 0 0 1 0-.322l2.636-1.942a.2.2 0 0 0 .043-.043L4.839.221Z"></path></svg>
+            </div>
+        </div>
+
         <span>{gig.title}</span>
-        <span>{gig._id}</span>
-        <span><b>Rate </b>{gig.owner.rate}</span>
-        <span><b>From</b> {gig.price}$</span>
-
-        <span> <Link to={`/gig/${gig._id}`}>Edit</Link> </span>
-
+        <span><b>From {gig.price}$</b></span>
     </article>
 }

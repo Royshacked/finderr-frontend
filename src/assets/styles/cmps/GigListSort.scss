@@ -1,0 +1,14 @@
+.giglist-sort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    cursor: pointer;
+
+    svg {
+        width: 12px;
+        height: 12px;
+    }
+}

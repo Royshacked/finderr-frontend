@@ -1,36 +1,131 @@
 .app-header {
+    border-block-end: 1px solid lightgray;
 
-    .header {
+    header {
         display: flex;
-        justify-content: space-evenly;
+
+        justify-content: space-between;
         align-items: center;
+
         height: 80px;
+
+        &>div {
+            display: flex;
+
+            &>.header-logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .hamburger {
+                    display: none;
+                    height: 23px;
+                    width: 26px;
+
+                    margin: 0 15px 0 0;
+
+                    @include for-mobile-layout {
+                        display: inline;
+                    }
+                }
+            }
+        }
 
         ul {
             font-weight: bold;
         }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 2rem;
+
+            .fiverpro-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                gap: 0.5rem;
+
+                margin-inline-start: 1em;
+                // padding: 8px 16px;
+
+                font-family: 'macan-semi-bold';
+                font-size: 1.1rem;
+
+                color: #2a2b2e;
+                background-color: white;
+
+                svg {
+                    width: 12px;
+                    height: 12px;
+
+                    margin: 0;
+                }
+            }
+
+            a:not(.link-join) {
+                width: max-content;
+                font-size: 1rem;
+                color: #74767e;
+                transition: color .5s ease, border .5s ease;
+
+                &:hover {
+                    color: rgb(3, 212, 3);
+                }
+
+                @include for-mobile-layout {
+                    display: none;
+                }
+            }
+
+            .link-join {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: max-content;
+                height: 2rem;
+
+                padding: 10px 16px;
+                border: 1px solid #1dbf73;
+                border-radius: 4px;
+
+                color: #1dbf73;
+
+                font-family: 'macan-semi-bold';
+                font-size: 0.9rem;
+
+                &:hover {
+                    color: white;
+                    background-color: #1dbf73;
+                }
+            }
+        }
     }
 
     svg {
+        margin-inline-end: 2rem;
         cursor: pointer;
     }
 }
-.hover-green:hover{
-    color: rgb(28,191,115);
-}
-.nav-li-fiverpro{
+
+.nav-li-fiverpro {
     position: relative;
 }
-.user-pro-menu-co{
-    width:  408px;
-   position: absolute;
-   top:20px;
-   flex-direction: column;
-   background-color: #fff;
-   border-radius: 8px;
+
+.user-pro-menu-co {
+    width: 408px;
+    position: absolute;
+    top: 20px;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
 
 }
-.user-pro-option{
+
+.user-pro-option {
     border: 1px solid #e4e5e7;
     border-radius: 8px;
     flex-direction: row-reverse;
@@ -40,52 +135,24 @@
     column-gap: 16px;
 
 }
-.user-pro-option-text{
+
+.user-pro-option-text {
     flex-direction: column;
-    & a{
-            font-weight: 600;
-            color: #404145;
+
+    & a {
+        font-weight: 600;
+        color: #404145;
     }
-    & p{
-            font-size: 14px;
-            line-height: 21px;
-            color: #62646a;      
+
+    & p {
+        font-size: 14px;
+        line-height: 21px;
+        color: #62646a;
     }
 }
-.user-pro-option-svg{
+
+.user-pro-option-svg {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-
-.search-form-line {
-    width: 50vw;
-    //flex-direction: row;
-
-    & input {
-        width: 90%;
-    }
-}
-
-
-.nav-list-item {
-    padding: 0 24px 0 0
-}
-
-// .categories-bar {
-//     height: 20px;
-//     gap: 2vw;
-// }
-
-
-// .caruselaa{  display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 250px;
-//     width: 100%;
-//     background-color: #00008B;
-//     color: #fff;
-//     margin: 0 15px;
-//     font-size: 4em;}
-

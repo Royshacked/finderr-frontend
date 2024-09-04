@@ -5,7 +5,9 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
 
-const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible']
+const gImgCount = 1
+
+const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
 
 export const gigService = {
     query,
@@ -16,7 +18,6 @@ export const gigService = {
     addGigMsg,
     getDefaultFilter,
     getCategories,
-    getImages
 }
 window.cs = gigService
 
@@ -30,7 +31,7 @@ async function query(filterBy = {}) {
     }
 
     if (filterBy.category) {
-        gigs = gigs.filter(gig => gig.tags >= filterBy.category)
+        gigs = gigs.filter(gig => gig.tags === filterBy.category)
     }
 
     if (filterBy.price) {
@@ -254,7 +255,62 @@ async function _createDemoGigs(num) {
     }
 }
 
+// {
+//     title: "I will fix wordpress, CSS, HTML, jquery, and PHP errors",
+//     price: 826,
+//     owner: {
+//         _id: "oRulYh",
+//         fullname: "Surjeet Singh",
+//         imgUrl: "https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/a7238c19ed67f1f2ff0a342a7dc53d91-1719205673921/17a08e08-1595-4b23-b95a-f71681c22c8a.jpg",
+//         level: "basic",
+//         rate: 3
+//     },
+//     daysToMake: 8,
+//     description: "Is your WordPress site acting up? Don't worry, I'm here to help! With over 13 years of experience in WordPress theme and plugin development, I specialize in diagnosing and fixing any issues that may be plaguing your website. Whether it's a minor bug or a major glitch, I have the expertise to get your site back on track.",
+//     avgResponseTime: 8,
+//     loc: "India",
+//     imgUrls: [
+//         "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg",
+//         "https://fiverr-res.cloudinary.com/image/upload/t_gig_card_delivery_image_1x,q_auto,f_auto/v1/attachments/delivery/asset/ec112761c1122b557e288f18c234a5ce-1724391259/Screenshot%202024-08-23%20at%2011.03.41%E2%80%AFAM.png",
+//         "https://fiverr-res.cloudinary.com/image/upload/t_gig_card_delivery_image_1x,q_auto,f_auto/v1/attachments/delivery/asset/46f47dc315ad08b8e79da601b0b94082-1723896064/Screenshot%202024-08-17%20at%205.30.55%E2%80%AFPM.png"
+//     ],
+//     tags: "wordpress",
+//     likedByUsers: []
+// }
 
-function getImages(params) {
+// {
+//     // _id: makeId(),
+//     title: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
+//     price: getRandomIntInclusive(10, 1000),
+//     owner: {
+//         _id: makeId(),
+//         fullname: 'Surjeet Singh',
+//         imgUrl: 'https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/a7238c19ed67f1f2ff0a342a7dc53d91-1719205673921/17a08e08-1595-4b23-b95a-f71681c22c8a.jpg',
+//         level: 'basic',
+//         rate: 3,
+//     },
+//     daysToMake: getRandomIntInclusive(1, 9),
+//     description: 'Is your WordPress site acting up? Don\'t worry, I\'m here to help! With over 13 years of experience in WordPress theme and plugin development, I specialize in diagnosing and fixing any issues that may be plaguing your website. Whether it\'s a minor bug or a major glitch, I have the expertise to get your site back on track.',
+//     avgResponseTime: getRandomIntInclusive(1, 9),
+//     loc: 'India',
+//     imgUrls: ['https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
+//         'https://fiverr-res.cloudinary.com/image/upload/t_gig_card_delivery_image_1x,q_auto,f_auto/v1/attachments/delivery/asset/ec112761c1122b557e288f18c234a5ce-1724391259/Screenshot%202024-08-23%20at%2011.03.41%E2%80%AFAM.png',
+//         'https://fiverr-res.cloudinary.com/image/upload/t_gig_card_delivery_image_1x,q_auto,f_auto/v1/attachments/delivery/asset/46f47dc315ad08b8e79da601b0b94082-1723896064/Screenshot%202024-08-17%20at%205.30.55%E2%80%AFPM.png'
+//     ],
+//     tags: categories[getRandomIntInclusive(0, 5)],
+//     likedByUsers: [],
+//     // reviews: [
+//     //     {
+//     //         id: 'madeId',
+//     //         txt: 'Did an amazing work',
+//     //         rate: 4,
+//     //         by: {
+//     //             _id: 'u102',
+//     //             fullname: 'user2',
+//     //             imgUrl: '/img/img2.jpg',
+//     //         },
+//     //     },
+//     // ],
+// }
 
-}
+

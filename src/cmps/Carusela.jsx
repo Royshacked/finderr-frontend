@@ -16,7 +16,6 @@ export function DemoCarousel() {
 
 
     return (
-
         <div className="sugestion-categories">
 
             <div className="categorie">
@@ -87,16 +86,10 @@ export function DemoCarousel() {
                     </div>
                     <p className="categorie-txt"> consulting</p></a>
             </div>
-
-
-
-
         </div>
-
     )
-
 }
 
-//Programming & Tech Graphics & Design digital marketing writing & 
+//Programming & Tech Graphics & Design digital marketing writing &
 //translation video & animation ai services music & audio business
 //consulting

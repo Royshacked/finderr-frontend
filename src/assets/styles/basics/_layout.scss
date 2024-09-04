@@ -1,37 +1,53 @@
-.main-container {
+.main-layout {
     display: grid;
-    grid-template-columns: 1rem 1fr 1rem;
+    grid-template-columns:
+        // minmax(32px, 1fr) 4fr minmax(32px, 1fr);
+        minmax(32px, 1fr) minmax(auto, 1250px) minmax(32px, 1fr);
 
-    > * {
+    // @include for-mobile-layout {
+    //     grid-template-columns:
+    //         minmax(32px, 1fr) auto minmax(32px, 1fr);
+    // }
+
+    // @include for-medium-layout {
+    //     grid-template-columns:
+    //         minmax(32px, 1fr) auto minmax(32px, 1fr);
+    // }
+
+    // @include for-wide-layout {
+    //     grid-template-columns:
+    //         minmax(32px, 1fr) minmax(auto, 1250px) minmax(32px, 1fr);
+    // }
+
+
+    >*:not(.full) {
         grid-column: 2;
-
-        &.full {
-            grid-column: 1 / -1;
-        }
     }
 
-    // @include for-narrow-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $mobile-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-normal-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $narrow-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-wide-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $normal-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
+    >*.full {
+        grid-column: 1 / -1;
+    }
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-}
+
+// @include for-mobile-layout {
+//     grid-template-columns:
+//         minmax(20px, 1fr) minmax(auto, $break-narrow) minmax(20px, 1fr);
+// }
+
+// @include for-medium-layout {
+//     grid-template-columns:
+//         minmax(20px, 1fr) minmax(auto, $break-mid) minmax(20px, 1fr);
+// }
+
+// @include for-wide-layout {
+//     grid-template-columns:
+//         minmax(20px, 1fr) minmax(auto, $break-normal) minmax(20px, 1fr);
+// }
+
+
+// .card-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+//     grid-gap: 20px;
+// }

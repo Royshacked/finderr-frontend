@@ -1,83 +1,214 @@
 .giglist-filter {
+    position: relative;
+
     display: flex;
+    justify-content: space-between;
+    align-items: end;
 
-    gap: 1em;
+    height: 72px;
 
-    .back-drop {
-        position: absolute;
-        inset: 0 0 0 0;
-        z-index: 1;
+    gap: 1rem;
+
+    .giglist-filter-btns {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 1rem;
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 0.5rem;
+
+            z-index: 2;
+
+            width: max-content;
+            height: 48px;
+
+            margin: 0;
+            padding: 10px 20px;
+            border: 1px solid lightgray;
+            border-radius: 0.5rem;
+
+            background-color: #fff;
+            color: #222325;
+
+            font-weight: bold;
+            font-size: 1rem;
+            font-family: macan;
+
+            transition: 0.3s;
+
+            &:hover {
+                background: rgb(248, 244, 244);
+            }
+
+            svg {
+                width: 12px;
+                height: 12px;
+            }
+        }
     }
 
-    &>button {
-        position: relative;
-        top: 0;
+    .giglist-filter-pro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        z-index: 2;
+        gap: 0.5rem;
+        color: #62646a;
+        font-family: macan-semi-bold;
 
-        width: max-content;
-        height: 40px;
+        .pro-btn {
+            display: flex;
+            align-items: center;
+            width: 32px;
+            height: 18px;
 
-        margin: 0;
-        padding: 10px 20px;
-        border: 1px solid lightgray;
-        border-radius: 1em;
+            border-radius: 10px;
+            background-color: lightgray;
 
-        background-color: #fff;
-        color: #222325;
+            cursor: pointer;
 
-        font-weight: bold;
-        font-size: 1rem;
-        font-family: Helvetica;
+            .pro-small-btn {
+                width: 50%;
+                height: 14px;
 
-        transition: 0.3s;
+                border-radius: 50%;
+                background-color: white;
 
-        &:hover {
-            background: rgb(248, 244, 244);
+                translate: 10%;
+                transition: 0.2s;
+            }
+
+            .pro-btn-on {
+                translate: 90%;
+            }
         }
     }
 
     .sub-filter {
         position: absolute;
-        top: 220px;
-        left: 10;
+        // top: 275px;
+        // left: 80px;
+        top: calc(72px + 1rem);
         z-index: 2;
 
-        padding: 1em;
         border-radius: 1em;
         box-shadow: 0px 0px 6px 0px;
 
         background-color: white;
 
-        form {
-            // div {
-            //     display: grid;
-            //     grid-template-columns: 1fr 1fr;
-            // }
+        font-size: 1rem;
+        transition: 1s;
+
+        h3 {
+            text-align: start;
+
+            font-size: 1rem;
         }
 
-        transition: 1s;
+        form {
+            padding: 2rem 2rem 0 2rem;
+        }
+
+        .sub-inputs {
+            display: grid;
+
+            gap: 1.5rem;
+
+            padding: 1.5rem;
+            border-block-end: 1px solid rgb(235, 233, 233);
+
+            label:nth-child(even):not(.labal-delivery) {
+                grid-column: 2;
+            }
+
+            label {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+
+                gap: 1rem;
+
+                color: #222325;
+
+                font-size: 0.9rem;
+                font-weight: bold;
+
+                input {
+                    width: 24px;
+                    height: 24px;
+
+                    border: 1px solid lightgray;
+                }
+
+                .price {
+                    width: 278px;
+                    height: 40px;
+
+                    padding: 8px 12px;
+
+                    font-family: macan;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 0.8rem 1rem;
+            border-block-start: 1px solid lightgray;
+
+            .btn-apply {
+                padding: 1em;
+                border-radius: 0.5em;
+
+                font-size: 1em;
+                font-weight: bold;
+
+                background-color: black;
+                color: white;
+            }
+
+            .btn-clear {
+                font-size: 1em;
+                font-weight: bold;
+
+                color: gray;
+                background-color: white;
+            }
+        }
+
     }
 
-    .btns {
-        display: flex;
-        justify-content: space-between;
+    .seller {
+        form {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
     }
 
-    .btn-apply {
-        padding: 1em;
-        border-radius: 0.5em;
-
-        font-size: 1em;
-
-        background-color: black;
+    .budget {
+        left: calc(162.64px + 1rem)
     }
 
-    .btn-clear {
-        font-size: 1em;
-
-        color: gray;
-        background-color: white;
-
+    .delivery {
+        left: calc(162.64px + 117.11px + 2rem)
     }
+
+}
+
+.back-drop {
+    position: absolute;
+    inset: 0 0 0 0;
+
+    z-index: 1;
 }

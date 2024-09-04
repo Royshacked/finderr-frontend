@@ -1,6 +1,28 @@
 .gig-index {
-    &>div {
+
+    .index-header {
+        margin-block-start: 32px;
+
+        h2 {
+            font-weight: normal;
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .index-sort {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        height: 48px;
+
+        margin-block: 1rem;
+
+        color: #74767e;
+
+        font-size: 1rem;
     }
 }
