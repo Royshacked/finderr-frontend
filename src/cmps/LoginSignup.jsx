@@ -3,9 +3,11 @@ import { useEffect, useState } from "react"
 import { userService } from '../services/user/user.service.local'
 
 import { login, signup } from "../store/actions/user.actions"
+
 export function LoginSignup() {
     const [user, setUser] = useState(userService.getEmptyUser)
     console.log(user)
+
     function handleChange({ target }) {
         const { type, name: prop } = target
 
@@ -15,13 +17,13 @@ export function LoginSignup() {
 
                 value = value
                 break;
-
         }
-        setUser(prevUser => ({ ...prevUser, [prop]: value }))
-        /// console.log(user);
 
+        setUser(prevUser => ({ ...prevUser, [prop]: value }))
     }
-    function onSaveUser() {
+
+    function onSaveUser(ev) {
+        ev.preventDefault()
         user.type = 'buyer'
         //  user._id = '12345'
         console.log(user);
@@ -29,6 +31,7 @@ export function LoginSignup() {
 
         signup(user)
     }
+
     {/* const users = [
 // 	{ */}
     // 		_id: 'u101',
@@ -46,14 +49,14 @@ export function LoginSignup() {
             Login/Signup
             <form className='user-form' onSubmit={onSaveUser} >
 
-                <input value={user.fullname} onChange={handleChange} type="text" id="fullname" name="fullname" placeholder="fullname" />
+                <input value={user.fullname} onChange={handleChange} type="text" id="fullname" name="fullname" placeholder="fullname" required />
 
                 <input value={user.imgUrl} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" />
 
-                <input value={user.username} onChange={handleChange} type="text" id="username" name="username" placeholder="username" />
+                <input value={user.username} onChange={handleChange} type="text" id="username" name="username" placeholder="username" required />
 
 
-                <input value={user.password} onChange={handleChange} type="text" id="password" name="password" placeholder="password" />
+                <input value={user.password} onChange={handleChange} type="text" id="password" name="password" placeholder="password" required />
 
 
                 {/* <input value={user.level} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" /> */}

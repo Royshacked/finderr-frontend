@@ -1,5 +1,5 @@
-import { storageService } from '../async-storage.service'
-import { makeId, makeLorem } from '../util.service'
+import { storageService } from '../async-storage.service.js'
+import { makeId, makeLorem } from '../util.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -12,7 +12,6 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
-    saveLoggedinUser,
     getEmptyUser
 }
 
@@ -73,15 +72,13 @@ async function login(userCred) {
 
 async function signup(userCred) {
     console.log(userCred);
-
+    userCred._id = makeId()
     //  if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     // userCred.score = 10000
 
+    await storageService.post('user', userCred)
 
-    const user = await storageService.post('user', userCred)
-    console.log('aaaa', user);
-
-    return saveLoggedinUser(user)
+    return _saveLoggedinUser(userCred)
 }
 
 async function logout() {
@@ -92,12 +89,10 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function saveLoggedinUser(user) {
+function _saveLoggedinUser(user) {
     console.log(user, 'nmbm');
 
     const newuser = {
-
-
         // 		username: 'user1',
         // 		password: 'secret',
         _id: user._id,
