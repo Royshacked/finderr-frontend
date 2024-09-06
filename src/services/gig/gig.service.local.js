@@ -5,8 +5,6 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
 
-const gImgCount = 1
-
 const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
 
 export const gigService = {
@@ -57,6 +55,8 @@ async function remove(gigId) {
     // throw new Error('Nope')
     await storageService.remove(STORAGE_KEY, gigId)
 }
+
+
 function getEmptyReview() {
     var review = {
         id: makeId(),
@@ -73,10 +73,7 @@ function getEmptyReview() {
             img: 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/351244456/original/f6d584d8afa0559fe0c04f4c3c537659f4369e98.png'
 
         },
-
-
     }
-    //console.log(review)
     return review
 }
 
@@ -155,9 +152,11 @@ function getDefaultFilter() {
 function getCategories() {
     return categories
 }
+
+
 //create demo data
 
-_createDemoGigs(5)
+// _createDemoGigs(5)
 
 async function _createDemoGig() {
     const gig = {
@@ -216,6 +215,8 @@ async function _createDemoGig() {
 
     return savedGig
 }
+
+
 function createReviews(num) {
     var reviews = []
     for (var i = 0; i < num; i++) {
@@ -249,11 +250,6 @@ function _createDemoReview() {
 
 }
 
-async function _createDemoGigs(num) {
-    for (var i = 0; i < num; i++) {
-        await _createDemoGig()
-    }
-}
 
 // {
 //     title: "I will fix wordpress, CSS, HTML, jquery, and PHP errors",

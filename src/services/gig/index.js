@@ -19,37 +19,16 @@ function getDefaultFilter() {
         category: '',
         owner: {
             level: 'basic',
-            rate: 0,
-            labguage: '',
-            loc: '',
+            rate: [],
+            language: [],
+            loc: [],
         },
-        budget: Infinity,
-        daysToMake: Infinity,
+        budget: 0,
+        daysToMake: 0,
         sortBy: '',
         sortDir: -1,
     }
 }
-<<<<<<< HEAD
-// addListnerr()
-// useEffect(() => {
-
-
-
-// }, [])
-// function addListnerr() {
-//     window.addEventListener('scroll', onScroll);
-//     const onScroll = (this) => console.info("scrolling", this);
-// }
-// window.scroll(function () {
-//     if ((this).scrollTop() > 50) {
-//         console.log('hhh');
-//         // $('#dynamic').addClass('newClass');
-//     }
-//     // else { $('#dynamic').removeClass('newClass');}
-// });
-=======
->>>>>>>
-
 
 
 const service = VITE_LOCAL === 'true' ? local : remote

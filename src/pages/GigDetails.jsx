@@ -13,25 +13,26 @@ import Heart from '../assets/svg/details/heart.svg?react'
 import Share from '../assets/svg/details/share.svg?react'
 import { PlansDescription } from "../cmps/details/PlansDescription"
 import { UserDetailsRevies } from "../cmps/details/UserDetails&Revies"
+import { loadGig } from "../store/actions/gig.actions.js"
+import { useSelector } from "react-redux"
+
 export function GigDetails() {
-  const [gig, setGig] = useState(null)
+  const gig = useSelector(state => state.gigModule.gig)
   const [userPlan, setUserPlan] = useState('entry')
   const { gigId } = useParams()
-  const navigate = useNavigate()
-
 
   useEffect(() => {
-    if (gigId) loadGig()
-  }, [gigId])
+    if (!gigId) return
+    setGig()
+  }, [])
 
 
-  function loadGig() {
-    gigService.getById(gigId)
-      .then(gig => setGig(gig))
-      .catch(err => {
-        console.log('Had issues in gig details', err)
-        navigate('/gig')
-      })
+  async function setGig() {
+    try {
+      await loadGig(gigId)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   function setPlan(plan) {
@@ -41,8 +42,6 @@ export function GigDetails() {
 
   return <article className="gig-page flex">
     <main class="gig-main-layout">
-
-
       {/* <aside className="sidebar-content">hhhhh</aside> */}
       <h1 className="gig-title-details flex">{gig.title}</h1>
       <div className="mini-user-container flex">
