@@ -1,9 +1,9 @@
-import { userService } from '../../services/user'
-import { socketService } from '../../services/socket.service'
+import { userService } from '../../services/user/user.service.local.js'
+//import { socketService } from '../../services/socket.service'
 import { store } from '../store'
 
 import { showErrorMsg } from '../../services/event-bus.service'
-import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
+//import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from '../reducers/user.reducer'
 
 export async function loadUsers() {
@@ -30,11 +30,13 @@ export async function removeUser(userId) {
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
+
+
         store.dispatch({
             type: SET_USER,
             user
         })
-        socketService.login(user._id)
+        //socketService.login(user._id)
         return user
     } catch (err) {
         console.log('Cannot login', err)
@@ -43,10 +45,10 @@ export async function login(credentials) {
 }
 
 export async function signup(credentials) {
-    //console.log(credentials);
+    console.log('popo', credentials);
     try {
         const user = await userService.signup(credentials)
-
+        console.log('wink', user);
         store.dispatch({
             type: SET_USER,
             user
@@ -55,6 +57,8 @@ export async function signup(credentials) {
 
         return user
     } catch (err) {
+        console.log('kkkk');
+
         console.log('Cannot signup', err)
         throw err
     }
@@ -83,3 +87,13 @@ export async function loadUser(userId) {
         console.log('Cannot load user', err)
     }
 }
+// export async function getLoginUser() {
+//     try {
+//         store.
+//         const user = await userService.getById(userId)
+//         store.dispatch({ type: SET_WATCHED_USER, user })
+//     } catch (err) {
+//         showErrorMsg('Cannot load user')
+//         console.log('Cannot load user', err)
+//     }
+// }

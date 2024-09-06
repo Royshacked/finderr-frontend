@@ -157,7 +157,7 @@ function getCategories() {
 }
 //create demo data
 
-_createDemoGigs(5)
+//_createDemoGigs(5)
 
 async function _createDemoGig() {
     const gig = {

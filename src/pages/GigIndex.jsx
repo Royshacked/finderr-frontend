@@ -9,6 +9,7 @@ import { GigListSort } from "../cmps/GigListSort.jsx";
 
 export function GigIndex() {
     const gigs = useSelector(state => state.gigModule.gigs)
+
     const filterBy = useSelector(state => state.gigModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
 

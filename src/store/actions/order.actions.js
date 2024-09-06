@@ -44,10 +44,14 @@ export async function addOrder(order) {
     }
 }
 
-export async function updateOrder(order) {
+export async function updateOrder(order, filterBy) {
+    ;
+
     try {
         const savedOrder = await orderService.save(order)
         store.dispatch(getCmdUpdateOrder(savedOrder))
+        console.log(order)
+        loadOrders(filterBy)
         return savedOrder
     } catch (err) {
         console.log('Cannot save order', err)

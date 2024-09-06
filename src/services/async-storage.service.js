@@ -7,9 +7,11 @@ export const storageService = {
 }
 
 function query(entityType, delay = 200) {
+    console.log('qaqa', entityType);
+
 
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
-    // console.log(...entities);
+    console.log('rvr', entities);
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }
 
@@ -22,23 +24,20 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    // console.log(entityType, updatedEntity)
-    // console.log(entityType, newEntity)
-    // var ent = []
-    // ent.push(newEntity)
-    // console.log(ent[0]);
-    //_save(entityType, ent)
-    // newEntity._id = _makeId()
+    console.log('b', entityType, newEntity)
+
     return query(entityType).then(entities => {
-        // console.log(entities);
+
+        console.log('ccc', entities);
         entities.push(newEntity)
         _save(entityType, entities)
-
-        return newEntity
+        return entities
     })
 }
 
 function put(entityType, updatedEntity) {
+    console.log('x', entityType, updatedEntity)
+
 
 
     return query(entityType).then(entities => {
@@ -46,6 +45,8 @@ function put(entityType, updatedEntity) {
         if (idx < 0) throw new Error(`Update failed, cannot find entity with id: ${updatedEntity._id} in: ${entityType}`)
         const entityToUpdate = { ...entities[idx], ...updatedEntity }
         entities.splice(idx, 1, entityToUpdate)
+
+
         _save(entityType, entities)
         return entityToUpdate
     })
@@ -63,7 +64,7 @@ function remove(entityType, entityId) {
 // Private functions
 
 function _save(entityType, entities) {
-    //console.log(entityType, entities);
+    console.log('ffff', entityType, entities);
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 

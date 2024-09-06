@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
+
 import { userService } from '../services/user/user.service.local'
+
+import { login, signup } from "../store/actions/user.actions"
 export function LoginSignup() {
     const [user, setUser] = useState(userService.getEmptyUser)
     console.log(user)
@@ -15,12 +18,16 @@ export function LoginSignup() {
 
         }
         setUser(prevUser => ({ ...prevUser, [prop]: value }))
-        console.log(user);
+        /// console.log(user);
 
     }
     function onSaveUser() {
+        user.type = 'buyer'
+        //  user._id = '12345'
+        console.log(user);
 
-        userService.signup(user)
+
+        signup(user)
     }
     {/* const users = [
 // 	{ */}
@@ -45,7 +52,9 @@ export function LoginSignup() {
 
                 <input value={user.username} onChange={handleChange} type="text" id="username" name="username" placeholder="username" />
 
-                <input value={user.imgUrl} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" />
+
+                <input value={user.password} onChange={handleChange} type="text" id="password" name="password" placeholder="password" />
+
 
                 {/* <input value={user.level} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" /> */}
 

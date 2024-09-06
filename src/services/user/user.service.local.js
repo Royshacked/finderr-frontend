@@ -39,7 +39,7 @@ async function getById(userId) {
 // ]
 function getEmptyUser() {
     return {
-        _id: makeId(),
+        // _id: makeId(),
         fullname: '',
         imgUrl: '',///img/img1.jpg
         username: '',
@@ -72,11 +72,15 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
+    console.log(userCred);
+
     //  if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     // userCred.score = 10000
 
 
     const user = await storageService.post('user', userCred)
+    console.log('aaaa', user);
+
     return saveLoggedinUser(user)
 }
 
@@ -89,15 +93,23 @@ function getLoggedinUser() {
 }
 
 function saveLoggedinUser(user) {
-    user = {
+    console.log(user, 'nmbm');
+
+    const newuser = {
+
+
+        // 		username: 'user1',
+        // 		password: 'secret',
         _id: user._id,
         fullname: user.fullname,
         imgUrl: user.imgUrl,
-        score: user.score,
-        isAdmin: user.isAdmin
+        username: user.username,
+        password: user.password
     }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
+    console.log(newuser, 'pppp');
+
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(newuser))
+    return newuser
 }
 
 // To quickly create an admin user, uncomment the next line
