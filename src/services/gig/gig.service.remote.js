@@ -1,11 +1,16 @@
 import { httpService } from '../http.service'
 
+const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
+
+
 export const gigService = {
     query,
     getById,
     save,
     remove,
-    addGigMsg
+    addGigMsg,
+    getDefaultFilter,
+    getCategories
 }
 
 async function query(filterBy = {}) {
@@ -32,4 +37,27 @@ async function save(gig) {
 async function addGigMsg(gigId, txt) {
     const savedMsg = await httpService.post(`gig/${gigId}/msg`, { txt })
     return savedMsg
+}
+
+
+function getDefaultFilter() {
+    return {
+        title: '',
+        category: '',
+        owner: {
+            level: 'basic',
+            rate: [],
+            language: [],
+            loc: [],
+        },
+        budget: 0,
+        daysToMake: 0,
+        sortBy: '',
+        sortDir: -1,
+    }
+}
+
+
+function getCategories() {
+    return categories
 }

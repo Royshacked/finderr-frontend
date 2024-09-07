@@ -1,4 +1,4 @@
-import { gigService } from "../../services/gig/gig.service.remote"
+import { gigService } from "../../services/gig/gig.service.remote.js"
 
 export const SET_GIGS = 'SET_GIGS'
 export const SET_GIG = 'SET_GIG'
