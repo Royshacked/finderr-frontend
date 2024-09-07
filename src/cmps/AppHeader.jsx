@@ -5,8 +5,10 @@ import Hire from '../assets/svg/homepage/hire.svg?react'
 import FreeLancer from '../assets/svg/homepage/freelancer.svg?react'
 
 import { useState } from "react"
+import { useSelector } from "react-redux"
 
 export function AppHeader() {
+	const user = useSelector(state => state.userModule.user)
 	const [isShowProMenu, setIsShowProMenu] = useState(null)
 	//const [createUser, setCreateUser] = useState(false)
 	const navigate = useNavigate()
@@ -54,9 +56,13 @@ export function AppHeader() {
 
 					<a href="/start_selling?source=top_nav" rel="nofollow">Become a Seller</a>
 					<Link to="/order">Orders</Link>
-					<a rel="nofollow" href="/login?source=top_nav">Sign in</a>
-					<a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>
+					{!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}
+					{!user && <a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>}
 
+					<div className="logged-in">
+						<figure ><figcaption class="">R</figcaption></figure>
+						<div></div>
+					</div>
 				</nav>
 			</header >
 			{/* <GigCategoriesBar /> */}

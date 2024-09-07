@@ -1,10 +1,13 @@
-import { useState } from "react"
 import { userService } from '../services/user/user.service.remote.js'
 import { signup } from "../store/actions/user.actions.js"
+
+import { useState } from "react"
+import { useNavigate } from "react-router"
 
 
 export function LoginSignup() {
     const [user, setUser] = useState(userService.getEmptyUser)
+    const navigate = useNavigate()
 
     function handleChange({ target }) {
         const { type, name: prop } = target
@@ -23,7 +26,7 @@ export function LoginSignup() {
         ev.preventDefault()
         try {
             await signup(user)
-
+            navigate('/')
         } catch (error) {
             console.log(error)
         }
