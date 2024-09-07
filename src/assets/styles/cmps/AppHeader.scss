@@ -1,6 +1,11 @@
 .app-header {
     border-block-end: 1px solid lightgray;
 
+    .back-drop {
+        position: absolute;
+        inset: 0 0 0 0;
+    }
+
     header {
         display: flex;
 
@@ -115,6 +120,8 @@
 
                 color: white;
                 background-color: #b25d1f;
+
+                cursor: pointer;
 
                 &>div {
                     position: absolute;

@@ -1,21 +1,30 @@
 import { GigFilter } from "./GigFilter.jsx"
-import { Link, useNavigate } from "react-router-dom"
 import { LoginSignup } from "./LoginSignup.jsx"
+import { UserMenu } from "./UserMenu.jsx"
+
+
 import Hire from '../assets/svg/homepage/hire.svg?react'
 import FreeLancer from '../assets/svg/homepage/freelancer.svg?react'
 
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 
 export function AppHeader() {
 	const user = useSelector(state => state.userModule.user)
+
 	const [isShowProMenu, setIsShowProMenu] = useState(null)
-	//const [createUser, setCreateUser] = useState(false)
+	const [isPopUserMenu, setIsPopUserMenu] = useState(false)
+
 	const navigate = useNavigate()
 
 
 	function onToggleProMenu() {
 		setIsShowProMenu(!isShowProMenu)
+	}
+
+	function onToggleUserMenu() {
+		setIsPopUserMenu(!isPopUserMenu)
 	}
 
 	return (
@@ -59,12 +68,14 @@ export function AppHeader() {
 					{!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}
 					{!user && <a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>}
 
-					<div className="logged-in">
-						<figure ><figcaption class="">R</figcaption></figure>
+					{user && <div className="logged-in" onClick={onToggleUserMenu}>
+						<figure ><figcaption >R</figcaption></figure>
 						<div></div>
-					</div>
+					</div>}
 				</nav>
 			</header >
+			{isPopUserMenu && <UserMenu isOpen={isPopUserMenu} />}
+			{isPopUserMenu && <div className="back-drop" onClick={onToggleUserMenu}></div>}
 			{/* <GigCategoriesBar /> */}
 		</div>
 
