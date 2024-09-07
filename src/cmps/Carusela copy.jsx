@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 
 
-import { gigService } from "../services/gig/gig.service.local"
+import { gigService } from "../services/gig/gig.service.remote.js"
 import StarFull from '../assets/svg/details/star-full.svg?react'
 import StarEmpty from '../assets/svg/details/star-empty.svg?react'
 

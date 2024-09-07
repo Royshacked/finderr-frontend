@@ -1,4 +1,4 @@
-import { orderService } from "../services/order/order.service.local.js";
+import { orderService } from "../services/order/order.service.remote.js";
 import { loadOrders } from "../store/actions/order.actions.js";
 
 import { GigOrderList } from "../cmps/GigOrderList.jsx";

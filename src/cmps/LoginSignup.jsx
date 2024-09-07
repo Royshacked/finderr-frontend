@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { userService } from '../services/user/user.service.local'
+import { userService } from '../services/user/user.service.remote.js'
 export function LoginSignup() {
     const [user, setUser] = useState(userService.getEmptyUser)
     console.log(user)

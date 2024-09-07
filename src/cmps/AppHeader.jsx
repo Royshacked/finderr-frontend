@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { LoginSignup } from "./LoginSignup.jsx"
 import Hire from '../assets/svg/homepage/hire.svg?react'
 import FreeLancer from '../assets/svg/homepage/freelancer.svg?react'
-import { GigCategoriesBar } from "./GigCategoriesBar.jsx"
+
 import { useState } from "react"
 
 export function AppHeader() {
