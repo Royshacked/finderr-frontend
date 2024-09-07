@@ -65,11 +65,13 @@ export function AppHeader() {
 
 					<a href="/start_selling?source=top_nav" rel="nofollow">Become a Seller</a>
 					<Link to="/order">Orders</Link>
-					{!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}
-					{!user && <a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>}
+					{!user && <Link to="/login">Login</Link>}
+					{!user && <Link to="/signup">Join</Link>}
+					{/* {!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}
+					{!user && <a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>} */}
 
 					{user && <div className="logged-in" onClick={onToggleUserMenu}>
-						<figure ><figcaption >R</figcaption></figure>
+						<figure ><figcaption >{user.fullname.charAt(0).toUpperCase()}</figcaption></figure>
 						<div></div>
 					</div>}
 				</nav>

@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { logout } from "../store/actions/user.actions"
 
 
 export function UserMenu({ isOpen }) {
+    const navigate = useNavigate()
+
     async function onHandleLogout() {
         try {
             await logout()
+            navigate('/')
         } catch (error) {
             console.log(error)
         }

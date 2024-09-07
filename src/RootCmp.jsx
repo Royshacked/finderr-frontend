@@ -33,7 +33,8 @@ export function RootCmp() {
 
                             <Route path="/order" element={<GigOrderIndex />} />
                             <Route path="/gig/:gigId" element={<GigDetails />} />
-                            <Route path="/login" element={<LoginSignup />} />
+                            <Route path="/login" element={<LoginSignup isLogin={true} />} />
+                            <Route path="/signup" element={<LoginSignup isLogin={false} />} />
                         </Routes>
                     </main>
                     <AppFooter />
