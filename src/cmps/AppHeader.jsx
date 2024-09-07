@@ -64,9 +64,9 @@ export function AppHeader() {
 					</button>
 
 					<a href="/start_selling?source=top_nav" rel="nofollow">Become a Seller</a>
-					<Link to="/order">Orders</Link>
+					{user && <Link to="/order">Orders</Link>}
 					{!user && <Link to="/login">Login</Link>}
-					{!user && <Link to="/signup">Join</Link>}
+					{!user && <Link to="/signup" className="link-join">Join</Link>}
 					{/* {!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}
 					{!user && <a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>} */}
 

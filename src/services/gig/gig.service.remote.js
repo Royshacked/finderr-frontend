@@ -1,6 +1,6 @@
 import { httpService } from '../http.service'
 
-const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
+const categories = ['logo-design', 'wordpress', 'voice-over', 'artistic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
 
 
 export const gigService = {

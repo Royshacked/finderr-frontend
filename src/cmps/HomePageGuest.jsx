@@ -14,7 +14,7 @@ import { PopularServices } from './PopularService.jsx'
 export function HomePageGuest() {
     return (
         <section className='main-layout'>
-            <div className="bunner-container main-layout">
+            <div className="bunner-container">
                 <div className="bunner flex">
                     {/* <div className="bunner-top"></div> */}
 
