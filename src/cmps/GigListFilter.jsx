@@ -52,7 +52,7 @@ export function GigListFilter() {
 
     function onHandleSubmit(ev) {
         ev.preventDefault()
-
+        console.log(filterByToEdit)
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit } })
         setCmpType('')
     }
@@ -186,13 +186,13 @@ function BudgetFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter 
 
     return <section className="budget sub-filter" >
         <form className="sub-inputs" onSubmit={onHandleSubmit}>
-            <label htmlFor="price">
-                <input className="price" type="number" id="price" name="price" placeholder="Enter budget" value={filterBy.price || ''} onChange={onHandleChange} />
+            <label htmlFor="budget">
+                <input className="budget" type="number" id="budget" name="budget" placeholder="Enter budget" value={filterBy.budget || ''} onChange={onHandleChange} />
             </label>
 
         </form>
         <div className="btns">
-            <button className="btn-clear" type="button" name="price" onClick={onClearFilter}>Clear all</button>
+            <button className="btn-clear" type="button" name="budget" onClick={onClearFilter}>Clear all</button>
             <button className="btn-apply" onClick={onHandleSubmit}>Apply</button>
         </div>
     </section>

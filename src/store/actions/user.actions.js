@@ -3,7 +3,7 @@ import { socketService } from '../../services/socket.service'
 import { store } from '../store'
 
 import { showErrorMsg } from '../../services/event-bus.service'
-import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
+// import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer.js'
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from '../reducers/user.reducer'
 
 export async function loadUsers() {
@@ -43,7 +43,6 @@ export async function login(credentials) {
 }
 
 export async function signup(credentials) {
-    //console.log(credentials);
     try {
         const user = await userService.signup(credentials)
 
@@ -51,8 +50,7 @@ export async function signup(credentials) {
             type: SET_USER,
             user
         })
-        //socketService.login(user._id)
-
+        socketService.login(user._id)
         return user
     } catch (err) {
         console.log('Cannot signup', err)

@@ -252,25 +252,26 @@ function _createDemoReview() {
 
 
 // {
-//     title: "I will fix wordpress, CSS, HTML, jquery, and PHP errors",
-//     price: 826,
+//     title: "I will fix bugs errors from HTML, CSS, javascript, PHP, wordpress",
+//     price: 79,
 //     owner: {
 //         _id: "oRulYh",
-//         fullname: "Surjeet Singh",
-//         imgUrl: "https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/a7238c19ed67f1f2ff0a342a7dc53d91-1719205673921/17a08e08-1595-4b23-b95a-f71681c22c8a.jpg",
-//         level: "basic",
-//         rate: 3
+//         fullname: "Saurabh Chauhan",
+//         imgUrl: "https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/f5bbb58284bda105edb16f76a7e4521d-1623660993193/3a8d9cd3-f71d-4a87-bba3-70118594f220.jpg",
+//         level: "pro",
+//         rate: 2,
+//         language:"Hindi",
 //     },
-//     daysToMake: 8,
-//     description: "Is your WordPress site acting up? Don't worry, I'm here to help! With over 13 years of experience in WordPress theme and plugin development, I specialize in diagnosing and fixing any issues that may be plaguing your website. Whether it's a minor bug or a major glitch, I have the expertise to get your site back on track.",
-//     avgResponseTime: 8,
-//     loc: "India",
+//     daysToMake: 2,
+//     description: "Facing issues with your WordPress site due to Plugins, Themes or Custom CSS/JS? Need help with Page builders, or custom page design? Or that small button is not working properly on mobile devices?",
+//     avgResponseTime: 4,
+//     loc: "Canada",
 //     imgUrls: [
-//         "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg",
+//         "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/211302392/original/263b25077bcdb60c261267b515f822137c1d3b40.jpg",
 //         "https://fiverr-res.cloudinary.com/image/upload/t_gig_card_delivery_image_1x,q_auto,f_auto/v1/attachments/delivery/asset/ec112761c1122b557e288f18c234a5ce-1724391259/Screenshot%202024-08-23%20at%2011.03.41%E2%80%AFAM.png",
 //         "https://fiverr-res.cloudinary.com/image/upload/t_gig_card_delivery_image_1x,q_auto,f_auto/v1/attachments/delivery/asset/46f47dc315ad08b8e79da601b0b94082-1723896064/Screenshot%202024-08-17%20at%205.30.55%E2%80%AFPM.png"
 //     ],
-//     tags: "wordpress",
+//     tags: "programming",
 //     likedByUsers: []
 // }
 

@@ -9,8 +9,6 @@ import Search from '../assets/svg/homepage/search.svg?react'
 
 
 export function GigFilter() {
-    const filterBy = useSelector(state => state.gigModule.filterBy)
-
     const [filterByToEdit, setFilterByToEdit] = useState(gigService.getDefaultFilter)
 
     const dispatch = useDispatch()
