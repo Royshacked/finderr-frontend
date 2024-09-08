@@ -38,7 +38,7 @@ async function getById(userId) {
 // ]
 function getEmptyUser() {
     return {
-        // _id: makeId(),
+        _id: makeId(),
         fullname: '',
         imgUrl: '',///img/img1.jpg
         username: '',
@@ -99,7 +99,8 @@ function _saveLoggedinUser(user) {
         fullname: user.fullname,
         imgUrl: user.imgUrl,
         username: user.username,
-        password: user.password
+        password: user.password,
+        type: user.type
     }
     console.log(newuser, 'pppp');
 

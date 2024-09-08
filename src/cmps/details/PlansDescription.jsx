@@ -22,8 +22,8 @@ export function PlansDescription({ planType, gig }) {
     const [userPlan, setUserPlan] = useState(null)
     const [userPrice, setGigPrice] = useState(null)
 
-    function createOrder() {
-        console.log('jjjj');
+    function createOrder(ev) {
+        ev.preventDefault()
 
 
         const order = {
@@ -32,9 +32,9 @@ export function PlansDescription({ planType, gig }) {
             seller: gig.owner,
 
             gig: {              // mini-gig
-                _id: 'oRulYh',
-                name: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
-                imgUrl: 'https://fiverr-res.cloudinary.com/t_order_cards_web,q_auto,f_auto/orders/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
+                _id: gig._id,
+                name: gig.name,
+                imgUrl: gig.imgUrl,
                 price: gig.price
             },
             createdAt: new Date(Date.now()).toDateString(),

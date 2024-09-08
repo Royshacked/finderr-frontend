@@ -5,7 +5,9 @@ import { userService } from '../user/index.js'
 
 const STORAGE_KEY = 'order'
 
-const status = ['pending', 'aprove', 'rejected', 'completed', 'all']
+// const status = ['pending', 'aprove', 'rejected', 'completed', 'all']
+
+const status = ['pending', 'approved', 'rejected', 'all']
 
 export const orderService = {
     query,
@@ -13,6 +15,7 @@ export const orderService = {
     save,
     remove,
     getDefaultOrderFilter,
+    getEmptyOrder,
     getStatus
 }
 window.cs = orderService
@@ -87,10 +90,26 @@ async function save(order) {
 
 function getDefaultOrderFilter() {
     return {
-        title: '',
         status: '',
         sortBy: '',
         sortDir: -1,
+    }
+}
+
+function getEmptyOrder() {
+    return {
+        _id: 'o1225',
+        buyer: '',
+        seller: '',
+
+        gig: {              // mini-gig
+            _id: '',
+            name: '',
+            imgUrl: '',
+            price: 0,
+        },
+        createdAt: new Date(Date.now()).toDateString(),
+        status: 'pending',
     }
 }
 
@@ -102,26 +121,26 @@ function getStatus() {
 
 //_createDemoOrder()
 
-async function _createDemoOrder() {
-    const order = {
-        _id: makeId(),
-        buyer: 'mini-user',
-        seller: 'mini-user',
+// async function _createDemoOrder() {
+//     const order = {
+//         _id: makeId(),
+//         buyer: 'mini-user',
+//         seller: 'mini-user',
 
-        gig: {              // mini-gig
-            _id: 'oRulYh',
-            name: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
-            imgUrl: 'https://fiverr-res.cloudinary.com/t_order_cards_web,q_auto,f_auto/orders/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
-            price: 826,
-        },
-        createdAt: new Date(Date.now()).toDateString(),
-        status: pickStatus(getRandomIntInclusive(1, 4)),
-    }
+//         gig: {              // mini-gig
+//             _id: 'oRulYh',
+//             name: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
+//             imgUrl: 'https://fiverr-res.cloudinary.com/t_order_cards_web,q_auto,f_auto/orders/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
+//             price: 826,
+//         },
+//         createdAt: new Date(Date.now()).toDateString(),
+//         status: 'completed',
+//     }
 
-    const savedOrder = await storageService.post(STORAGE_KEY, order)
+//     const savedOrder = await storageService.post(STORAGE_KEY, order)
 
-    return savedOrder
-}
+//     return savedOrder
+// }
 function pickStatus(num) {
     switch (num) {
         case 1:
@@ -145,21 +164,21 @@ function pickStatus(num) {
 }
 
 
-const orders = [
-    {
-        _id: 'o1225',
-        buyer: 'mini-user',
-        seller: 'mini-user',
+// const orders = [
+//     {
+//         _id: 'o1225',
+//         buyer: 'mini-user',
+//         seller: 'mini-user',
 
-        gig: {              // mini-gig
-            _id: 'oRulYh',
-            name: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
-            imgUrl: 'https://fiverr-res.cloudinary.com/t_order_cards_web,q_auto,f_auto/orders/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
-            price: 826,
-        },
-        status: 'completed',
-    },
-]
+//         gig: {              // mini-gig
+//             _id: 'oRulYh',
+//             name: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
+//             imgUrl: 'https://fiverr-res.cloudinary.com/t_order_cards_web,q_auto,f_auto/orders/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
+//             price: 826,
+//         },
+//         status: 'completed',
+//     },
+// ]
 
 
 // {

@@ -1,4 +1,4 @@
-import { orderService } from "../services/order/order.service.local.js";
+import { orderService } from "../services/order/index.js";
 import { loadOrders } from "../store/actions/order.actions.js";
 import { OrderSeller } from "./OrdersSeller.jsx";
 import { OrderBuyer } from "./OrderBuyer.jsx";
@@ -21,6 +21,8 @@ export function GigOrderIndex() {
     console.log(user);
 
     const status = orderService.getStatus()
+
+    console.log(status)
 
     const dispatch = useDispatch()
     console.log('rundar');

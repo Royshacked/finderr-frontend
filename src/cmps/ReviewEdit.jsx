@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router"
-import { gigService } from "../services/gig/gig.service.local"
+import { gigService } from "../services/gig/index.js"
+
+
 export function ReviewEdit() {
 	const [gig, setGig] = useState(null)
 	const [review, setReview] = useState(null)
@@ -116,7 +118,7 @@ export function ReviewEdit() {
 
 			.catch(err => {
 				console.log('Had issues in gig details', err)
-				navigate('/gig')
+				navigate('api/gig')
 			})
 	}
 	if (!gig) return <div>Loading...</div>

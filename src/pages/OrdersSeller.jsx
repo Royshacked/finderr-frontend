@@ -10,7 +10,7 @@ export function OrderSeller(orders, filterby, user, handleClick, status) {
         var newOrder = updateOrder(order)
         console.log(newOrder);
 
-        navigate("/order")
+        navigate("/api/order")
     }
     return <section className="gig-orders main-layout ">
         <header>

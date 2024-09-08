@@ -1,0 +1,36 @@
+.user-menu {
+    position: absolute;
+    z-index: 2;
+    top: 75px;
+    right: 5%;
+
+    width: 260px;
+    height: min-content;
+
+    border: 1px solid lightgray;
+    border-radius: 0.25rem;
+
+    background-color: white;
+
+    nav {
+        display: flex;
+        flex-direction: column;
+
+        padding: 1rem;
+
+        & a {
+            padding-block: 0.5rem;
+            text-decoration: none;
+
+            color: #74767e;
+
+            &:hover {
+                color: #1dbf73;
+            }
+        }
+
+        &>a:first-child {
+            border-block-end: 1px solid lightgray;
+        }
+    }
+}

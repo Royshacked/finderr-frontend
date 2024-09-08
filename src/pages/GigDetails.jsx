@@ -6,7 +6,6 @@ import { ReviewDetailes } from "../cmps/details/Reviews.jsx"
 import { useNavigate } from "react-router-dom"
 
 
-import { gigService } from "../services/gig/gig.service.local"
 import StarFull from '../assets/svg/details/star-full.svg?react'
 import StarEmpty from '../assets/svg/details/star-empty.svg?react'
 import Heart from '../assets/svg/details/heart.svg?react'

@@ -20,7 +20,7 @@ export function GigList({ gigs }) {
             {gigs.map((gig) =>
 
                 <li key={gig._id}>
-                    <Link to={`/gig/${gig._id}`}>Edit</Link>
+                    {/* <Link to={`/gig/${gig._id}`}>Edit</Link> */}
                     <GigPreview gig={gig} />
                 </li>
             )}

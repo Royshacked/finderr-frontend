@@ -12,9 +12,12 @@ export const httpService = {
         return ajax(endpoint, 'GET', data)
     },
     post(endpoint, data) {
+        console.log(endpoint, data);
         return ajax(endpoint, 'POST', data)
     },
     put(endpoint, data) {
+
+
         return ajax(endpoint, 'PUT', data)
     },
     delete(endpoint, data) {
@@ -25,7 +28,7 @@ export const httpService = {
 async function ajax(endpoint, method = 'GET', data = null) {
     const url = `${BASE_URL}${endpoint}`
     const params = (method === 'GET') ? data : null
-    
+
     const options = { url, method, data, params }
 
     try {
@@ -34,10 +37,10 @@ async function ajax(endpoint, method = 'GET', data = null) {
     } catch (err) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: `, data)
         console.dir(err)
-        if (err.response && err.response.status === 401) {
-            sessionStorage.clear()
-            window.location.assign('/')
-        }
+        // if (err.response && err.response.status === 401) {
+        //     sessionStorage.clear()
+        //     window.location.assign('/')
+        // }
         throw err
     }
 }

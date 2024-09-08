@@ -1,10 +1,14 @@
-import { gigService } from '../../services/gig/gig.service.local.js'
+import { gigService } from '../../services/gig/index.js'
 import { store } from '../store'
 import { ADD_GIG, REMOVE_GIG, SET_GIGS, SET_GIG, UPDATE_GIG, ADD_GIG_MSG } from '../reducers/gig.reducer'
 
 export async function loadGigs(filterBy) {
     try {
+        console.log(filterBy);
+
         const gigs = await gigService.query(filterBy)
+        console.log(gigs);
+
         store.dispatch(getCmdSetGigs(gigs))
     } catch (err) {
         console.log('Cannot load gigs', err)

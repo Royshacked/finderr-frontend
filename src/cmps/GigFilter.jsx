@@ -1,4 +1,4 @@
-import { gigService } from "../services/gig/gig.service.local"
+import { gigService } from "../services/gig/index.js"
 
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -9,8 +9,6 @@ import Search from '../assets/svg/homepage/search.svg?react'
 
 
 export function GigFilter() {
-    const filterBy = useSelector(state => state.gigModule.filterBy)
-
     const [filterByToEdit, setFilterByToEdit] = useState(gigService.getDefaultFilter)
 
     const dispatch = useDispatch()
@@ -20,7 +18,7 @@ export function GigFilter() {
         ev.preventDefault()
 
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit } })
-        navigate('/gig')
+        navigate('/api/gig')
     }
 
     function onChange({ target }) {

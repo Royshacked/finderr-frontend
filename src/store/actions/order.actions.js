@@ -1,10 +1,11 @@
-import { orderService } from '../../services/order/order.service.local.js'
+import { orderService } from '../../services/order'
 import { store } from '../store.js'
 import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS, SET_ORDER, UPDATE_ORDER, ADD_ORDER_MSG } from '../reducers/order.reducer.js'
 
 export async function loadOrders(filterBy) {
     try {
         const orders = await orderService.query(filterBy)
+
         store.dispatch(getCmdSetOrders(orders))
     } catch (err) {
         console.log('Cannot load orders', err)
