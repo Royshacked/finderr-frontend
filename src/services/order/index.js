@@ -6,7 +6,7 @@ import { getRandomIntInclusive, makeId, makeLorem } from '../util.service'
 import { orderService as local } from './order.service.local'
 import { orderService as remote } from './order.service.remote'
 
-const status = ['pending', 'approved', 'rejected']
+const status = ['pending', 'approved', 'rejected', 'all']
 
 function getStatus() {
     return status
@@ -14,7 +14,6 @@ function getStatus() {
 
 function getDefaultOrderFilter() {
     return {
-        title: '',
         status: '',
         sortBy: '',
         sortDir: -1,

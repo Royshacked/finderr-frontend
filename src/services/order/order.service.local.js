@@ -7,7 +7,7 @@ const STORAGE_KEY = 'order'
 
 // const status = ['active', 'missing details', 'delivered', 'completed', 'cancelled', 'all']
 
-const status = ['pending', 'approved', 'rejected']
+const status = ['pending', 'approved', 'rejected', 'all']
 
 export const orderService = {
     query,
@@ -80,7 +80,6 @@ async function save(order) {
 
 function getDefaultOrderFilter() {
     return {
-        title: '',
         status: '',
         sortBy: '',
         sortDir: -1,

@@ -16,6 +16,8 @@ export function GigOrderIndex() {
 
     const status = orderService.getStatus()
 
+    console.log(status)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -35,7 +37,6 @@ export function GigOrderIndex() {
         dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status } })
     }
 
-    console.log(orders)
     return <section className="gig-orders main-layout ">
         <header>
             <h2>Manage Orders</h2>
