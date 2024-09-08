@@ -1,4 +1,4 @@
-import { gigService } from "../services/gig/gig.service.remote"
+import { gigService } from "../services/gig/index.js"
 
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"

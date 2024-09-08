@@ -1,4 +1,4 @@
-import { userService } from '../services/user/user.service.remote.js'
+import { userService } from '../services/user/index.js'
 import { login, signup } from "../store/actions/user.actions.js"
 
 import { useState } from "react"

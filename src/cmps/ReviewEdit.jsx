@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router"
-import { gigService } from "../services/gig/gig.service.remote.js"
+import { gigService } from "../services/gig/index.js"
+
+
 export function ReviewEdit() {
 	const [gig, setGig] = useState(null)
 	const [review, setReview] = useState(null)

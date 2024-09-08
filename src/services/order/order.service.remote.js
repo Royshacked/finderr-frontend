@@ -1,6 +1,8 @@
 import { httpService } from '../http.service'
 
-const status = ['active', 'missing details', 'delivered', 'completed', 'cancelled', 'all']
+// const status = ['active', 'missing details', 'delivered', 'completed', 'cancelled', 'all']
+
+const status = ['pending', 'approved', 'rejected']
 
 export const orderService = {
     query,
@@ -9,10 +11,11 @@ export const orderService = {
     remove,
     addOrderMsg,
     getDefaultOrderFilter,
+    getEmptyOrder,
     getStatus,
 }
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = {}) {
     return httpService.get(`order`, filterBy)
 }
 
@@ -46,6 +49,24 @@ function getDefaultOrderFilter() {
         sortDir: -1,
     }
 }
+
+function getEmptyOrder() {
+    return {
+        _id: 'o1225',
+        buyer: '',
+        seller: '',
+
+        gig: {              // mini-gig
+            _id: '',
+            name: '',
+            imgUrl: '',
+            price: 0,
+        },
+        createdAt: new Date(Date.now()).toDateString(),
+        status: 'pending',
+    }
+}
+
 
 function getStatus() {
     return status

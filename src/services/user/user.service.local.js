@@ -13,7 +13,6 @@ export const userService = {
     update,
     getLoggedinUser,
     saveLoggedinUser,
-    getEmptyUser
 }
 
 async function getUsers() {
@@ -27,28 +26,8 @@ async function getUsers() {
 async function getById(userId) {
     return await storageService.get('user', userId)
 }
-// const users = [
-// 	{
-// 		_id: 'u101',
-// 		fullname: 'User 1',
-// 		imgUrl: '/img/img1.jpg',
-// 		username: 'user1',
-// 		password: 'secret',
-// 		level: 'basic/premium',
-// 	},
-// ]
-function getEmptyUser() {
-    return {
-        _id: makeId(),
-        fullname: '',
-        imgUrl: '',///img/img1.jpg
-        username: '',
-        password: '',
-        level: 'basic',
-        isAdmin: false,
-        isSeller: false
-    }
-}
+
+
 
 function remove(userId) {
     return storageService.remove('user', userId)

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
-import { gigService } from "../services/gig/gig.service.remote.js"
+import { gigService } from "../services/gig/index.js"
 
 export function GigListFilter() {
     const filterBy = useSelector(state => state.gigModule.filterBy)

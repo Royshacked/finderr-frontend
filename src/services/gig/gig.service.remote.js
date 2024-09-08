@@ -10,6 +10,7 @@ export const gigService = {
     remove,
     addGigMsg,
     getDefaultFilter,
+    getEmptyGig,
     getCategories
 }
 
@@ -56,6 +57,29 @@ function getDefaultFilter() {
         sortDir: -1,
     }
 }
+
+function getEmptyGig() {
+    return {
+        title: '',
+        price: 0,
+        owner: {
+            _id: '',
+            fullname: '',
+            imgUrl: '',
+            level: 'basic',
+            rate: 3,
+            language: '',
+        },
+        daysToMake: 1,
+        description: '',
+        avgResponseTime: 1,
+        loc: '',
+        imgUrls: [],
+        tags: '',
+        likedByUsers: [],
+    }
+}
+
 
 
 function getCategories() {

@@ -1,4 +1,4 @@
-import { orderService } from "../services/order/order.service.remote.js";
+import { orderService } from "../services/order/index.js";
 import { loadOrders } from "../store/actions/order.actions.js";
 
 import { GigOrderList } from "../cmps/GigOrderList.jsx";
@@ -35,6 +35,7 @@ export function GigOrderIndex() {
         dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status } })
     }
 
+    console.log(orders)
     return <section className="gig-orders main-layout ">
         <header>
             <h2>Manage Orders</h2>

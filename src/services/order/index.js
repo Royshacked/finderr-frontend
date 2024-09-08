@@ -6,33 +6,46 @@ import { getRandomIntInclusive, makeId, makeLorem } from '../util.service'
 import { orderService as local } from './order.service.local'
 import { orderService as remote } from './order.service.remote'
 
-function getEmptyOrder() {
-    return {
-        title: makeLorem(1),
-        msgs: [],
-    }
+const status = ['pending', 'approved', 'rejected']
+
+function getStatus() {
+    return status
 }
 
-function getDefaultFilter() {
+function getDefaultOrderFilter() {
     return {
         title: '',
-        category: '',
-        owner: {
-            level: 'basic',
-            rate: 0,
-            labguage: '',
-            loc: '',
-        },
-        budget: Infinity,
-        daysToMake: Infinity,
+        status: '',
         sortBy: '',
         sortDir: -1,
     }
 }
 
+function getEmptyOrder() {
+    return {
+        _id: 'o1225',
+        buyer: '',
+        seller: '',
+
+        gig: {              // mini-gig
+            _id: '',
+            name: '',
+            imgUrl: '',
+            price: 0,
+        },
+        createdAt: new Date(Date.now()).toDateString(),
+        status: 'pending',
+    }
+}
+
 
 const service = VITE_LOCAL === 'true' ? local : remote
-export const orderService = { getEmptyOrder, getDefaultFilter, ...service }
+export const orderService = { getEmptyOrder, getDefaultOrderFilter, getStatus, ...service }
+
+//export const status = ['active', 'missing details', 'delivered', 'completed', 'cancelled', 'all']
+
+
+
 
 // Easy access to this service from the dev tools console
 // when using script - dev / dev:local

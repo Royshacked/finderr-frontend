@@ -1,4 +1,4 @@
-import { gigService } from "../services/gig/gig.service.remote.js"
+import { gigService } from "../services/gig/index.js"
 
 import { useState } from "react"
 import { useNavigate } from "react-router"
