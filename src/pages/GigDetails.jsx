@@ -26,13 +26,12 @@ export function GigDetails() {
   }, [])
 
 
-  function loadGig() {
-    gigService.getById(gigId)
-      .then(gig => setGig(gig))
-      .catch(err => {
-        console.log('Had issues in gig details', err)
-        //navigate('/gig')
-      })
+  function setGig() {
+    try {
+      loadGig(gigId)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   function setPlan(plan) {

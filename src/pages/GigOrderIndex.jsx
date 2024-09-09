@@ -1,5 +1,4 @@
 import { orderService } from "../services/order/index.js";
-import { orderService } from "../services/order/index.js";
 import { loadOrders } from "../store/actions/order.actions.js";
 import { OrderSeller } from "./OrdersSeller.jsx";
 import { OrderBuyer } from "./OrderBuyer.jsx";
@@ -9,7 +8,6 @@ import { GigOrderList } from "../cmps/GigOrderList.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { userService } from "../services/user/user.service.local.js";
 
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 

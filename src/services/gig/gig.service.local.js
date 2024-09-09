@@ -5,8 +5,6 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
 
-const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
-
 export const gigService = {
     query,
     getById,
@@ -15,9 +13,6 @@ export const gigService = {
     remove,
     addGigMsg,
     getDefaultFilter,
-    //getEmptyGig,
-    getEmptyGig,
-    getCategories,
 }
 window.cs = gigService
 
@@ -157,9 +152,6 @@ function getDefaultFilter() {
     }
 }
 
-function getCategories() {
-    return categories
-}
 //create demo data
 
 //_createDemoGigs(5)

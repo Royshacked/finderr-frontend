@@ -4,7 +4,7 @@ import { GigListFilter } from "../cmps/GigListFilter.jsx";
 import { GigCategoriesBar } from "../cmps/GigCategoriesBar.jsx";
 import { loadGigs } from "../store/actions/gig.actions.js";
 import { useEffect } from "react";
-import { Link, Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { GigListSort } from "../cmps/GigListSort.jsx";
 
 export function GigIndex() {

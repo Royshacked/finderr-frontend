@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { CustomCarousel } from "./CustomCarousel.jsx";
-import { Link } from "react-router-dom";
 
 export function GigPreview({ gig }) {
 
@@ -10,7 +9,8 @@ export function GigPreview({ gig }) {
     // }
 
     return <article className="gig-preview">
-        <Link to={`/api/gig/${gig._id}`}><Link to={`/gig/${gig._id}`}><CustomCarousel imgs={gig.imgUrls} /></Link></Link>
+        <Link to={`/api/gig/${gig._id}`}></Link>
+        <Link to={`/gig/${gig._id}`}><CustomCarousel imgs={gig.imgUrls} /></Link>
         <div className="gig-owner">
             <div className="gig-owner-name">
                 <img src={gig.owner.imgUrl} alt="" />

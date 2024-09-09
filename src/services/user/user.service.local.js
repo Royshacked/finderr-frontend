@@ -12,8 +12,6 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
-    saveLoggedinUser
-
 }
 
 async function getUsers() {
@@ -50,7 +48,7 @@ async function login(userCred) {
     const users = await storageService.query('user')
     const user = users.find(user => user.username === userCred.username)
 
-    if (user) return saveLoggedinUser(user)
+    if (user) return _saveLoggedinUser(user)
 }
 
 async function signup(userCred) {

@@ -11,11 +11,14 @@ import { Tooltip } from 'react-tooltip'
 import ContinueArrow from '../src/assets/svg/details/continue-arrow.svg?react'
 //import {ff} from '../src/assets/svg/details/tooltip-price.svg'
 import { addOrder } from '../../store/actions/order.actions'
+import { useSelector } from 'react-redux'
+
+
+
 export function PlansDescription({ planType, gig }) {
     console.log(gig, planType);
-
-
     console.log(planType);
+    const user = useSelector(state => state.userModule.user)
     var priceKombo = setUserChoise(planType, gig.price)
 
 
@@ -25,16 +28,19 @@ export function PlansDescription({ planType, gig }) {
     function createOrder(ev) {
         ev.preventDefault()
 
-
         const order = {
-            // _id: makeId(),
-            buyer: gig.owner,
-            seller: gig.owner,
-
+            buyer: {
+                id: user._id,
+                fullname: user.fullname
+            },
+            seller: {
+                id: gig.owner._id,
+                fullname: gig.owner.fullname
+            },
             gig: {              // mini-gig
                 _id: gig._id,
-                name: gig.name,
-                imgUrl: gig.imgUrl,
+                name: gig.title,
+                imgUrl: gig.imgUrls[0],
                 price: gig.price
             },
             createdAt: new Date(Date.now()).toDateString(),
