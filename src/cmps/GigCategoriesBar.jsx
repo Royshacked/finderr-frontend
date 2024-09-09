@@ -15,7 +15,7 @@ export function GigCategoriesBar() {
 
     function onHandleCategory(category) {
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterBy, category } })
-        navigate('/api/gig')
+        navigate('/gig')
     }
 
     return <section className="categories-bar main-layout full">
