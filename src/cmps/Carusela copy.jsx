@@ -25,7 +25,7 @@ export function SimpleSlider() {
             .then(gig => setGig(gig))
             .catch(err => {
                 console.log('Had issues in gig details', err)
-                navigate('/gig')
+                navigate('/api/gig')
             })
     }
 

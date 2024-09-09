@@ -18,7 +18,7 @@ export function GigFilter() {
         ev.preventDefault()
 
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit } })
-        navigate('/gig')
+        navigate('/api/gig')
     }
 
     function onChange({ target }) {

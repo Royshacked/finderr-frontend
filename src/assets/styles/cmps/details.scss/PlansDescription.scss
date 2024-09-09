@@ -16,7 +16,7 @@
    }
 .detailes-plan{
     & li{
-gap:8px;
+gap:12px;
 font-size: 14px;
     }
 }
@@ -33,11 +33,19 @@ font-size: 14px;
 
 .additional-info{
     gap:8px;
+    margin-bottom: 8px;
     & > *{
         gap:5px
     }
 }
+.vsvg-container{
+    display: flex;
+    align-items: center;
+}
 .footer-plan{
+    padding-top: 0;
+    padding-bottom: 20px;
+   // padding-inline: 24px;
     flex-direction: column;
 }
 .time-span-container{
@@ -49,6 +57,7 @@ font-size: 14px;
     justify-content: space-between;
 }
 .continue-plan-b{
+    margin-top: 25px;
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-box-sizing: border-box;
@@ -72,6 +81,7 @@ font-size: 14px;
 
 }
 .compare-button{
+    padding-top: 12px;
         font-size: 14px;
         line-height: 21px;
         display: flex;
@@ -81,4 +91,7 @@ font-size: 14px;
 }
 .side-bar-plans{
    border: 1px solid #dadbdd
+}
+.a16{
+    height: 24px;
 }

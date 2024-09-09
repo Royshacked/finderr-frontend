@@ -19,8 +19,8 @@
         display: flex;
         align-items: center;
         gap: 3rem;
-
-        & span:last-child {
+        // ast-child
+        & span.button {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -32,5 +32,12 @@
             background-color: #1dbf73;
             color: white;
         }
+        & span.button-rejected{
+            background-color: red;
+        }
     }
+}
+
+.button-Cancelled{
+    background-color:red
 }

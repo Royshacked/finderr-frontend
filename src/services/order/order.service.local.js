@@ -5,7 +5,7 @@ import { userService } from '../user/index.js'
 
 const STORAGE_KEY = 'order'
 
-// const status = ['active', 'missing details', 'delivered', 'completed', 'cancelled', 'all']
+// const status = ['pending', 'aprove', 'rejected', 'completed', 'all']
 
 const status = ['pending', 'approved', 'rejected', 'all']
 
@@ -41,22 +41,32 @@ async function remove(orderId) {
 }
 
 async function save(order) {
+    console.log(order);
+
     var savedOrder
     if (order._id) {
+
+
         const orderToSave = {
             _id: order._id,
             price: order.price,
             daysToMake: order.daysToMake,
+            status: order.status
         }
         savedOrder = await storageService.put(STORAGE_KEY, orderToSave)
     } else {
-        const orderToSave = {
-            title: order.title,
+        console.log('jj');
+        const orderToSave =
+        {
+            buyer: order.buyer,
+            createdAt: order.createdAt,
+            gig: order.gig,
             price: order.price,
-            daysToMake: order.daysToMake,
-            // Later, owner is set by the backend
-            owner: userService.getLoggedinUser(),
-            msg: []
+            seller: order.seller,
+            status: order.status,
+
+
+
         }
         savedOrder = await storageService.post(STORAGE_KEY, orderToSave)
     }
@@ -109,11 +119,11 @@ function getStatus() {
 
 // create demo data
 
-// _createDemoOrder()
+//_createDemoOrder()
 
 // async function _createDemoOrder() {
 //     const order = {
-//         _id: 'o1225',
+//         _id: makeId(),
 //         buyer: 'mini-user',
 //         seller: 'mini-user',
 
@@ -131,6 +141,27 @@ function getStatus() {
 
 //     return savedOrder
 // }
+function pickStatus(num) {
+    switch (num) {
+        case 1:
+            return 'completed'
+            break;
+        case 2:
+            return 'aprove'
+            break;
+        case 3:
+            return 'rejected'
+            break;
+        case 4:
+            return 'pending'
+            break;
+
+
+
+        default:
+            break;
+    }
+}
 
 
 // const orders = [

@@ -20,7 +20,7 @@ export function ReviewDetailes(gig) {
 
 
 
-        navigate(`/gig/${gig._id}`)
+        //navigate(`/gig/${gig._id}`)
 
     }
 

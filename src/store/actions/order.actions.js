@@ -3,6 +3,8 @@ import { store } from '../store.js'
 import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS, SET_ORDER, UPDATE_ORDER, ADD_ORDER_MSG } from '../reducers/order.reducer.js'
 
 export async function loadOrders(filterBy) {
+    console.log(filterBy);
+
     try {
         const orders = await orderService.query(filterBy)
 
@@ -45,10 +47,14 @@ export async function addOrder(order) {
     }
 }
 
-export async function updateOrder(order) {
+export async function updateOrder(order, filterBy) {
+    ;
+
     try {
         const savedOrder = await orderService.save(order)
         store.dispatch(getCmdUpdateOrder(savedOrder))
+        console.log(order)
+        loadOrders(filterBy)
         return savedOrder
     } catch (err) {
         console.log('Cannot save order', err)

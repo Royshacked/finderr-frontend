@@ -25,17 +25,23 @@ export function orderReducer(state = initialState, action) {
         case SET_ORDER:
             newState = { ...state, order: action.order }
             break
-        case REMOVE_ORDER:
-            const lastRemovedOrder = state.orders.find(order => order._id === action.orderId)
-            orders = state.orders.filter(order => order._id !== action.orderId)
-            newState = { ...state, orders, lastRemovedOrder }
-            break
+        // case REMOVE_ORDER:
+        //     const lastRemovedOrder = state.orders.find(order => order._id === action.orderId)
+        //     orders = state.orders.filter(order => order._id !== action.orderId)
+        //     newState = { ...state, orders, lastRemovedOrder }
+        //     break
         case ADD_ORDER:
             newState = { ...state, orders: [...state.orders, action.order] }
             break
         case UPDATE_ORDER:
-            orders = state.orders.map(order => (order._id === action.order._id) ? action.order : order)
-            newState = { ...state, orders }
+            const newOrders = state.orders.map(order => order._id === action.order._id ? action.order : order)
+            // const filterOrders = state.orders.filter(order => order._id !== action.order._id)
+            //newState = { ...state, orders, lastRemovedOrder }
+            newState = { ...state, orders: [...newOrders] }
+
+
+            //orders = state.orders.filter(order => (order._id === action.order._id) )//? action.order : order)
+            //newState = { ...state, orders }
             break
         case ADD_ORDER_MSG:
             newState = { ...state, order: { ...state.order, msgs: [...state.order.msgs || [], action.msg] } }

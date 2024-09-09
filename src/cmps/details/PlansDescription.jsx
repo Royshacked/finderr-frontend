@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react'
+
 import ToolTipp from '../src/assets/svg/details/tooltip-price.svg?react'
 //import Share from '../assets/svg/details/share.svg?react'
 import QMark from '../src/assets/svg/details/question-mark.svg?react'
@@ -9,24 +10,60 @@ import V from '../src/assets/svg/details/v.svg?react'
 import { Tooltip } from 'react-tooltip'
 import ContinueArrow from '../src/assets/svg/details/continue-arrow.svg?react'
 //import {ff} from '../src/assets/svg/details/tooltip-price.svg'
-
-export function PlansDescription(planType, gig) {
+import { addOrder } from '../../store/actions/order.actions'
+export function PlansDescription({ planType, gig }) {
+    console.log(gig, planType);
 
 
     console.log(planType);
-    var priceKombo = setUserChoise(planType.planType, planType.gig.price)
+    var priceKombo = setUserChoise(planType, gig.price)
 
 
     const [userPlan, setUserPlan] = useState(null)
     const [userPrice, setGigPrice] = useState(null)
-    const ExampleComponent = () => {
-        return (
-            <div>
-                <p>First Line</p>
-                <p>SecondLine</p>
-            </div>
-        )
+
+    function createOrder(ev) {
+        ev.preventDefault()
+
+
+        const order = {
+            // _id: makeId(),
+            buyer: gig.owner,
+            seller: gig.owner,
+
+            gig: {              // mini-gig
+                _id: gig._id,
+                name: gig.name,
+                imgUrl: gig.imgUrl,
+                price: gig.price
+            },
+            createdAt: new Date(Date.now()).toDateString(),
+            status: 'pending',
+            price: priceKombo.price
+        }
+        console.log(order);
+
+        // const savedOrder = await storageService.post(STORAGE_KEY, order)
+        addOrder(order)
+        // return savedOrder
     }
+    // const order = {
+    //     _id: makeId(),
+    //     buyer: 'mini-user',
+    //     seller: 'mini-user',
+
+    //     gig: {              // mini-gig
+    //         _id: 'oRulYh',
+    //         name: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
+    //         imgUrl: 'https://fiverr-res.cloudinary.com/t_order_cards_web,q_auto,f_auto/orders/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
+    //         price: 826,
+    //     },
+    //     createdAt: new Date(Date.now()).toDateString(),
+    //     status: pickStatus(getRandomIntInclusive(1, 4)),
+    // }
+
+
+
 
 
 
@@ -44,6 +81,7 @@ export function PlansDescription(planType, gig) {
         // console.log(userPrices.revisions);
 
     }, [userPlan])
+
     function setUserChoise(userPlan, price) {
         switch (userPlan) {
             case 'entry':
@@ -82,7 +120,7 @@ export function PlansDescription(planType, gig) {
                     <div className="price-with-tooltip">
                         <div className="plans-price flex">
 
-                            <b>{planType.planType}</b>
+                            <b className='a11'>{planType}</b>
                             <div className="tooltip-price-container">
                                 {`₪${priceKombo.price}  `}
                                 <a data-tooltip-id="my-tooltip" className='tooltiptry-co' data-tooltip-content="To keep things simple, <br /> Fiverr may round up prices that contain decimals. The number you see here is the price used at checkout">
@@ -94,56 +132,53 @@ export function PlansDescription(planType, gig) {
                         </div>
 
                         <h3 className='flex save-subscribe'>
-                            Save up to 20% with
-                            <span className="XBRgVA8">Subscribe to Save</span>
+
+                            <span className="XBRgVA8">  Save up to 20% with <span>Subscribe to Save</span> </span>
                             <div className='mark-q-container'>
                                 <QMark />
                             </div>
                         </h3>
-                        <span>
+                        <div className='a12'>
                             <b>Starter Pack -Quality guaranteed</b>
-                            1 HQ logo concept + High Res JPG &amp; PNG + 5 Revisions
-                        </span>
+                            1 HQ logo concept  &amp; PNG + 5 Revisions
+                        </div>
                         <div className='additional-info flex'>
-                            <span className='flex'>
+                            <span className='flex a16'>
                                 <div className='time-span-container'><Time /> </div>
-                                <b>{priceKombo.days}-day delivery</b>
+                                <b className='a14'>{priceKombo.days}-day delivery</b>
                             </span>
-                            <span className='flex'>
+                            <span className='flex a16'>
                                 <div className='time-span-container'><Revisions /> </div>
-                                <b>{priceKombo.revisions} revisions</b>
+                                <b className='a14'>{priceKombo.revisions} revisions</b>
                             </span>
                         </div>
                         <ul className='detailes-plan'>
-                            <li className='flex'>
+                            <li className='flex a16'>
                                 <span className="vsvg-container"><V /></span>
                                 <span>abra abra cadabarar</span>
                             </li>
-                            <li className='flex'>
+                            <li className='flex a16'>
                                 <span className="vsvg-container"><V /></span>
                                 <span>abra abra cadabarar</span>
                             </li>
-                            <li className='flex'>
+                            <li className='flex a16'>
                                 <span className="vsvg-container"><V /></span>
                                 <span>abra abra cadabarar</span>
                             </li>
-                            <li className='flex'>
+                            <li className='flex a16'>
                                 <span className="vsvg-container"><V /></span>
                                 <span>abra abra cadabarar</span>
                             </li>
-                            <li className='flex'>
+                            <li className='flex a16'>
                                 <span className="vsvg-container"><V /></span>
                                 <span>abra abra cadabarar</span>
                             </li>
-                            <li className='flex'>
-                                <span className="vsvg-container"><V /></span>
-                                <span>abra abra cadabarar</span>
-                            </li>
+
                         </ul>
                     </div>
                 </header>
                 <footer className='flex footer-plan'>
-                    <button className='continue-plan-b'>
+                    <button className='continue-plan-b' onClick={(ev) => createOrder(ev)}>
                         continue
                         <span> <ContinueArrow /></span>
                     </button>

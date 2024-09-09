@@ -118,7 +118,7 @@ export function ReviewEdit() {
 
 			.catch(err => {
 				console.log('Had issues in gig details', err)
-				navigate('/gig')
+				navigate('api/gig')
 			})
 	}
 	if (!gig) return <div>Loading...</div>

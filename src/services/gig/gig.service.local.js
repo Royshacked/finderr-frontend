@@ -15,6 +15,7 @@ export const gigService = {
     remove,
     addGigMsg,
     getDefaultFilter,
+    //getEmptyGig,
     getEmptyGig,
     getCategories,
 }
@@ -25,23 +26,29 @@ async function query(filterBy = {}) {
     var gigs = await storageService.query(STORAGE_KEY)
     const regEx = RegExp(filterBy.title, 'i')
 
+
     if (filterBy.title) {
+        console.log(gigs);
         gigs = gigs.filter(gig => regEx.test(gig.title))
     }
 
     if (filterBy.category) {
+        console.log(gigs);
         gigs = gigs.filter(gig => gig.tags === filterBy.category)
     }
 
     if (filterBy.price) {
+        console.log(gigs);
         gigs = gigs.filter(gig => gig.price >= filterBy.price)
     }
 
     if (filterBy.daysToMake) {
+        console.log(gigs);
         gigs = gigs.filter(gig => gig.daysToMake <= filterBy.daysToMake)
     }
 
     if (filterBy.owner.rate.length) {
+        console.log(gigs);
         gigs = gigs.filter(gig => filterBy.owner.rate.includes(gig.owner.rate))
     }
 
@@ -150,10 +157,18 @@ function getDefaultFilter() {
     }
 }
 
-function getEmptyGig() {
-    return {
-        title: '',
-        price: 0,
+function getCategories() {
+    return categories
+}
+//create demo data
+
+//_createDemoGigs(5)
+
+async function _createDemoGig() {
+    const gig = {
+        _id: makeId(),
+        title: makeLorem(5),
+        price: getRandomIntInclusive(10, 1000),
         owner: {
             _id: '',
             fullname: '',
@@ -211,4 +226,9 @@ function _createDemoReview() {
 
 }
 
+async function _createDemoGigs(num) {
+    for (var i = 0; i < num; i++) {
+        await _createDemoGig()
+    }
+}
 

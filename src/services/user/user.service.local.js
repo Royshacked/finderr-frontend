@@ -1,5 +1,5 @@
-import { storageService } from '../async-storage.service'
-import { makeId, makeLorem } from '../util.service'
+import { storageService } from '../async-storage.service.js'
+import { makeId, makeLorem } from '../util.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -12,7 +12,8 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
-    saveLoggedinUser,
+    saveLoggedinUser
+
 }
 
 async function getUsers() {
@@ -53,12 +54,14 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
+    console.log(userCred);
+    userCred._id = makeId()
     //  if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     // userCred.score = 10000
 
+    await storageService.post('user', userCred)
 
-    const user = await storageService.post('user', userCred)
-    return saveLoggedinUser(user)
+    return _saveLoggedinUser(userCred)
 }
 
 async function logout() {
@@ -69,17 +72,23 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function saveLoggedinUser(user) {
-    user = {
+function _saveLoggedinUser(user) {
+    console.log(user, 'nmbm');
+
+    const newuser = {
+        // 		username: 'user1',
+        // 		password: 'secret',
         _id: user._id,
         fullname: user.fullname,
         imgUrl: user.imgUrl,
-        level: user.level,
-        isAdmin: user.isAdmin,
-        isSeller: user.isSeller
+        username: user.username,
+        password: user.password,
+        type: user.type
     }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
+    console.log(newuser, 'pppp');
+
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(newuser))
+    return newuser
 }
 
 // To quickly create an admin user, uncomment the next line

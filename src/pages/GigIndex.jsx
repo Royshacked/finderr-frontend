@@ -4,11 +4,12 @@ import { GigListFilter } from "../cmps/GigListFilter.jsx";
 import { GigCategoriesBar } from "../cmps/GigCategoriesBar.jsx";
 import { loadGigs } from "../store/actions/gig.actions.js";
 import { useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, Link, useSearchParams } from "react-router-dom";
 import { GigListSort } from "../cmps/GigListSort.jsx";
 
 export function GigIndex() {
     const gigs = useSelector(state => state.gigModule.gigs)
+
     const filterBy = useSelector(state => state.gigModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -24,6 +25,9 @@ export function GigIndex() {
             console.log(error)
         }
     }
+
+    console.log(gigs);
+
 
     return (
         <section className="gig-index main-layout">
