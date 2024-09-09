@@ -4,8 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css' // optional CSS
 export function CustomCarousel({ imgs }) {
     // Custom left arrow button
     function renderArrowPrev(clickHandler, hasPrev) {
-        console.log('custom carousel')
-        hasPrev && (
+        return hasPrev && (
             <button
                 type="button"
                 className="custom-prev-button"
@@ -13,16 +12,14 @@ export function CustomCarousel({ imgs }) {
                     e.stopPropagation() // Prevent the click from propagating
                     clickHandler()
                 }}
-                style={{ zIndex: 100, width: '200px', height: '200px', backgroundColor: 'green' }}
             >
-                x  {/* Left arrow symbol or use any icon */}
-
+                &#9664;
             </button>
         )
     }
     // Custom right arrow button
     function renderArrowNext(clickHandler, hasNext) {
-        hasNext && (
+        return hasNext && (
             <button
                 type="button"
                 className="custom-next-button"
@@ -30,9 +27,8 @@ export function CustomCarousel({ imgs }) {
                     e.stopPropagation() // Prevent the click from propagating
                     clickHandler()
                 }}
-                style={{ zIndex: 100, width: '200px', height: '200px', backgroundColor: 'green' }}
             >
-                x {/* Right arrow symbol or use any icon */}
+                &#9654;
             </button>
         )
     }
@@ -48,7 +44,7 @@ export function CustomCarousel({ imgs }) {
         // Add other Carousel props as needed
         >
             {imgs.map(img =>
-                <div key={img} className='carousel-img'>
+                <div key={img} className='carousel-img' style={{ maxWidth: '700px' }}>
                     <img src={img} alt="Slide 1" />
                 </div>
             )}

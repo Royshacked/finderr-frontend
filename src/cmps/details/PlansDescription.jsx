@@ -126,9 +126,9 @@ export function PlansDescription({ planType, gig }) {
                     <div className="price-with-tooltip">
                         <div className="plans-price flex">
 
-                            <b className='a11'>{planType}</b>
+                            {/* <b className='a11'>{planType}</b> */}
                             <div className="tooltip-price-container">
-                                {`₪${priceKombo.price}  `}
+                                {`${priceKombo.price}$  `}
                                 <a data-tooltip-id="my-tooltip" className='tooltiptry-co' data-tooltip-content="To keep things simple, <br /> Fiverr may round up prices that contain decimals. The number you see here is the price used at checkout">
                                     <ToolTipp />
                                     <Tooltip id="my-tooltip" className='tooltiptry' multiline={true} />
@@ -139,13 +139,13 @@ export function PlansDescription({ planType, gig }) {
 
                         <h3 className='flex save-subscribe'>
 
-                            <span className="XBRgVA8">  Save up to 20% with <span>Subscribe to Save</span> </span>
+                            <span className="XBRgVA8">  Save up to 20% with <b>Subscribe to Save</b> </span>
                             <div className='mark-q-container'>
                                 <QMark />
                             </div>
                         </h3>
                         <div className='a12'>
-                            <b>Starter Pack -Quality guaranteed</b>
+                            <b>Starter Pack </b>- Quality guaranteed
                             1 HQ logo concept  &amp; PNG + 5 Revisions
                         </div>
                         <div className='additional-info flex'>
@@ -158,7 +158,7 @@ export function PlansDescription({ planType, gig }) {
                                 <b className='a14'>{priceKombo.revisions} revisions</b>
                             </span>
                         </div>
-                        <ul className='detailes-plan'>
+                        {/* <ul className='detailes-plan'>
                             <li className='flex a16'>
                                 <span className="vsvg-container"><V /></span>
                                 <span>abra abra cadabarar</span>
@@ -180,7 +180,7 @@ export function PlansDescription({ planType, gig }) {
                                 <span>abra abra cadabarar</span>
                             </li>
 
-                        </ul>
+                        </ul> */}
                     </div>
                 </header>
                 <footer className='flex footer-plan'>

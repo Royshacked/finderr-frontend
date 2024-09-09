@@ -1,29 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CustomCarousel } from "./CustomCarousel.jsx";
+
+import StarFull from '../assets/svg/details/star-full.svg?react'
+import StarEmpty from '../assets/svg/details/star-empty.svg?react'
+
 
 export function GigPreview({ gig }) {
 
-    // const navigate = useNavigate()
-    // function onMoveToDetails() {
-    //     <Link to={`/gig/${gig._id}`}>Edit</Link>
-    // }
+    const navigate = useNavigate()
+
+    function onHandleClick(ev) {
+        ev.stopPropagation()
+        console.log('to details')
+        navigate(`/gig/${gig._id}`)
+    }
 
     return <article className="gig-preview">
-        <Link to={`/api/gig/${gig._id}`}></Link>
-        <Link to={`/gig/${gig._id}`}><CustomCarousel imgs={gig.imgUrls} /></Link>
+        <div onClick={onHandleClick}><CustomCarousel imgs={gig.imgUrls} /></div>
         <div className="gig-owner">
             <div className="gig-owner-name">
                 <img src={gig.owner.imgUrl} alt="" />
                 <span>Ad By <b>{gig.owner.fullname}</b></span>
             </div>
-            <div className="gig-owner-rate">
+            {gig.owner.rate > 0 && gig.owner.rate < 3 && <div className="gig-owner-rate">
                 <b>Level</b> {gig.owner.rate}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="currentColor"><path d="M4.839.22a.2.2 0 0 1 .322 0l1.942 2.636a.2.2 0 0 0 .043.043L9.782 4.84a.2.2 0 0 1 0 .322L7.146 7.105a.2.2 0 0 0-.043.043L5.161 9.784a.2.2 0 0 1-.322 0L2.897 7.148a.2.2 0 0 0-.043-.043L.218 5.163a.2.2 0 0 1 0-.322l2.636-1.942a.2.2 0 0 0 .043-.043L4.839.221Z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="currentColor"><path d="M4.839.22a.2.2 0 0 1 .322 0l1.942 2.636a.2.2 0 0 0 .043.043L9.782 4.84a.2.2 0 0 1 0 .322L7.146 7.105a.2.2 0 0 0-.043.043L5.161 9.784a.2.2 0 0 1-.322 0L2.897 7.148a.2.2 0 0 0-.043-.043L.218 5.163a.2.2 0 0 1 0-.322l2.636-1.942a.2.2 0 0 0 .043-.043L4.839.221Z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="currentColor"><path d="M4.839.22a.2.2 0 0 1 .322 0l1.942 2.636a.2.2 0 0 0 .043.043L9.782 4.84a.2.2 0 0 1 0 .322L7.146 7.105a.2.2 0 0 0-.043.043L5.161 9.784a.2.2 0 0 1-.322 0L2.897 7.148a.2.2 0 0 0-.043-.043L.218 5.163a.2.2 0 0 1 0-.322l2.636-1.942a.2.2 0 0 0 .043-.043L4.839.221Z"></path></svg>
-            </div>
-        </div>
+                <StarFull />
+                {gig.owner.rate > 1 ? <StarFull /> : <StarEmpty />}
+                <StarEmpty />
+            </div>}
 
+            {gig.owner.rate === 3 && <div className="gig-top-rated">
+                <b>Top Rated</b>
+            </div>}
+
+            {gig.owner.rate === 0 && <div className="gig-new-seller">
+                <b>New Seller</b>
+            </div>}
+
+        </div>
+        {gig.owner.rate === 0 && <b>New Seller</b>}{gig.owner.rate === 4 && <b>Top Rated</b>}
         <span>{gig.title}</span>
         <span><b>From {gig.price}$</b></span>
     </article>
