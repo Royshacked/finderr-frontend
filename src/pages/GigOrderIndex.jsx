@@ -25,7 +25,7 @@ export function GigOrderIndex() {
     console.log(status)
 
     const dispatch = useDispatch()
-    console.log('rundar');
+    console.log(orders);
     useEffect(() => {
         loadGigOrders()
 
@@ -47,7 +47,7 @@ export function GigOrderIndex() {
     }
     return <>
         {user && user.type === 'seller' && <OrderSeller orders={orders} filterby={filterby} user={user} handleClick={handleClick} status={status} />}
-        {!user && <OrderBuyer orders={orders} filterby={filterby} user={user} handleClick={handleClick} status={status} />}
+        {user && <OrderBuyer orders={orders} filterby={filterby} user={user} handleClick={handleClick} status={status} />}
         {user && user.type === 'buyer' && <OrderBuyer orders={orders} filterby={filterby} user={user} handleClick={handleClick} status={status} />}
 
     </>
