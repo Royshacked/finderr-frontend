@@ -8,10 +8,10 @@ import FreeLancer from '../assets/svg/homepage/freelancer.svg?react'
 
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
-//import { useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 export function AppHeader() {
-	//const user = useSelector(state => state.userModule.user)
+	const user = useSelector(state => state.userModule.user)
 
 	const [isShowProMenu, setIsShowProMenu] = useState(null)
 	const [isPopUserMenu, setIsPopUserMenu] = useState(false)

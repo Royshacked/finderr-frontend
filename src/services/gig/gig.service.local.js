@@ -17,7 +17,7 @@ export const gigService = {
     remove,
     addGigMsg,
     getDefaultFilter,
-    getEmptyGig,
+    //getEmptyGig,
     getCategories,
 }
 window.cs = gigService

@@ -2,6 +2,8 @@
 import { userService } from '../services/user/user.service.local'
 import { useSelector } from "react-redux"
 import { useParams } from "react-router"
+import { useState } from 'react'
+import { useNavigate } from 'react-router'
 
 //import { userService } from '../services/user/index.js'
 //import { login, signup } from "../store/
@@ -37,27 +39,17 @@ export function LoginSignup({ isLogin }) {
         signup(user)
     }
 
-    {/* const users = [
-// 	{ */}
-    // 		_id: 'u101',
-    // 		fullname: 'User 1',
-    // 		imgUrl: '/img/img1.jpg',
-    // 		username: 'user1',
-    // 		password: 'secret',
-    // 		level: 'basic/premium',
-    {/* // 	} */ }
 
     const method = isLogin ? login : signup
-    try {
-        await method(user)
-        navigate('/api')
-    } catch (error) {
-        console.log(error)
-    }
-}
+    // try {
+    //     await method(user)
+    //     navigate('/api')
+    // } catch (error) {
+    //     console.log(error)
+    // }
 
-return (
-    <div className="login-page">
+
+    return <div className="login-page">
 
 
         Login/Signup
@@ -78,5 +70,4 @@ return (
             <button>Send</button>
         </form>
     </div>
-)
 }

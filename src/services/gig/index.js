@@ -28,26 +28,6 @@ function getDefaultFilter() {
         sortDir: -1,
     }
 }
-<<<<<<< HEAD
-// addListnerr()
-// useEffect(() => {
-
-
-
-// }, [])
-// function addListnerr() {
-//     window.addEventListener('scroll', onScroll);
-//     const onScroll = (this) => console.info("scrolling", this);
-// }
-// window.scroll(function () {
-//     if ((this).scrollTop() > 50) {
-//         console.log('hhh');
-//         // $('#dynamic').addClass('newClass');
-//     }
-//     // else { $('#dynamic').removeClass('newClass');}
-// });
-=======
->>>>>>>
 
 
 function getEmptyGig() {

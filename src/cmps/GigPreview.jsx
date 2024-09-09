@@ -1,4 +1,5 @@
 import { CustomCarousel } from "./CustomCarousel.jsx";
+import { Link } from "react-router-dom";
 
 export function GigPreview({ gig }) {
 
