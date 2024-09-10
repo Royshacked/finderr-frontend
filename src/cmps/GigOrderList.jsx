@@ -2,7 +2,7 @@ import { GigOrderPreview } from "./GigOrderPreview.jsx";
 
 
 
-export function GigOrderList({ orders, filterBy, changeStatus }) {
+export function GigOrderList({ orders, filterBy }) {
 
     return <section className="gig-order-list">
         <div>
@@ -11,10 +11,9 @@ export function GigOrderList({ orders, filterBy, changeStatus }) {
         <ul>
             {orders.map(order =>
                 <li key={order._id}>
-                    <GigOrderPreview order={order} changeStatus={changeStatus} filterBy={filterBy} />
+                    <GigOrderPreview order={order} filterBy={filterBy} />
                 </li>
             )}
         </ul>
-
     </section>
 }

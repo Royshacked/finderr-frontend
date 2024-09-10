@@ -91,8 +91,6 @@ async function save(order) {
 function getDefaultOrderFilter() {
     return {
         status: '',
-        sortBy: '',
-        sortDir: -1,
     }
 }
 

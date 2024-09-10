@@ -2,7 +2,7 @@ import { httpService } from '../http.service'
 
 // const status = ['active', 'missing details', 'delivered', 'completed', 'cancelled', 'all']
 
-const status = ['pending', 'approved', 'rejected', 'all']
+const status = ['pending', 'approved', 'rejected', , 'completed', 'all']
 
 export const orderService = {
     query,
@@ -49,9 +49,7 @@ async function addOrderMsg(orderId, txt) {
 
 function getDefaultOrderFilter() {
     return {
-        status: '',
-        sortBy: '',
-        sortDir: -1,
+        status: 'all',
     }
 }
 

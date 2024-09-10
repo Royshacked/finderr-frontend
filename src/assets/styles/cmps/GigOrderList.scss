@@ -18,9 +18,14 @@
         border-block-end: 1px solid lightgray;
 
         li {
+            display: grid;
             font-size: 1rem;
             border-block-end: 1px solid lightgray;
             color: gray;
+
+            &>button {
+                grid-column: 2;
+            }
         }
     }
 
