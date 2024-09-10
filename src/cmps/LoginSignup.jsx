@@ -65,19 +65,19 @@ export function LoginSignup({ isLogin }) {
                                     name="fullname"
                                     value={user.fullname}
                                     onChange={handleChange}
-                                    placeholder="fullname"
+                                    placeholder="Full name"
                                     required
                                 />
                             </div>}
                             
                             <div className="input-group">
-                                <label>Email or Username</label>
+                                <label>Username</label>
                                 <input
                                     type="text"
                                     name="username"
                                     value={user.username}
                                     onChange={handleChange}
-                                    placeholder="username"
+                                    placeholder="Username"
                                     required
                                 />
                             </div>
@@ -89,7 +89,7 @@ export function LoginSignup({ isLogin }) {
                                     name="password"
                                     value={user.password}
                                     onChange={handleChange}
-                                    placeholder="password"
+                                    placeholder="Password"
                                     required
                                 />
                             </div>

@@ -86,6 +86,21 @@
                 }
             }
 
+            button {
+                
+                font-size: 1rem;
+                font-family: 'arial';
+                font-weight: 600;
+                text-decoration: none;
+                color: #62646a;
+                background-color: #fff;
+                transition: color .5s ease, border .5s ease;
+
+                &:hover {
+                    color: #1dbf73;
+                }
+            }
+
             .link-join {
                 display: flex;
                 justify-content: center;
@@ -101,7 +116,6 @@
 
                 font-family: 'macan-semi-bold';
                 font-size: 0.9rem;
-
                 transition: color .5s ease, border .5s ease;
 
                 &:hover {

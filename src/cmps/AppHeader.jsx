@@ -16,6 +16,9 @@ export function AppHeader() {
 	const [isShowProMenu, setIsShowProMenu] = useState(null)
 	const [isPopUserMenu, setIsPopUserMenu] = useState(false)
 
+	const [isLoginModalOpen, setIsLoginModalOpen] = useState(false) // State for login/signup modal
+	const [isSignup, setIsSignup] = useState(false) // State for toggling between login and signup
+
 	const navigate = useNavigate()
 
 
@@ -25,6 +28,15 @@ export function AppHeader() {
 
 	function onToggleUserMenu() {
 		setIsPopUserMenu(!isPopUserMenu)
+	}
+
+	function openModal(isSignupMode) {
+		setIsSignup(isSignupMode)
+		setIsLoginModalOpen(true)
+	}
+
+	function closeModal() {
+		setIsLoginModalOpen(false)
 	}
 
 	return (
@@ -65,8 +77,9 @@ export function AppHeader() {
 
 					<a href="/start_selling?source=top_nav" rel="nofollow">Become a Seller</a>
 					{user && <Link to="/order">Orders</Link>}
-					{!user && <Link to="/login">Login</Link>}
-					{!user && <Link to="/signup" className="link-join">Join</Link>}
+
+					{!user && <button onClick={() => openModal(false)}>Sign In</button>}
+					{!user && <button className="link-join" onClick={() => openModal(true)}>Join</button>}
 					{/* {!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}
 					{!user && <a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>} */}
 
@@ -79,6 +92,8 @@ export function AppHeader() {
 			{isPopUserMenu && <UserMenu isOpen={isPopUserMenu} />}
 			{isPopUserMenu && <div className="back-drop" onClick={onToggleUserMenu}></div>}
 			{/* <GigCategoriesBar /> */}
+
+			{isLoginModalOpen && <LoginSignup isSignup={isSignup} onClose={closeModal} />}
 		</div>
 
 	)
