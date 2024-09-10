@@ -10,6 +10,8 @@
         justify-content: start;
         align-items: center;
 
+        gap: 0.5rem;
+
         &>span:nth-child(2) {
             grid-column: 3;
         }
@@ -32,14 +34,21 @@
             border-block-end: 1px solid lightgray;
             color: gray;
 
+            &>img {
+                border-radius: 0.5rem;
+            }
+
             &>article {
                 display: grid;
                 grid-template-columns: minmax(300px, 2fr) 1.5fr 1.2fr 0.7fr 0.8fr;
                 justify-content: start;
                 align-items: center;
 
+                gap: 0.5rem;
+
                 &>div:nth-child(2) {
                     justify-self: center;
+                    display: flex;
                 }
 
                 & button {
