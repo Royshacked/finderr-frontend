@@ -1,59 +1,114 @@
-
-import { userService } from '../services/user'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { login, signup } from "../store/actions/user.actions"
-
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { userService } from '../services/user'
 
 export function LoginSignup({ isLogin }) {
     const [user, setUser] = useState(userService.getEmptyUser)
+    const [isSignup, setIsSignup] = useState(!isLogin) // Control whether it's signup or login mode
+    const [error, setError] = useState('')
     const navigate = useNavigate()
 
+    useEffect(() => {
+        document.body.classList.add('modal-open')
+        
+        return () => {
+            document.body.classList.remove('modal-open')
+        }
+    }, [])
 
     function handleChange({ target }) {
-        const { type, name: prop } = target
-
-        let { value } = target
-        switch (type) {
-            case 'text' || 'password':
-                value = value
-                break;
-        }
-        setUser(prevUser => ({ ...prevUser, [prop]: value }))
+        const { name, value } = target
+        setUser(prevUser => ({ ...prevUser, [name]: value }))
     }
 
-    async function onSaveUser(ev) {
+    async function handleSubmit(ev) {
         ev.preventDefault()
 
-        const method = isLogin ? login : signup
+        const method = isSignup ? signup : login
 
         try {
             await method(user)
             navigate('/')
-        } catch (error) {
-            console.log(error)
+        } catch (err) {
+            setError('Authentication failed. Please try again.')
         }
     }
 
-    return <div className="login-page">
-        {isLogin ? <h2>Login</h2> : <h2>Signup</h2>}
-        <form className='user-form' onSubmit={onSaveUser} >
-            {!isLogin && <label htmlFor="fullname">
-                <input value={user.fullname} onChange={handleChange} type="text" id="fullname" name="fullname" placeholder="fullname" required />
-            </label>}
-            {!isLogin && <label htmlFor="imgUrl">
-                <input value={user.imgUrl} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" />
-            </label>}
-            <label htmlFor="username">
-                <input value={user.username} onChange={handleChange} type="text" id="username" name="username" placeholder="username" required />
-            </label>
-            <label htmlFor="password">
-                <input value={user.password} onChange={handleChange} type="password" id="password" name="password" placeholder="password" required />
-            </label>
+    return (
+        <div className="modal-overlay">
+            <div className="login-signup-modal">
+                <div className="banner">
+                    <div className="text-box">
+                        <h2>Success starts here</h2>
+                        <ul>
+                            <li>✓ Over 700 categories</li>
+                            <li>✓ Quality work done faster</li>
+                            <li>✓ Access to talent and businesses </li>
+                            <li>across the globe</li>
+                        </ul>
+                    </div>
+                    <img src="https://fiverr-res.cloudinary.com/npm-assets/layout-service/standard.0638957.png" alt="" />
+                </div>
+    
+                <div className="modal-layout">
+                    <div className="modal-content">
+                        <h2>{isSignup ? 'Sign Up' : 'Sign In'}</h2>
+                        <form onSubmit={handleSubmit}>
+                            {error && <p className="error">{error}</p>}
+                            
+                            {/* Show fullname input only when in signup mode */}
+                            {isSignup && <div className="input-group">
+                                <label>Full Name</label>
+                                <input
+                                    type="text"
+                                    name="fullname"
+                                    value={user.fullname}
+                                    onChange={handleChange}
+                                    placeholder="fullname"
+                                    required
+                                />
+                            </div>}
+                            
+                            <div className="input-group">
+                                <label>Email or Username</label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    value={user.username}
+                                    onChange={handleChange}
+                                    placeholder="username"
+                                    required
+                                />
+                            </div>
+                            
+                            <div className="input-group">
+                                <label>Password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    value={user.password}
+                                    onChange={handleChange}
+                                    placeholder="password"
+                                    required
+                                />
+                            </div>
+        
+                            <button type="submit" className="continue-btn">
+                                {isSignup ? 'Sign Up' : 'Sign In'}
+                            </button>
+        
+                            <p className="toggle-mode" onClick={() => setIsSignup(!isSignup)}>
+                                {isSignup ? 'Already have an account? Sign In' : 'Don’t have an account? Sign Up'}
+                            </p>
+                        </form>
+                    </div>
 
-            {/* <input value={user.level} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" /> */}
-            {/* <textarea value={addMail.body} onChange={handleChange} rows={15} cols={50} maxLength={200} name="body" id="body"></textarea> */}
-            <button>Send</button>
-        </form>
-    </div>
+                    <div className="modal-footer">
+                        By joining, you agree to the Finderr Terms of Service and to occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
