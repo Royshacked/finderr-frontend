@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { login, signup } from "../store/actions/user.actions"
 import { userService } from '../services/user'
 
-export function LoginSignup({ isLogin }) {
+export function LoginSignup({ isSignup, onClose, onToggleSignup }) { // Add onToggleSignup as a prop
     const [user, setUser] = useState(userService.getEmptyUser)
-    const [isSignup, setIsSignup] = useState(!isLogin) // Control whether it's signup or login mode
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
     useEffect(() => {
         document.body.classList.add('modal-open')
-        
+
         return () => {
             document.body.classList.remove('modal-open')
         }
@@ -35,9 +34,15 @@ export function LoginSignup({ isLogin }) {
         }
     }
 
+    function handleOverlayClick(ev) {
+        if (ev.target.classList.contains('modal-overlay')) {
+            onClose() // Call onClose to close the modal
+        }
+    }
+
     return (
-        <div className="modal-overlay">
-            <div className="login-signup-modal">
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+            <div className="login-signup-modal" onClick={e => e.stopPropagation()}>
                 <div className="banner">
                     <div className="text-box">
                         <h2>Success starts here</h2>
@@ -57,7 +62,6 @@ export function LoginSignup({ isLogin }) {
                         <form onSubmit={handleSubmit}>
                             {error && <p className="error">{error}</p>}
                             
-                            {/* Show fullname input only when in signup mode */}
                             {isSignup && <div className="input-group">
                                 <label>Full Name</label>
                                 <input
@@ -98,7 +102,7 @@ export function LoginSignup({ isLogin }) {
                                 {isSignup ? 'Sign Up' : 'Sign In'}
                             </button>
         
-                            <p className="toggle-mode" onClick={() => setIsSignup(!isSignup)}>
+                            <p className="toggle-mode" onClick={onToggleSignup}>
                                 {isSignup ? 'Already have an account? Sign In' : 'Don’t have an account? Sign Up'}
                             </p>
                         </form>
