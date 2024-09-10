@@ -4,12 +4,22 @@
 
     background-color: white;
 
+    .order-grid {
+        display: grid;
+        grid-template-columns: minmax(300px, 2fr) 1.5fr 1.2fr 0.7fr 0.8fr;
+        justify-content: start;
+        align-items: center;
+
+        &>span:nth-child(2) {
+            grid-column: 3;
+        }
+    }
+
     &>div {
+        padding: 1rem;
         border-block-end: 1px solid lightgray;
 
-        h3 {
-            padding: 1rem;
-
+        b {
             font-size: 1rem;
         }
     }
@@ -18,10 +28,65 @@
         border-block-end: 1px solid lightgray;
 
         li {
-            display: grid;
-            font-size: 1rem;
+            font-size: 0.9rem;
             border-block-end: 1px solid lightgray;
             color: gray;
+
+            &>article {
+                display: grid;
+                grid-template-columns: minmax(300px, 2fr) 1.5fr 1.2fr 0.7fr 0.8fr;
+                justify-content: start;
+                align-items: center;
+
+                &>div:nth-child(2) {
+                    justify-self: center;
+                }
+
+                & button {
+                    border: 1px solid;
+                    border-radius: 0.5rem;
+                    padding: 0.5rem;
+                    background-color: white;
+
+                    transition: 0.5s;
+
+                    &:hover {
+                        border-radius: 0.5rem;
+                        background-color: rgb(238, 234, 234);
+                    }
+                }
+
+                .status {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 80px;
+
+                    padding: 0.5rem;
+                    border-radius: 4px;
+
+                    font-size: 0.8rem;
+
+                    color: white;
+                }
+
+                .completed {
+                    background-color: green;
+                }
+
+                .rejected {
+                    background-color: red;
+                }
+
+                .approved {
+                    background-color: blue;
+                }
+
+                .pending {
+                    background-color: orange;
+                }
+            }
 
             &>button {
                 grid-column: 2;
