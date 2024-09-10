@@ -26,13 +26,19 @@ $clr3: #fff;
     align-items: center;
     gap: 50px;
 
-    @include for-wide-layout {
+  
+    @include for-medium-layout {
+        background-image: none;
+       background: linear-gradient(180deg,#003912 36.72%,#19aa64 141.43%)
+    }
+    @include for-normal-layout {
         background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/d0455bf6c66913ebcaff9878b79bfcf0-1705308316571/hero-md.png);
 
-    @include for-medium-layout{
-      background: linear-gradient(180deg,#003912 36.72%,#19aa64 141.43%)
     }
+    @include for-wide-layout{
+        background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/d0455bf6c66913ebcaff9878b79bfcf0-1705308316571/hero-md.png);
 
+    }
 }
 
 .header-row {
@@ -189,6 +195,9 @@ $clr3: #fff;
     gap: 1vw;
     grid-auto-flow: column;
     grid-template-columns: auto;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill,150px);
+    row-gap: 5vh;
 
     // @include for-mobile-layout() {
     //     -webkit-box-sizing: border-box;
@@ -198,6 +207,20 @@ $clr3: #fff;
     //     word-break: keep-all;
     //     left: 10px;
     // }
+    // @include for-mobile-layout{
+      
+    //    // grid-auto-flow: column;
+    //     //grid-template-columns: auto;
+    // }
+    @include for-normal-layout{
+        gap: 1vw;
+        grid-auto-flow: column;
+        grid-template-columns: auto;
+       // grid-auto-flow: column;
+        //grid-template-columns: auto;
+    }
+ 
+
 
     &>* {
         border: 0.5px black solid;
@@ -351,7 +374,7 @@ $clr3: #fff;
     }
   }
   @mixin for-wide-layout {
-    @media (max-width: $break-wide) {
+    @media (min-width: $break-normal) {
       @content;
     }
 }
