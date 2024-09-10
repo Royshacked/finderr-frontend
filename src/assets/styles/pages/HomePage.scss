@@ -29,6 +29,8 @@ $clr3: #fff;
     @include for-wide-layout {
         background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/d0455bf6c66913ebcaff9878b79bfcf0-1705308316571/hero-md.png);
 
+    @include for-medium-layout{
+      background: linear-gradient(180deg,#003912 36.72%,#19aa64 141.43%)
     }
 
 }
