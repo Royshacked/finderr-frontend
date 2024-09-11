@@ -53,8 +53,8 @@ function getDefaultFilter() {
         },
         budget: 0,
         daysToMake: 0,
-        sortBy: '',
-        sortDir: -1,
+        // sortBy: '',
+        // sortDir: -1,
     }
 }
 
