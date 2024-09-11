@@ -44,24 +44,28 @@
     display: flex;
     align-items: center;
 
-    position: fixed;
-    bottom: 1em;
-    right: 50%;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    // z-index: 3;
 
-    font-weight: 700;
-    border: 2px solid gray;
-    border-radius: 1rem;
+    font-family: macan-semibold;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 4px;
     padding: 0.2em 0.5em;
+
+    background-color: rgb(247, 244, 244);
 }
 
 .user-msg.success {
-    background-color: var(--gray2);
-    color: var(--gray3);
+    background-color: rgb(247, 244, 244);
+    color: green;
 }
 
 .user-msg.error {
-    background-color: var(--gray2);
-    color: var(--gray3);
+    background-color: rgb(247, 244, 244);
+    color: red;
 }
 
 .user-msg button {

@@ -12,6 +12,7 @@ import ContinueArrow from '../src/assets/svg/details/continue-arrow.svg?react'
 //import {ff} from '../src/assets/svg/details/tooltip-price.svg'
 import { addOrder } from '../../store/actions/order.actions'
 import { useSelector } from 'react-redux'
+import { showErrorMsg } from '../../services/event-bus.service'
 
 
 
@@ -27,7 +28,7 @@ export function PlansDescription({ planType, gig }) {
 
     function createOrder(ev) {
         ev.preventDefault()
-        if (!user) return
+        if (!user) return showErrorMsg('Please signup')
 
         const order = {
             buyer: {

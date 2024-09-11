@@ -30,9 +30,10 @@ export function LoginSignup({ isLogin }) {
 
         try {
             await method(user)
-            showSuccessMsg(`${user.fullname} is loggedin`)
+            showSuccessMsg(`You are logged in`)
             navigate('/')
         } catch (error) {
+            showErrorMsg('Could\'nt log in')
             console.log(error)
         }
     }
