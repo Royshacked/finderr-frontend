@@ -41,7 +41,7 @@ export function GigIndex() {
             </div>
             <div className="index-sort">
                 {gigs.length ? <span>{gigs.length} results</span> : <span>No results...</span>}
-                <GigListSort />
+                {/* <GigListSort /> */}
             </div>
 
             <GigList gigs={gigs} />

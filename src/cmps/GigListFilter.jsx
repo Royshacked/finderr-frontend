@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
 import { gigService } from "../services/gig/index.js"
+// import { preview } from "vite"
 
 export function GigListFilter() {
     const filterBy = useSelector(state => state.gigModule.filterBy)
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const [cmpType, setCmpType] = useState('')
-    const [isPro, setIsPro] = useState(false)
+    // const [isPro, setIsPro] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -66,7 +67,7 @@ export function GigListFilter() {
         setCmpType('')
     }
 
-    var proBtnClass = isPro ? 'pro-btn-on' : ''
+    // var proBtnClass = isPro ? 'pro-btn-on' : ''
 
     return <>
         {cmpType && <div className="back-drop" onClick={() => setCmpType('')}></div>}
@@ -88,12 +89,12 @@ export function GigListFilter() {
 
             <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} onClearFilter={onClearFilter} />
 
-            <div className="giglist-filter-pro">
+            {/* <div className="giglist-filter-pro">
                 <div className="pro-btn" style={{ backgroundColor: isPro ? 'green' : 'lightgray' }} onClick={() => setIsPro(!isPro)}>
                     <div className={`pro-small-btn ${proBtnClass}`}></div>
                 </div>
                 Pro services
-            </div>
+            </div> */}
         </article>
     </>
 }
