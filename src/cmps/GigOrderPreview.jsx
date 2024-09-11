@@ -1,76 +1,31 @@
-
+import { useState } from "react"
 import { updateOrder } from "../store/actions/order.actions"
-import { loadOrders } from "../store/actions/order.actions"
-import { useNavigate } from "react-router"
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import { gigService } from "../services/gig/gig.service.local"
-import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 
-
-export function GigOrderPreview({ order, changeStatus, filterBy }) {
-    console.log(order);
-
-    //const navigate = useNavigate()
-    const filterByToEdit = gigService.getDefaultFilter()
-    const user = useSelector(state => state.userModule.user)
-
-    const dispatch = useDispatch()
-    // const navigate = useNavigate()
-    console.log('rundar');
-
-    function buttonSwitch(type) {
-
-        switch (type) {
-            case 'pending':
-                return <> <span className={`button button-aprove`} onClick={ev => (changeSttatus(ev, order, 'aprove'))}>aprove</span>
-                    <span className={`button button-rejected`} onClick={ev => (changeSttatus(ev, order, 'rejected'))}>rejected</span></>
-
-                break;
-            case 'aprove':
-
-                return <> <span className={`button button-aprove`} onClick={ev => (changeSttatus(ev, order, 'completed'))}>completed</span></>
-
-
-
-
-
-            default:
-                break;
+export function GigOrderPreview({ order, filterBy }) {
+    async function onStatus(status) {
+        try {
+            await updateOrder({ ...order, status }, filterBy)
+        } catch (error) {
+            console.log(error)
         }
     }
 
-    function changeSttatus(ev, order, sta) {
-        // ev.preventDefault()
-        console.log(order);
-        console.log(filterBy);
-
-
-
-        order.status = sta
-
-        // console.log(order)
-
-        const update = updateOrder(order, filterBy)
-        const filtr = loadOrders(filterBy)
-
-        // navigate("/order")
-    }
-    // var status = order.status.charAt(0).toUpperCase() + order.status.slice(1)
     return <article className="gig-order-preview">
         <div className="">
             <img src={order.gig.imgUrl} alt="" />
             <span>{order.gig.name}</span>
         </div>
         <div>
-            <span>{order.createdAt}</span>
-            <span>{order.gig.price}$</span>
-            {/* gig.price */}
-            {/* <span className={`button-${status}`} onClick={ev => (changeSttatus(ev, order, 'completed'))}>{status}</span> */}
-            {buttonSwitch(order.status)}
+            {order.status === 'pending' && <button onClick={() => onStatus('approved')} style={{ color: 'blue' }}>Approve</button>}
+            {order.status === 'pending' && <button onClick={() => onStatus('rejected')} style={{ color: 'red' }}>Reject</button>}
+            {order.status === 'approved' && <button onClick={() => onStatus('completed')} style={{ color: 'green' }}>Complete job</button>}
         </div>
+        {/* <div> */}
+        <span>{order.createdAt}</span>
+        <span>{order.gig.price}$</span>
+        <span className={`status ${order.status}`}>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
+        {/* </div> */}
     </article>
-    // user && user.type === "seller" && 
 }
 
 

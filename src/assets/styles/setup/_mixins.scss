@@ -1,20 +1,20 @@
 @mixin for-mobile-layout {
-  @media (max-width: $break-narrow) {
+  @media (min-width: $break-very-narrow) {
     @content;
   }
 }
 @mixin for-medium-layout {
-  @media (max-width: $break-mid) {
+  @media (max-width: $break-narrow) {
     @content;
   }
 }
 @mixin for-normal-layout {
-  @media (max-width: $break-normal) {
+  @media (min-width: $break-mid) {
     @content;
   }
 }
 @mixin for-wide-layout {
-  @media (max-width: $break-wide) {
+  @media (min-width: $break-normal) {
     @content;
   }
 }
@@ -23,3 +23,4 @@ $break-mid: 900px;
 $break-narrow: 600px;
 $break-normal: 1360px;
 $break-wide: 1920px;
+$break-very-narrow:50px;

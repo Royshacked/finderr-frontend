@@ -2,19 +2,22 @@ import { GigOrderPreview } from "./GigOrderPreview.jsx";
 
 
 
-export function GigOrderList({ orders, filterBy, changeStatus }) {
+export function GigOrderList({ orders, filterBy }) {
 
     return <section className="gig-order-list">
-        <div>
-            {<h3>{filterBy.status ? filterBy.status.toUpperCase() : 'ALL ORDERS'}</h3>}
+        <div className="order-grid">
+            {<b>{filterBy.status ? filterBy.status.toUpperCase() : 'ALL ORDERS'}</b>}
+            <span>Created at</span>
+            <span>Price</span>
+            <span>Status</span>
         </div>
-        <ul>
+        <ul className="">
+
             {orders.map(order =>
                 <li key={order._id}>
-                    <GigOrderPreview order={order} changeStatus={changeStatus} filterBy={filterBy} />
+                    <GigOrderPreview order={order} filterBy={filterBy} />
                 </li>
             )}
         </ul>
-
     </section>
 }

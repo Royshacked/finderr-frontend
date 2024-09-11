@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { SET_FILTER_BY } from "../store/reducers/gig.reducer"
 import { gigService } from "../services/gig/index.js"
+// import { preview } from "vite"
 
 export function GigListFilter() {
     const filterBy = useSelector(state => state.gigModule.filterBy)
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const [cmpType, setCmpType] = useState('')
-    const [isPro, setIsPro] = useState(false)
+    // const [isPro, setIsPro] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -52,7 +53,6 @@ export function GigListFilter() {
 
     function onHandleSubmit(ev) {
         ev.preventDefault()
-        console.log(filterByToEdit)
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit } })
         setCmpType('')
     }
@@ -64,12 +64,10 @@ export function GigListFilter() {
 
         setFilterByToEdit({ ...newFilter })
         dispatch({ type: SET_FILTER_BY, filterBy: { ...newFilter } })
-        // setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: cleanFilter }))
-        // dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit, [name]: cleanFilter } })
         setCmpType('')
     }
 
-    var proBtnClass = isPro ? 'pro-btn-on' : ''
+    // var proBtnClass = isPro ? 'pro-btn-on' : ''
 
     return <>
         {cmpType && <div className="back-drop" onClick={() => setCmpType('')}></div>}
@@ -91,12 +89,12 @@ export function GigListFilter() {
 
             <DynamicCmp cmpType={cmpType} onHandleChange={onHandleChange} onHandleSubmit={onHandleSubmit} filterBy={filterByToEdit} onClearFilter={onClearFilter} />
 
-            <div className="giglist-filter-pro">
+            {/* <div className="giglist-filter-pro">
                 <div className="pro-btn" style={{ backgroundColor: isPro ? 'green' : 'lightgray' }} onClick={() => setIsPro(!isPro)}>
                     <div className={`pro-small-btn ${proBtnClass}`}></div>
                 </div>
                 Pro services
-            </div>
+            </div> */}
         </article>
     </>
 }
@@ -162,11 +160,11 @@ function SellerFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter 
                     Israel
                 </label>
                 <label htmlFor="unitedstates">
-                    <input type="checkbox" id="unitedstates" name="loc" value="unitedstates" onChange={onHandleChange} checked={filterBy.owner.loc.includes('unitedstates')} />
+                    <input type="checkbox" id="unitedstates" name="loc" value="united states" onChange={onHandleChange} checked={filterBy.owner.loc.includes('united states')} />
                     United States
                 </label>
                 <label htmlFor="unitedkingdom">
-                    <input type="checkbox" id="unitedkingdom" name="loc" value="unitedkingdom" onChange={onHandleChange} checked={filterBy.owner.loc.includes('unitedkingdom')} />
+                    <input type="checkbox" id="unitedkingdom" name="loc" value="united kingdom" onChange={onHandleChange} checked={filterBy.owner.loc.includes('united kingdom')} />
                     United Kingdom
                 </label>
                 <label htmlFor="canada">

@@ -12,43 +12,41 @@ import { useSearchParams } from "react-router-dom";
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 
 export function GigOrderIndex() {
-
     const orders = useSelector(state => state.orderModule.orders)
-    const filterby = useSelector(state => state.orderModule.filterBy)
-    const user = useSelector(state => state.userModule.user)
+    const filterBy = useSelector(state => state.orderModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
-    console.log(user);
-
     const status = orderService.getStatus()
 
-    console.log(status)
-
     const dispatch = useDispatch()
-    console.log(orders);
+
     useEffect(() => {
         loadGigOrders()
-
-
-        setSearchParams(filterby)
-    }, [filterby])
+        setSearchParams(filterBy)
+    }, [filterBy])
 
     async function loadGigOrders() {
         try {
-            await loadOrders(filterby)
+            await loadOrders(filterBy)
         } catch (error) {
             console.log(error)
         }
     }
 
     function handleClick(status) {
-        if (status === 'all') status = null
-        dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterby, status } })
+        dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status } })
     }
-    return <>
-        {user && user.type === 'seller' && <OrderSeller orders={orders} filterby={filterby} user={user} handleClick={handleClick} status={status} />}
-        {user && <OrderBuyer orders={orders} filterby={filterby} user={user} handleClick={handleClick} status={status} />}
-        {user && user.type === 'buyer' && <OrderBuyer orders={orders} filterby={filterby} user={user} handleClick={handleClick} status={status} />}
 
-    </>
-    //
+    return <section className="gig-orders main-layout ">
+        <header>
+            <h2>Dashboard</h2>
+            <nav>
+                {status.map(stat => stat === filterBy.status ?
+                    <b key={stat} className={stat} onClick={() => handleClick(stat)} style={{ color: 'black' }}>{stat.toUpperCase()} </b> :
+                    <span key={stat} className={stat} onClick={() => handleClick(stat)}>{stat.toUpperCase()}</span>
+                )}
+            </nav>
+        </header>
+
+        <GigOrderList orders={orders} filterBy={filterBy} />
+    </section>
 }

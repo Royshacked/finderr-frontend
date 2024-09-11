@@ -14,6 +14,7 @@ import { Provider } from 'react-redux'
 import { store } from './store/store.js'
 
 import { GigOrderIndex } from './pages/GigOrderIndex.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx'
 
 
 
@@ -41,6 +42,7 @@ export function RootCmp() {
                     <AppFooter />
                 </div>
             </Router>
+            <UserMsg />
         </Provider>
     )
 }

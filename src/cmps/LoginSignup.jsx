@@ -28,9 +28,10 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) { // Add onTo
 
         try {
             await method(user)
+            showSuccessMsg(`You are logged in`)
             navigate('/')
         } catch (err) {
-            setError('Authentication failed. Please try again.')
+            showErrorMsg('Could\'nt log in')
         }
     }
 
