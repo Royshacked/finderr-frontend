@@ -1,20 +1,24 @@
-import { Link, useNavigate } from "react-router-dom"
 import { logout } from "../store/actions/user.actions"
 
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
 export function UserMenu({ isOpen }) {
+    const [isMenuOpen, setIsMenuOpen] = useState(isOpen)
     const navigate = useNavigate()
 
-    async function onHandleLogout() {
+    async function onHandleLogout(ev) {
+        ev.preventDefault()
         try {
             await logout()
-            navigate('/api')
+            setIsMenuOpen(false)
+            navigate('/')
         } catch (error) {
             console.log(error)
         }
     }
 
-    if (!isOpen) return
+    if (!isMenuOpen) return
 
     return <section className="user-menu">
         <nav>

@@ -63,6 +63,7 @@ async function signup(userCred) {
 }
 
 async function logout() {
+    console.log('local')
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
