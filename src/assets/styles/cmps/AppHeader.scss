@@ -29,7 +29,7 @@
 
                     margin: 0 15px 0 0;
 
-                    @include for-normal-layout {
+                    @include for-mobile-layout {
                         display: inline;
                     }
                 }
@@ -81,7 +81,7 @@
                     color: rgb(3, 212, 3);
                 }
 
-                @include for-normal-layout {
+                @include for-mobile-layout {
                     display: none;
                 }
             }
