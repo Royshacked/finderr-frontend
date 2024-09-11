@@ -1,62 +1,121 @@
-
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { login, signup } from "../store/actions/user.actions"
 import { userService } from '../services/user'
-import { login, signup } from "../store/actions/user.actions.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
-
-export function LoginSignup({ isLogin }) {
+export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
     const [user, setUser] = useState(userService.getEmptyUser)
+    const [error] = useState('')
     const navigate = useNavigate()
 
+    useEffect(() => {
+        document.body.classList.add('modal-open')
+
+        return () => {
+            document.body.classList.remove('modal-open')
+        }
+    }, [])
 
     function handleChange({ target }) {
-        const { type, name: prop } = target
-
-        let { value } = target
-        switch (type) {
-            case 'text' || 'password':
-                value = value
-                break;
-        }
-        setUser(prevUser => ({ ...prevUser, [prop]: value }))
+        const { name, value } = target
+        setUser(prevUser => ({ ...prevUser, [name]: value }))
     }
 
-    async function onSaveUser(ev) {
+    async function handleSubmit(ev) {
         ev.preventDefault()
 
-        const method = isLogin ? login : signup
+        const method = isSignup ? signup : login
 
         try {
             await method(user)
             showSuccessMsg(`You are logged in`)
             navigate('/')
-        } catch (error) {
+            onClose()
+        } catch (err) {
             showErrorMsg('Could\'nt log in')
-            console.log(error)
         }
     }
 
-    return <div className="login-page">
-        {isLogin ? <h2>Login</h2> : <h2>Signup</h2>}
-        <form className='user-form' onSubmit={onSaveUser} >
-            {!isLogin && <label htmlFor="fullname">
-                <input value={user.fullname} onChange={handleChange} type="text" id="fullname" name="fullname" placeholder="fullname" required />
-            </label>}
-            {!isLogin && <label htmlFor="imgUrl">
-                <input value={user.imgUrl} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" />
-            </label>}
-            <label htmlFor="username">
-                <input value={user.username} onChange={handleChange} type="text" id="username" name="username" placeholder="username" required />
-            </label>
-            <label htmlFor="password">
-                <input value={user.password} onChange={handleChange} type="password" id="password" name="password" placeholder="password" required />
-            </label>
+    function handleOverlayClick(ev) {
+        if (ev.target.classList.contains('modal-overlay')) {
+            onClose() // Call onClose to close the modal
+        }
+    }
 
-            {/* <input value={user.level} onChange={handleChange} type="text" id="imgUrl" name="imgUrl" placeholder="imgUrl" /> */}
-            {/* <textarea value={addMail.body} onChange={handleChange} rows={15} cols={50} maxLength={200} name="body" id="body"></textarea> */}
-            <button>Send</button>
-        </form>
-    </div>
+    return (
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+            <div className="login-signup-modal" onClick={e => e.stopPropagation()}>
+                <div className="banner">
+                    <div className="text-box">
+                        <h2>Success starts here</h2>
+                        <ul>
+                            <li>✓ Over 700 categories</li>
+                            <li>✓ Quality work done faster</li>
+                            <li>✓ Access to talent and businesses </li>
+                            <li>across the globe</li>
+                        </ul>
+                    </div>
+                    <img src="https://fiverr-res.cloudinary.com/npm-assets/layout-service/standard.0638957.png" alt="" />
+                </div>
+    
+                <div className="modal-layout">
+                    <div className="modal-content">
+                        <h2>{isSignup ? 'Sign Up' : 'Sign In'}</h2>
+                        <form onSubmit={handleSubmit}>
+                            {error && <p className="error">{error}</p>}
+                            
+                            {isSignup && <div className="input-group">
+                                <label>Full Name</label>
+                                <input
+                                    type="text"
+                                    name="fullname"
+                                    value={user.fullname}
+                                    onChange={handleChange}
+                                    placeholder="Full name"
+                                    required
+                                />
+                            </div>}
+                            
+                            <div className="input-group">
+                                <label>Username</label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    value={user.username}
+                                    onChange={handleChange}
+                                    placeholder="Username"
+                                    required
+                                />
+                            </div>
+                            
+                            <div className="input-group">
+                                <label>Password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    value={user.password}
+                                    onChange={handleChange}
+                                    placeholder="Password"
+                                    required
+                                />
+                            </div>
+        
+                            <button type="submit" className="continue-btn">
+                                {isSignup ? 'Sign Up' : 'Sign In'}
+                            </button>
+        
+                            <p className="toggle-mode" onClick={onToggleSignup}>
+                                {isSignup ? 'Already have an account? Sign In' : 'Don’t have an account? Sign Up'}
+                            </p>
+                        </form>
+                    </div>
+
+                    <div className="modal-footer">
+                        By joining, you agree to the Finderr Terms of Service and to occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
