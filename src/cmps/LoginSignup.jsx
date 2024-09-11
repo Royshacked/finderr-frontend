@@ -1,6 +1,7 @@
 
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user'
-import { login, signup } from "../store/actions/user.actions"
+import { login, signup } from "../store/actions/user.actions.js"
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
@@ -29,6 +30,7 @@ export function LoginSignup({ isLogin }) {
 
         try {
             await method(user)
+            showSuccessMsg(`${user.fullname} is loggedin`)
             navigate('/')
         } catch (error) {
             console.log(error)
