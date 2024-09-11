@@ -8,7 +8,7 @@
 }
   
 h2 {
-    font-size: 24px;
+    font-size: 32px;
     color: #333;
     margin-bottom: 20px;
 }
@@ -111,6 +111,10 @@ form {
     .text-box {
         position: absolute;
         padding: 54px 40px;
+
+        li {
+            line-height: 42px;
+        }
     }
 
     .text-box * {
