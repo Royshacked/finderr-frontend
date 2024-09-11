@@ -26,9 +26,6 @@ export function GigIndex() {
         }
     }
 
-    console.log(gigs);
-
-
     return (
         <section className="gig-index main-layout">
             <GigCategoriesBar />

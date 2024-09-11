@@ -52,7 +52,6 @@ export function GigListFilter() {
 
     function onHandleSubmit(ev) {
         ev.preventDefault()
-        console.log(filterByToEdit)
         dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit } })
         setCmpType('')
     }
@@ -64,8 +63,6 @@ export function GigListFilter() {
 
         setFilterByToEdit({ ...newFilter })
         dispatch({ type: SET_FILTER_BY, filterBy: { ...newFilter } })
-        // setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: cleanFilter }))
-        // dispatch({ type: SET_FILTER_BY, filterBy: { ...filterByToEdit, [name]: cleanFilter } })
         setCmpType('')
     }
 
@@ -162,11 +159,11 @@ function SellerFilter({ filterBy, onHandleChange, onHandleSubmit, onClearFilter 
                     Israel
                 </label>
                 <label htmlFor="unitedstates">
-                    <input type="checkbox" id="unitedstates" name="loc" value="unitedstates" onChange={onHandleChange} checked={filterBy.owner.loc.includes('unitedstates')} />
+                    <input type="checkbox" id="unitedstates" name="loc" value="united states" onChange={onHandleChange} checked={filterBy.owner.loc.includes('united states')} />
                     United States
                 </label>
                 <label htmlFor="unitedkingdom">
-                    <input type="checkbox" id="unitedkingdom" name="loc" value="unitedkingdom" onChange={onHandleChange} checked={filterBy.owner.loc.includes('unitedkingdom')} />
+                    <input type="checkbox" id="unitedkingdom" name="loc" value="united kingdom" onChange={onHandleChange} checked={filterBy.owner.loc.includes('united kingdom')} />
                     United Kingdom
                 </label>
                 <label htmlFor="canada">
