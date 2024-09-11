@@ -4,7 +4,7 @@
     form {
         display: flex;
         justify-content: center;
-        width: 30vw;
+        width: 50vw;
 
         @include for-mobile-layout {
             width: 50vw;

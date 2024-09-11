@@ -86,8 +86,9 @@
                 }
             }
 
-            button, a {
-                
+            button,
+            a {
+
                 font-size: 1rem;
                 font-family: 'arial';
                 font-weight: 600;
@@ -98,6 +99,10 @@
 
                 &:hover {
                     color: #1dbf73;
+                }
+
+                @include for-medium-layout {
+                    display: none;
                 }
             }
 
