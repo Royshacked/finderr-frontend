@@ -27,6 +27,7 @@ export function PlansDescription({ planType, gig }) {
 
     function createOrder(ev) {
         ev.preventDefault()
+        if (!user) return
 
         const order = {
             buyer: {
