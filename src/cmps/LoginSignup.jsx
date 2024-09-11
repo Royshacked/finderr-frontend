@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login, signup } from "../store/actions/user.actions"
 import { userService } from '../services/user'
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
 export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
     const [user, setUser] = useState(userService.getEmptyUser)
@@ -30,6 +31,7 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
             await method(user)
             showSuccessMsg(`You are logged in`)
             navigate('/')
+            onClose()
         } catch (err) {
             showErrorMsg('Could\'nt log in')
         }
