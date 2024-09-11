@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { login, signup } from "../store/actions/user.actions"
 import { userService } from '../services/user'
 
-export function LoginSignup({ isSignup, onClose, onToggleSignup }) { // Add onToggleSignup as a prop
+export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
     const [user, setUser] = useState(userService.getEmptyUser)
-    const [error, setError] = useState('')
+    const [error] = useState('')
     const navigate = useNavigate()
 
     useEffect(() => {
