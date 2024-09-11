@@ -12,7 +12,7 @@ import ContinueArrow from '../src/assets/svg/details/continue-arrow.svg?react'
 //import {ff} from '../src/assets/svg/details/tooltip-price.svg'
 import { addOrder } from '../../store/actions/order.actions'
 import { useSelector } from 'react-redux'
-import { showErrorMsg } from '../../services/event-bus.service'
+import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
 
 
@@ -26,7 +26,7 @@ export function PlansDescription({ planType, gig }) {
     const [userPlan, setUserPlan] = useState(null)
     const [userPrice, setGigPrice] = useState(null)
 
-    function createOrder(ev) {
+    async function createOrder(ev) {
         ev.preventDefault()
         if (!user) return showErrorMsg('Please signup')
 
@@ -52,7 +52,15 @@ export function PlansDescription({ planType, gig }) {
         console.log(order);
 
         // const savedOrder = await storageService.post(STORAGE_KEY, order)
-        addOrder(order)
+
+        try {
+            await addOrder(order)
+            showSuccessMsg('Your order accepted')
+        } catch (error) {
+            showErrorMsg('Could\'nt complete purchase')
+            console.log(error)
+        }
+
         // return savedOrder
     }
     // const order = {
@@ -187,7 +195,7 @@ export function PlansDescription({ planType, gig }) {
                 </header>
                 <footer className='flex footer-plan'>
                     <button className='continue-plan-b' onClick={(ev) => createOrder(ev)}>
-                        continue
+                        Purchse gig
                         <span> <ContinueArrow /></span>
                     </button>
                     <button className='compare-button'>compare packeges</button>

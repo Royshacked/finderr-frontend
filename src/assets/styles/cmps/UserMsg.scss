@@ -48,7 +48,7 @@
     bottom: 5%;
     right: 5%;
     // z-index: 3;
-
+    font-size: 2em;
     font-family: macan-semibold;
     font-weight: bold;
     border: 1px solid lightgray;
@@ -56,20 +56,21 @@
     padding: 0.2em 0.5em;
 
     background-color: rgb(247, 244, 244);
+    color: #62646a;
 }
 
 .user-msg.success {
     background-color: rgb(247, 244, 244);
-    color: green;
+    // color: green;
 }
 
 .user-msg.error {
     background-color: rgb(247, 244, 244);
-    color: red;
+    // color: red;
 }
 
 .user-msg button {
-    font-size: 0.5em;
+    font-size: 3em;
     float: right;
     margin-inline-start: 1em;
 }
