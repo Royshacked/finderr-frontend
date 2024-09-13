@@ -1,7 +1,7 @@
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // optional CSS
 
-export function CustomCarousel({ imgs }) {
+export function GigPreviewCarousel({ imgs }) {
     // Custom left arrow button
     function renderArrowPrev(clickHandler, hasPrev) {
         return hasPrev && (

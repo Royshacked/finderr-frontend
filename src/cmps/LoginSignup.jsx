@@ -58,13 +58,13 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
                     </div>
                     <img src="https://fiverr-res.cloudinary.com/npm-assets/layout-service/standard.0638957.png" alt="" />
                 </div>
-    
+
                 <div className="modal-layout">
                     <div className="modal-content">
                         <h2>{isSignup ? 'Sign Up' : 'Sign In'}</h2>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className='login-signup'>
                             {error && <p className="error">{error}</p>}
-                            
+
                             {isSignup && <div className="input-group">
                                 <label>Full Name</label>
                                 <input
@@ -76,7 +76,7 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
                                     required
                                 />
                             </div>}
-                            
+
                             <div className="input-group">
                                 <label>Username</label>
                                 <input
@@ -88,7 +88,7 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
                                     required
                                 />
                             </div>
-                            
+
                             <div className="input-group">
                                 <label>Password</label>
                                 <input
@@ -100,11 +100,11 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
                                     required
                                 />
                             </div>
-        
+
                             <button type="submit" className="continue-btn">
                                 {isSignup ? 'Sign Up' : 'Sign In'}
                             </button>
-        
+
                             <p className="toggle-mode" onClick={onToggleSignup}>
                                 {isSignup ? 'Already have an account? Sign In' : 'Don’t have an account? Sign Up'}
                             </p>

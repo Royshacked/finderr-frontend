@@ -14,7 +14,7 @@ import { PlansDescription } from "../cmps/details/PlansDescription"
 import { UserDetailsRevies } from "../cmps/details/UserDetails&Revies"
 import { loadGig } from "../store/actions/gig.actions.js"
 import { useSelector } from "react-redux"
-import { CustomCarousel } from "../cmps/CustomCarousel.jsx"
+import { GigPreviewCarousel } from "../cmps/GigPreviewCarousel.jsx"
 
 export function GigDetails() {
   const gig = useSelector(state => state.gigModule.gig)
@@ -64,7 +64,7 @@ export function GigDetails() {
           </div>
         </div>
         <div className="img-carousel">
-          <CustomCarousel imgs={gig.imgUrls} />
+          <GigPreviewCarousel imgs={gig.imgUrls} />
         </div>
       </div>
       <div className="side-bar-container">

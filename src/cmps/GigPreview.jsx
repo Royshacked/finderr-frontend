@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CustomCarousel } from "./CustomCarousel.jsx";
+import { GigPreviewCarousel } from "./GigPreviewCarousel.jsx";
 
 import StarFull from '../assets/svg/details/star-full.svg?react'
 import StarEmpty from '../assets/svg/details/star-empty.svg?react'
@@ -16,7 +16,7 @@ export function GigPreview({ gig }) {
     }
 
     return <article className="gig-preview">
-        <div onClick={onHandleClick}><CustomCarousel imgs={gig.imgUrls} /></div>
+        <div onClick={onHandleClick}><GigPreviewCarousel imgs={gig.imgUrls} /></div>
         <div className="gig-owner">
             <div className="gig-owner-name">
                 <img src={gig.owner.imgUrl} alt="" />
