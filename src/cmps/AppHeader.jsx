@@ -114,8 +114,8 @@ export function AppHeader() {
 
                         {/* <a href="/start_selling?source=top_nav" rel="nofollow">Become a Seller</a> */}
                         {user?.isSeller && <Link to="/order">Dashboard</Link>}
-                        {!user && <button onClick={() => openModal(false)}>Login</button>}
-                        {!user && <button className="link-join" onClick={() => openModal(true)}>Join</button>}
+                        {!user && <button onClick={(ev) => openModal(ev, false)}>Login</button>}
+                        {!user && <button className="link-join" onClick={(ev) => openModal(ev, true)}>Join</button>}
                         {/* {!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}
 					{!user && <a className="link-join" rel="nofollow" href="/join?source=top_nav">Join</a>} */}
 

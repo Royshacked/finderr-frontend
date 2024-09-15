@@ -8,7 +8,7 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
     const [user, setUser] = useState(userService.getEmptyUser)
     const [error] = useState('')
     const navigate = useNavigate()
-    console.log('login')
+
     useEffect(() => {
         document.body.classList.add('modal-open')
 
@@ -24,7 +24,6 @@ export function LoginSignup({ isSignup, onClose, onToggleSignup }) {
 
     async function handleSubmit(ev) {
         ev.preventDefault()
-
         const method = isSignup ? signup : login
 
         try {
