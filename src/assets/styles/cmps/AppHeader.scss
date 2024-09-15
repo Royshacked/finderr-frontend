@@ -19,7 +19,7 @@
 
             &>.header-logo {
                 .logo {
-                    @include for-mobile-layout {
+                    @include for-medium-layout {
                         // position: absolute;
                         // top: 0.2rem;
                         display: inline;
@@ -39,14 +39,14 @@
                         display: inline;
                     }
 
-                    @include for-mobile-layout {
+                    @include for-medium-layout {
                         position: absolute;
                         top: 0.5rem;
                         left: 0.5rem;
                     }
                 }
 
-                @include for-mobile-layout {
+                @include for-medium-layout {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -55,7 +55,7 @@
                 }
             }
 
-            @include for-mobile-layout {
+            @include for-medium-layout {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -66,7 +66,7 @@
                 width: 100%;
             }
 
-            @include for-mobile-layout {
+            @include for-medium-layout {
                 gap: 0.8rem;
             }
 
@@ -198,7 +198,7 @@
                     background-color: #1dbf73;
                 }
 
-                @include for-mobile-layout {
+                @include for-medium-layout {
                     position: absolute;
                     top: 5px;
                     right: 5px;
@@ -206,7 +206,7 @@
             }
         }
 
-        @include for-mobile-layout {
+        @include for-medium-layout {
             height: min-content;
             padding-block: 0.5rem;
         }
