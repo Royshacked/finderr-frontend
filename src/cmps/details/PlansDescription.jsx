@@ -16,87 +16,48 @@ import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
 
 
-export function PlansDescription({ planType, gig }) {
-    console.log(gig, planType);
-    console.log(planType);
-    const user = useSelector(state => state.userModule.user)
+export function PlansDescription({ planType, gig, createOrder }) {
     var priceKombo = setUserChoise(planType, gig.price)
-
 
     const [userPlan, setUserPlan] = useState(null)
     const [userPrice, setGigPrice] = useState(null)
 
-    async function createOrder(ev) {
-        ev.preventDefault()
-        if (!user) return showErrorMsg('Please signup')
-
-        const order = {
-            buyer: {
-                id: user._id,
-                fullname: user.fullname
-            },
-            seller: {
-                id: gig.owner._id,
-                fullname: gig.owner.fullname
-            },
-            gig: {              // mini-gig
-                _id: gig._id,
-                name: gig.title,
-                imgUrl: gig.imgUrls[0],
-                price: gig.price
-            },
-            createdAt: new Date(Date.now()).toDateString(),
-            status: 'pending',
-            price: priceKombo.price
-        }
-        console.log(order);
-
-        // const savedOrder = await storageService.post(STORAGE_KEY, order)
-
-        try {
-            await addOrder(order)
-            showSuccessMsg('Your order accepted')
-        } catch (error) {
-            showErrorMsg('Could\'nt complete purchase')
-            console.log(error)
-        }
-
-        // return savedOrder
-    }
-    // const order = {
-    //     _id: makeId(),
-    //     buyer: 'mini-user',
-    //     seller: 'mini-user',
-
-    //     gig: {              // mini-gig
-    //         _id: 'oRulYh',
-    //         name: 'I will fix wordpress, CSS, HTML, jquery, and PHP errors',
-    //         imgUrl: 'https://fiverr-res.cloudinary.com/t_order_cards_web,q_auto,f_auto/orders/143128157/original/f8bc3454c2a59c2dcdf117b050010e96c81f30ce.jpg',
-    //         price: 826,
-    //     },
-    //     createdAt: new Date(Date.now()).toDateString(),
-    //     status: pickStatus(getRandomIntInclusive(1, 4)),
-    // }
-
-
-
-
-
-
-    //const { gigId } = useParams()
-
-    // var gigPr = gigPrice
-    // var userPrices = {}
     useEffect(() => {
         setUserPlan(planType.planType)
-        // console.log(userPlan);
-
-        // userPrices = setUserChoise(userPlan)
-        //setUserPlan('entry')
-
-        // console.log(userPrices.revisions);
-
     }, [userPlan])
+
+    // async function createOrder(ev) {
+    //     ev.preventDefault()
+    //     if (!user) return showErrorMsg('Please signup')
+
+    //     const order = {
+    //         buyer: {
+    //             id: user._id,
+    //             fullname: user.fullname
+    //         },
+    //         seller: {
+    //             id: gig.owner._id,
+    //             fullname: gig.owner.fullname
+    //         },
+    //         gig: {              // mini-gig
+    //             _id: gig._id,
+    //             name: gig.title,
+    //             imgUrl: gig.imgUrls[0],
+    //             price: gig.price
+    //         },
+    //         createdAt: new Date(Date.now()).toDateString(),
+    //         status: 'pending',
+    //         price: priceKombo.price
+    //     }
+
+    //     try {
+    //         await addOrder(order)
+    //         showSuccessMsg('Your order accepted')
+    //     } catch (error) {
+    //         showErrorMsg('Could\'nt complete purchase')
+    //         console.log(error)
+    //     }
+    // }
 
     function setUserChoise(userPlan, price) {
         switch (userPlan) {
@@ -106,28 +67,23 @@ export function PlansDescription({ planType, gig }) {
                     days: 3,
                     price: price
                 }
-                break;
+
             case 'commun':
                 return {
                     revisions: 3,
                     days: 4,
                     price: price * 1.5
                 }
-                break;
+
             case 'premium':
                 return {
                     revisions: 4,
                     days: 5,
                     price: price * 2
                 }
-                break;
-
-
         }
     }
 
-
-    //var gigPr = 0
     if (!planType) return <h2>loading...</h2>
     return (<>
         <div className="plans-desc-co">

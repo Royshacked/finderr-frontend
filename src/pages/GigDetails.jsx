@@ -15,8 +15,11 @@ import { UserDetailsRevies } from "../cmps/details/UserDetails&Revies"
 import { loadGig } from "../store/actions/gig.actions.js"
 import { useSelector } from "react-redux"
 import { GigPreviewCarousel } from "../cmps/GigPreviewCarousel.jsx"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { addOrder } from "../store/actions/order.actions.js"
 
 export function GigDetails() {
+  const user = useSelector(state => state.userModule.user)
   const gig = useSelector(state => state.gigModule.gig)
   const [userPlan, setUserPlan] = useState('entry')
   const { gigId } = useParams()
@@ -25,7 +28,6 @@ export function GigDetails() {
     if (!gigId) return
     setGig()
   }, [])
-
 
   async function setGig() {
     try {
@@ -37,6 +39,38 @@ export function GigDetails() {
 
   function setPlan(plan) {
     setUserPlan(plan)
+  }
+
+  async function createOrder(ev) {
+    ev.preventDefault()
+    if (!user) return showErrorMsg('Please signup')
+
+    const order = {
+      buyer: {
+        id: user._id,
+        fullname: user.fullname
+      },
+      seller: {
+        id: gig.owner._id,
+        fullname: gig.owner.fullname
+      },
+      gig: {              // mini-gig
+        _id: gig._id,
+        name: gig.title,
+        imgUrl: gig.imgUrls[0],
+        price: gig.price
+      },
+      createdAt: new Date(Date.now()).toDateString(),
+      status: 'pending',
+    }
+
+    try {
+      await addOrder(order)
+      showSuccessMsg('Your order accepted')
+    } catch (error) {
+      showErrorMsg('Could\'nt complete purchase')
+      console.log(error)
+    }
   }
 
   if (!gig) return <div>Loading...</div>
@@ -63,10 +97,93 @@ export function GigDetails() {
             </div>
           </div>
         </div>
+
         <div className="img-carousel">
           <GigPreviewCarousel imgs={gig.imgUrls} />
         </div>
+
+        <h3>About this gig</h3>
+        <p>{gig.description}</p>
+
+        <div className="card-packages">
+          <h3>Compare packages</h3>
+          <table>
+            <tbody>
+              <tr class="package-type">
+                <th class="package-row-label">Package</th>
+                <th class="package-type-price" >
+                  <div class="price-wrapper">
+                    <p class="price">{gig.price}$</p>
+                  </div>
+                  <b class="type">Basic</b>
+                  <b class="title">{gig.tags}</b>
+                </th>
+                <th class="package-type-price">
+                  <div class="price-wrapper">
+                    <p class="price">{gig.price * 1.5}$</p>
+                  </div>
+                  <b class="type">Standard</b>
+                  <b class="title">{gig.tags}</b>
+                </th>
+                <th class="package-type-price">
+                  <div class="price-wrapper">
+                    <p class="price">{gig.price * 2}$</p>
+                  </div>
+                  <b class="type">Premium</b>
+                  <b class="title">{gig.tags}</b>
+                </th>
+              </tr>
+              <tr class="description">
+                <td class="package-row-label"></td>
+                <td>One small {gig.tags} issue with WordPress</td>
+                <td>Normal {gig.tags} or JS issue with WordPress upto 30 minute fix</td>
+                <td>Complex {gig.tags} or JS Issue with WordPress upto 1 hour fix</td>
+              </tr>
+              <tr>
+                <td class="package-row-label">
+                  <div class="">
+                    <span class="">Revisions</span>
+                  </div>
+                </td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+              </tr>
+
+              <tr class="delivery-time">
+                <td class="package-row-label">Delivery Time</td>
+                <td>3 days</td>
+                <td>2 days</td>
+                <td>1 day</td>
+              </tr>
+
+              <tr class="select-package">
+                <td class="package-row-label">Total</td>
+                <td>
+                  <div class="price-wrapper">
+                    <p class="tbody-5">{gig.price}$</p>
+                  </div>
+                  <button class="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
+                </td>
+                <td>
+                  <div class="price-wrapper">
+                    <p class="tbody-5">{gig.price * 1.5}$</p>
+                  </div>
+                  <button class="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
+                </td>
+                <td>
+                  <div class="price-wrapper">
+                    <p class="tbody-5">{gig.price * 2}$</p>
+                  </div>
+                  <button class="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
+
       <div className="side-bar-container">
         <div className="side-bar">
           <div className="side-bar-btns flex">
@@ -75,7 +192,7 @@ export function GigDetails() {
             <div className={userPlan === 'premium' ? 'premium active' : 'premium'} onClick={() => setPlan('premium')}>Premium</div>
           </div>
 
-          {gig.price && <PlansDescription planType={userPlan} gig={gig} />}
+          {gig.price && <PlansDescription planType={userPlan} gig={gig} createOrder={createOrder} />}
 
           <div className="side-bar-contact flex">
             <div className='contact-container-inner flex'>
@@ -85,12 +202,7 @@ export function GigDetails() {
 
         </div>
       </div>
-    </section>
 
-
-    <section className="gig-description">
-      <h3>About this gig</h3>
-      <p>{gig.description}</p>
     </section>
   </main>
 }

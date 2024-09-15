@@ -1,12 +1,20 @@
 .gig-details {
-  &>section:first-child {
+  // &>section {
+  //   display: grid;
+  //   grid-template-columns: minmax(auto, 2fr) minmax(auto, 1fr);
+  // }
+
+  // .side-bar-container {
+  //   grid-column: 2;
+  // }
+
+  &>section {
     display: flex;
     justify-content: center;
 
     padding: 64px 32px 0;
 
     .card-container {
-      position: relative;
       max-width: 700px;
       margin-inline-end: 100px;
 
@@ -18,60 +26,158 @@
 
         padding-block: 1rem;
 
-        &>div {
-          display: flex;
-          align-items: center;
+        & img {
+          border-radius: 4px;
+        }
+      }
 
-          gap: 1rem;
+      .card-packages {
+        & table {
+          border: 1px solid rgb(245, 240, 240);
+          border-collapse: collapse;
+          text-align: left;
+          font-size: 1rem;
+          font-weight: normal;
 
-          font-size: 1.2rem;
+          color: #64646a;
 
-          &>div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+          & tbody {
 
-            gap: 0.5rem;
+            & th,
+            td {
+              border: 1px solid rgb(245, 240, 240);
+            }
 
-            font-size: 1rem;
+            & th {
+              border-block-end: 0;
+            }
+
+            & tr {
+              & td {
+                padding: 1rem;
+                border-inline-end: 1px solid rgb(245, 240, 240);
+              }
+            }
+
+            & tr:first-of-type {
+              &th:first-of-type {
+                border: 0;
+                height: 100%;
+              }
+            }
+
+            & tr:nth-child(2) {
+              & td {
+                border-block-start: 0;
+              }
+            }
+
+            & tr:nth-child(3) {
+              text-align: center;
+
+              background-color: rgb(245, 240, 240);
+
+              & td:first-of-type {
+                text-align: left;
+                white-space: nowrap;
+              }
+            }
+
+            & tr:nth-child(4) {
+              text-align: center;
+
+              & td:first-of-type {
+                text-align: left;
+                white-space: nowrap;
+              }
+            }
+
+            & tr:nth-child(5) {
+              text-align: center;
+
+              & td:first-of-type {
+                text-align: left;
+              }
+
+              & button {
+                width: 150px;
+
+                padding-block: 0.8rem;
+                border-radius: 4px;
+                font-size: 1rem;
+                font-weight: bold;
+                color: white;
+                background-color: black;
+              }
+            }
+
+            & tr:first-of-type {
+              & th:first-of-type {
+                display: flex;
+                justify-content: start;
+                align-items: start;
+
+                height: 100%;
+
+                padding: 1rem;
+              }
+
+              & .package-type-price {
+                padding: 1rem;
+
+
+                & b {
+                  display: block;
+                }
+              }
+            }
           }
         }
       }
     }
 
-    .side-bar {
-      position: sticky;
-      top: 50px;
-
-      .entry {
-        border-inline-start: 1px solid lightgray;
-      }
-
-      .a12 {
-        padding-block: 1rem;
-        color: #62646a
-      }
-
-      .XBRgVA8 {
-        color: #404145;
-
-        &>b {
-          color: #026a5d;
-        }
-      }
-
-      .plans-desc-co {
-        border-inline: 1px solid lightgray;
-        border-block-end: 1px solid lightgray;
-      }
+    & h3 {
+      margin-block: 4rem 2rem;
     }
   }
 
-  .gig-description {
-    max-width: 700px;
-    padding: 32px 32px 0;
+
+
+  .side-bar {
+    position: sticky;
+    top: 50px;
+    height: auto;
+    padding: 0;
+
+    .entry {
+      border-inline-start: 1px solid lightgray;
+    }
+
+    .a12 {
+      padding-block: 1rem;
+      color: #62646a
+    }
+
+    .XBRgVA8 {
+      color: #404145;
+
+      &>b {
+        color: #026a5d;
+      }
+    }
+
+    .plans-desc-co {
+      border-inline: 1px solid lightgray;
+      border-block-end: 1px solid lightgray;
+    }
   }
 }
+
+.gig-description {
+  max-width: 700px;
+  padding: 32px 32px 0;
+}
+
 
 .carousel {
   position: relative;
@@ -260,12 +366,14 @@
 // }
 
 .side-bar-container {
+  // position: absolute;
   -webkit-box-ordinal-group: 21;
   -ms-flex-order: 20;
   -webkit-order: 20;
   order: 20;
   padding-bottom: 32px;
   width: 35.42%;
+
 
   @include for-medium-layout() {
     width: 100%;
