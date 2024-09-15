@@ -1,7 +1,7 @@
 .categories-bar {
 
     border-block-end: 1px solid lightgray;
-    // padding: 0 78.5px;
+    padding: 0 78.5px;
 
     ul {
         display: flex;
@@ -9,8 +9,7 @@
         align-items: center;
 
         gap: 1rem;
-        // overflow-x: hidden;
-        // overflow-y: hidden;
+
         margin: 0;
 
         color: #62646a;
@@ -18,23 +17,14 @@
         font-size: 16px;
 
         li {
+            width: min-content;
+            overflow: hidden;
+            white-space: nowrap;
 
             padding: 0.3rem 0;
 
             font-size: 1.1rem;
             cursor: pointer;
         }
-
-        .slick-arrow {
-            width: 0.5rem;
-            background-color: transparent;
-        }
-
-        .slick-track::before,
-        .slick-track::after {
-            display: none;
-        }
     }
-
-
 }
