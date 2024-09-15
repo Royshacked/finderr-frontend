@@ -10,21 +10,48 @@ export function GigOrderPreview({ order, filterBy }) {
         }
     }
 
+    function presentDate() {
+        const dateFormat = new Date(order.createdAt).toDateString()
+        console.log(dateFormat)
+
+        const orderedAt = (dateFormat === new Date(Date.now()).toDateString()) ? new Date(order.createdAt).toLocaleTimeString() : dateFormat
+
+        return orderedAt
+    }
+
+    function shortGigName(num) {
+        let gigNameArr = order.gig.name.split('')
+        gigNameArr = gigNameArr.filter((item, idx) => idx < num)
+
+        return gigNameArr.join('') + '...'
+    }
+
+    function capitalizeFirstLetter(txt) {
+        const word = txt.charAt(0).toUpperCase() + txt.slice(1)
+
+        return word
+    }
+
     return <article className="gig-order-preview">
-        <div className="">
+        <div className="order-title">
             <img src={order.gig.imgUrl} alt="" />
-            <span>{order.gig.name}</span>
+            <span>{shortGigName(20)}</span>
         </div>
-        <div>
-            {order.status === 'pending' && <button onClick={() => onStatus('approved')} style={{ color: 'blue' }}>Approve</button>}
-            {order.status === 'pending' && <button onClick={() => onStatus('rejected')} style={{ color: 'red' }}>Reject</button>}
-            {order.status === 'approved' && <button onClick={() => onStatus('completed')} style={{ color: 'green' }}>Complete job</button>}
+        <div className="order-btns">
+            <div className="order-btns-buyer">
+                {order.status === 'pending' && <button onClick={() => onStatus('approved')} className="btn-approve">Approve</button>}
+                {order.status === 'pending' && <button onClick={() => onStatus('rejected')} className="btn-reject">Reject</button>}
+                {order.status === 'approved' && <button onClick={() => onStatus('completed')} className="btn-deliver">Deliver</button>}
+            </div>
+
         </div>
-        {/* <div> */}
-        <span>{order.createdAt}</span>
+
+        <div className="order-buyer">
+            <img src={order.buyer.imgUrl} alt="" />
+            <i>{capitalizeFirstLetter(order.buyer.fullname)}</i></div>
+        <span>{presentDate()}</span>
         <span>{order.gig.price}$</span>
         <span className={`status ${order.status}`}>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
-        {/* </div> */}
     </article>
 }
 

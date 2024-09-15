@@ -1,43 +1,128 @@
 .gig-order-preview {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 1fr 1fr 1fr 1fr 1fr;
+    justify-content: start;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    height: 6rem;
 
     padding: 1rem;
 
-    &>div:nth-child(1) {
+    &>.order-title {
         display: flex;
         align-items: center;
         gap: 1rem;
 
+        overflow-x: hidden;
+        white-space: nowrap;
+
         img {
             height: 2rem;
             width: 3rem;
+
+            border-radius: 4px;
         }
     }
 
-    &>div:nth-child(2) {
+    &>.order-btns {
+        justify-self: center;
+        align-self: center;
         display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 3rem;
-        // ast-child
-        & span.button {
+
+        margin-inline-start: 1rem;
+
+        & button {
             display: flex;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
-
             padding: 0.5rem;
-            border-radius: 2px;
-            font-size: 0.8rem;
 
-            background-color: #1dbf73;
-            color: white;
+
+            font-size: 1rem;
+            font-weight: bold;
+
+            color: #808080;
+            background-color: white;
+
+            transition: 0.5s;
+
+            &:hover {
+                border-radius: 0.5rem;
+                background-color: rgb(238, 234, 234);
+            }
         }
-        & span.button-rejected{
-            background-color: red;
+
+        .btn-approve {
+            color: rgb(101, 180, 245);
+        }
+
+        .btn-reject {
+            color: rgb(247, 128, 128);
+        }
+
+        .btn-deliver {
+            padding-inline-start: 0;
+            color: #1dbf73;
         }
     }
-}
 
-.button-Cancelled{
-    background-color:red
+    & .order-buyer {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        gap: 0.5rem;
+
+        & img {
+            width: 2rem;
+        }
+
+        & i {
+            text-align: start;
+        }
+
+    }
+
+
+
+    .status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 80px;
+
+        padding: 0.5rem;
+        border-radius: 4px;
+
+        font-size: 0.8rem;
+
+        color: white;
+    }
+
+    .completed {
+        background-color: #1dbf73;
+    }
+
+    .rejected {
+        font-size: 1rem;
+        font-weight: bold;
+        color: rgb(247, 128, 128);
+    }
+
+    .approved {
+        font-size: 1rem;
+        font-weight: bold;
+        color: rgb(101, 180, 245);
+    }
+
+    .pending {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #808080;
+    }
 }

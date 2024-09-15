@@ -6,9 +6,10 @@ import TwitterLogo from '../assets/svg/twitter-logo.svg?react'
 
 export function AppFooter() {
 	return (
-		<footer className="app-footer">
-		  <div className="app-footer__top">
-			{/* *{ *<nav className="app-footer__nav">
+		<section className='footer main-layout full'>
+			<footer className="app-footer main-layout">
+				<div className="app-footer__top">
+					{/* *{ *<nav className="app-footer__nav">
 			  <ul>
 				<li><a href="/about-us">About Us</a></li>
 				<li><a href="/services">Services</a></li>
@@ -16,28 +17,29 @@ export function AppFooter() {
 				<li><a href="/faq">FAQ</a></li>
 			  </ul>
 			</nav> */}
-		  </div>
-		  <div className="app-footer__bottom">
-		  	<div className="app-footer__brand">
-				<span className="app-footer__brand--name">finderr</span>
-				<span className="app-footer__brand--dot">.</span>
-			</div>
-			
-			<p>© 2024 Finderr. All rights reserved.</p>
-			<div className="app-footer__socials">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <InstagramLogo />
-          </a>
+				</div>
+				<div className="app-footer__bottom">
+					<div className="app-footer__brand">
+						<span className="app-footer__brand--name">finderr</span>
+						<span className="app-footer__brand--dot">.</span>
+					</div>
 
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <FacebookLogo />
-          </a>
+					<p>© 2024 Finderr. All rights reserved.</p>
+					<div className="app-footer__socials">
+						<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+							<InstagramLogo />
+						</a>
 
-          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <TwitterLogo />
-          </a>
-        </div>
-		  </div>
-		</footer>
-	  )
+						<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+							<FacebookLogo />
+						</a>
+
+						<a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+							<TwitterLogo />
+						</a>
+					</div>
+				</div>
+			</footer>
+		</section>
+	)
 }

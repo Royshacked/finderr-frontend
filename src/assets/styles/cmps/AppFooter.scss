@@ -1,78 +1,89 @@
-.app-footer {
+.footer {
+  // position: fixed;
+  // bottom: 0;
+  // width: 100vw;
   background-color: #ffffff;
-  color: #7c7c7c;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  border-block-start: 1px solid lightgray;
 
-  &__brand {
-    display: flex;
-    align-items: baseline;
+  .app-footer {
 
-    &--name {
-      font-size: 24px;
-      font-weight: bold;
-      color: #8b8b8b;
-    }
 
-    &--dot {
-      font-size: 24px;
-      font-weight: bold;
-      color: #1dbf73;
-      margin-left: 4px;
-    }
-  }
+    // width: 100vw;
+    background-color: #ffffff;
+    color: #7c7c7c;
+    // padding: 20px;
+    font-family: Arial, sans-serif;
 
-  &__top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #444;
-  }
-
-  &__nav {
-    ul {
-      list-style: none;
+    &__brand {
       display: flex;
-      gap: 20px;
+      align-items: baseline;
 
-      li {
-        a {
-          color: #000000d0;
-          text-decoration: none;
-          font-weight: bold;
-          transition: color 0.3s;
+      &--name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #8b8b8b;
+      }
 
-          &:hover {
-            color: #1dbf73;
+      &--dot {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1dbf73;
+        margin-left: 4px;
+      }
+    }
+
+    &__top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 20px;
+
+    }
+
+    &__nav {
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+
+        li {
+          a {
+            color: #000000d0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+
+            &:hover {
+              color: #1dbf73;
+            }
           }
         }
       }
     }
-  }
 
-  &__bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
 
-    p {
-      margin: 0;
+      p {
+        margin: 0;
+      }
     }
-  }
 
-  &__socials {
-    display: flex;
+    &__socials {
+      display: flex;
 
-    .social-icon {
-      margin-right: 20px;
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s;
+      .social-icon {
+        margin-right: 20px;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
 
-      &:hover {
-        color: #1dbf73;
+        &:hover {
+          color: #1dbf73;
+        }
       }
     }
   }

@@ -48,7 +48,8 @@ export function GigDetails() {
     const order = {
       buyer: {
         id: user._id,
-        fullname: user.fullname
+        fullname: user.fullname,
+        imgUrl: user.imgUrl
       },
       seller: {
         id: gig.owner._id,
@@ -60,7 +61,7 @@ export function GigDetails() {
         imgUrl: gig.imgUrls[0],
         price: gig.price
       },
-      createdAt: new Date(Date.now()).toDateString(),
+      createdAt: Date.now(),
       status: 'pending',
     }
 

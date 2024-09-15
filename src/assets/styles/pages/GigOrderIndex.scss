@@ -1,11 +1,14 @@
 .gig-orders {
+    position: relative;
     padding-block-end: 3rem;
     padding-inline: 1rem;
 
-    background-color: rgb(243, 242, 242);
+    background-color: white;
 
 
     header {
+        position: sticky;
+        top: 0;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -16,6 +19,8 @@
         padding-block: 1.5rem;
         border-block-end: 1px solid lightgray;
 
+        background-color: white;
+
         h2 {
             font-size: 3rem;
             font-weight: lighter;
@@ -23,7 +28,7 @@
             color: #3d4042;
         }
 
-        nav {
+        & nav {
             display: flex;
             justify-content: start;
 
