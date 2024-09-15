@@ -32,6 +32,15 @@
             span {
                 font-weight: bold;
             }
+
+            @include for-mobile-layout {
+                text-align: center;
+                margin: 0;
+            }
+        }
+
+        @include for-mobile-layout {
+            margin: 0;
         }
     }
 
@@ -47,5 +56,17 @@
         color: #74767e;
 
         font-size: 1rem;
+
+        @include for-mobile-layout {
+            padding-inline: 0.5rem;
+            margin: auto;
+
+
+        }
+    }
+
+    @include for-mobile-layout {
+        display: flex;
+        flex-direction: column;
     }
 }

@@ -11,7 +11,7 @@
         }
 
         @include for-mobile-layout {
-            width: 70vw;
+            width: 80vw;
         }
 
         input {
@@ -30,6 +30,11 @@
             cursor: text;
 
             transition: .15s ease-in-out;
+
+            @include for-mobile-layout {
+                height: min-content;
+                font-size: 0.8rem;
+            }
         }
 
         button {

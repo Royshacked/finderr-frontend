@@ -52,6 +52,11 @@
                 width: 12px;
                 height: 12px;
             }
+
+            @include for-mobile-layout {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
         }
     }
 
@@ -156,7 +161,20 @@
 
                     font-family: macan;
                     font-weight: bold;
+
+                    @include for-mobile-layout {
+                        width: 225px;
+                    }
                 }
+            }
+
+            @include for-mobile-layout {
+                display: flex;
+                flex-direction: column;
+
+                width: max-content;
+
+                padding-inline: 0;
             }
         }
 
@@ -194,14 +212,38 @@
             max-height: 300px;
             overflow-y: scroll;
         }
+
+        @include for-mobile-layout {
+            left: 5%;
+            padding-inline: 0.5rem;
+        }
     }
 
     .budget {
-        left: calc(162.64px + 1rem)
+        left: calc(162.64px + 1rem);
+        width: 250px;
+
+        @include for-mobile-layout {
+            left: 5%;
+            padding-inline: 0.5rem;
+        }
     }
 
     .delivery {
-        left: calc(162.64px + 117.11px + 2rem)
+        left: calc(162.64px + 117.11px + 2rem);
+        width: 250px;
+
+        @include for-mobile-layout {
+            left: 5%;
+            padding-inline: 0.5rem;
+        }
+    }
+
+    @include for-mobile-layout {
+        justify-content: center;
+        align-items: center;
+
+        margin-inline: 0.5rem;
     }
 
 }
