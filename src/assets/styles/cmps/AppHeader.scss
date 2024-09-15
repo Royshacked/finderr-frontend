@@ -12,6 +12,7 @@
 
     header {
         display: flex;
+        //flex-direction: column;
 
         justify-content: space-between;
         align-items: center;
@@ -20,6 +21,7 @@
 
         & .logo-filter {
             display: flex;
+            
 
             &>.header-logo {
                 .logo {
@@ -44,9 +46,9 @@
                     }
 
                     @include for-medium-layout {
-                        position: absolute;
-                        top: 0.5rem;
-                        left: 0.5rem;
+                       // position: absolute;
+                       // top: 0.5rem;
+                        //left: 0.5rem;
                     }
                 }
 
@@ -61,7 +63,7 @@
 
             @include for-medium-layout {
                 display: flex;
-                flex-direction: column;
+                //flex-direction: column;
                 justify-content: center;
                 align-items: center;
 
