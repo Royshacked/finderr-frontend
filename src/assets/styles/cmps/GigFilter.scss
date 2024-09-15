@@ -6,6 +6,10 @@
         justify-content: center;
         width: 50vw;
 
+        @include for-medium-layout {
+            width: 60vw;
+        }
+
         @include for-mobile-layout {
             width: 70vw;
         }
