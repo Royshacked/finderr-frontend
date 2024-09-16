@@ -1,20 +1,23 @@
 @mixin for-mobile-layout {
-  @media (min-width: $break-very-narrow) {
+  @media (min-width: $break-narrow) {
     @content;
   }
 }
+
 @mixin for-medium-layout {
-  @media (max-width: $break-narrow) {
+  @media (max-width: $break-mid) {
     @content;
   }
 }
+
 @mixin for-normal-layout {
-  @media (min-width: $break-mid) {
+  @media (min-width: $break-normal) {
     @content;
   }
 }
+
 @mixin for-wide-layout {
-  @media (min-width: $break-normal) {
+  @media (min-width: $break-wide) {
     @content;
   }
 }
@@ -23,4 +26,4 @@ $break-mid: 900px;
 $break-narrow: 600px;
 $break-normal: 1360px;
 $break-wide: 1920px;
-$break-very-narrow:50px;
+$break-very-narrow: 50px;

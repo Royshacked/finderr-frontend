@@ -42,13 +42,11 @@
                     margin: 0 15px 0 0;
 
                     @include for-medium-layout {
-                        display: inline;
-                    }
-
-                    @include for-medium-layout {
-                       // position: absolute;
+                        position: absolute;
                         top: 0.5rem;
                         left: 0.5rem;
+
+                        display: inline;
                     }
                 }
 
@@ -63,7 +61,7 @@
 
             @include for-medium-layout {
                 display: flex;
-               // flex-direction: column;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
 
