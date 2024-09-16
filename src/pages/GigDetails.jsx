@@ -53,7 +53,8 @@ export function GigDetails() {
       },
       seller: {
         id: gig.owner._id,
-        fullname: gig.owner.fullname
+        fullname: gig.owner.fullname,
+        imgUrl: gig.owner.imgUrl
       },
       gig: {              // mini-gig
         _id: gig._id,

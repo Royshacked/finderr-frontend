@@ -12,6 +12,7 @@ import { useSearchParams } from "react-router-dom";
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 
 export function GigOrderIndex() {
+    const user = useSelector(state => state.userModule.user)
     const orders = useSelector(state => state.orderModule.orders)
     const filterBy = useSelector(state => state.orderModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
@@ -38,7 +39,7 @@ export function GigOrderIndex() {
 
     return <section className="gig-orders main-layout ">
         <header>
-            <h2>Dashboard</h2>
+            {user?.isSeller ? <h2>Dashboard</h2> : <h2>My orders</h2>}
             <nav>
                 {status.map(stat => stat === filterBy.status ?
                     <b key={stat} className={stat} onClick={() => handleClick(stat)} style={{ color: 'black' }}>{stat.toUpperCase()} </b> :

@@ -30,10 +30,13 @@
         justify-self: center;
         align-self: center;
         display: flex;
+        opacity: 0;
         justify-content: center;
         align-items: center;
 
         margin-inline-start: 1rem;
+
+
 
         & button {
             display: flex;
@@ -50,9 +53,13 @@
 
             transition: 0.5s;
 
-            &:hover {
+            &:hover:not(.no-actions) {
                 border-radius: 0.5rem;
                 background-color: rgb(238, 234, 234);
+            }
+
+            &:hover.no-actions {
+                cursor: not-allowed;
             }
         }
 
@@ -67,6 +74,15 @@
         .btn-deliver {
             padding-inline-start: 0;
             color: #1dbf73;
+        }
+
+        &:hover {
+            opacity: 0;
+            ;
+
+            & .btn-approve {
+                display: inline;
+            }
         }
     }
 
@@ -85,6 +101,10 @@
             text-align: start;
         }
 
+    }
+
+    &:hover .order-btns {
+        opacity: 1;
     }
 
 
