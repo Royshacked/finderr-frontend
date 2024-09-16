@@ -37,13 +37,13 @@ export function GigOrderIndex() {
         dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status } })
     }
 
-    return <section className="gig-orders main-layout ">
-        <header>
+    return <section className="gig-orders main-layout">
+        <header className="full">
             {user?.isSeller ? <h2>Dashboard</h2> : <h2>My orders</h2>}
             <nav>
                 {status.map(stat => stat === filterBy.status ?
-                    <b key={stat} className={stat} onClick={() => handleClick(stat)} style={{ color: 'black' }}>{stat.toUpperCase()} </b> :
-                    <span key={stat} className={stat} onClick={() => handleClick(stat)}>{stat.toUpperCase()}</span>
+                    <b key={stat} className={`status ${stat}`} onClick={() => handleClick(stat)} style={{ color: 'black' }}>{stat.toUpperCase()} </b> :
+                    <span key={stat} className={`status ${stat}`} onClick={() => handleClick(stat)}>{stat.toUpperCase()}</span>
                 )}
             </nav>
         </header>

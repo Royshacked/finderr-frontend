@@ -1,6 +1,6 @@
 .gig-order-preview {
     display: grid;
-    grid-template-columns: minmax(200px, 1fr) 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: minmax(200px, 2fr) 1fr 1.5fr 0.5fr 1fr 1fr;
     justify-content: start;
     align-items: center;
 
@@ -26,24 +26,27 @@
         }
     }
 
-    &>.order-btns {
-        justify-self: center;
+    & .order-btns {
         align-self: center;
-        display: flex;
-        opacity: 0;
-        justify-content: center;
-        align-items: center;
 
-        margin-inline-start: 1rem;
+        & .order-btns-buyer {
+            display: flex;
+            // flex-direction: column;
+            justify-content: start;
+            align-items: start;
 
+            gap: 0.5rem;
 
+            opacity: 0;
+        }
 
         & button {
             display: flex;
-            justify-content: start;
+            justify-content: center;
             align-items: center;
-            padding: 0.5rem;
 
+            padding: 0.5rem;
+            padding-inline-start: 0;
 
             font-size: 1rem;
             font-weight: bold;
@@ -54,8 +57,17 @@
             transition: 0.5s;
 
             &:hover:not(.no-actions) {
-                border-radius: 0.5rem;
-                background-color: rgb(238, 234, 234);
+                &.btn-approve {
+                    color: rgb(101, 180, 245);
+                }
+
+                &.btn-reject {
+                    color: rgb(247, 128, 128);
+                }
+
+                &.btn-deliver {
+                    color: #1dbf73;
+                }
             }
 
             &:hover.no-actions {
@@ -63,27 +75,7 @@
             }
         }
 
-        .btn-approve {
-            color: rgb(101, 180, 245);
-        }
 
-        .btn-reject {
-            color: rgb(247, 128, 128);
-        }
-
-        .btn-deliver {
-            padding-inline-start: 0;
-            color: #1dbf73;
-        }
-
-        &:hover {
-            opacity: 0;
-            ;
-
-            & .btn-approve {
-                display: inline;
-            }
-        }
     }
 
     & .order-buyer {
@@ -92,6 +84,10 @@
         align-items: center;
 
         gap: 0.5rem;
+
+        & b {
+            display: none;
+        }
 
         & img {
             width: 2rem;
@@ -103,11 +99,13 @@
 
     }
 
-    &:hover .order-btns {
+    &:hover .order-btns-buyer {
         opacity: 1;
     }
 
-
+    &>b {
+        display: none;
+    }
 
     .status {
         display: flex;
@@ -144,5 +142,111 @@
         font-size: 1rem;
         font-weight: bold;
         color: #808080;
+    }
+
+    @include for-medium-layout {
+        position: relative;
+        display: block;
+        height: max-content;
+
+        border: 1px solid lightgray;
+        padding-block-end: 3rem;
+
+
+        & .order-title {
+            display: flex;
+            flex-direction: column;
+            margin-block-end: 1rem;
+
+            & span {
+                white-space: normal;
+                overflow-x: visible;
+
+                font-size: 1rem;
+            }
+
+            & img {
+                min-height: 150px;
+                min-width: 200px;
+            }
+        }
+
+        .order-buyer {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+
+            margin-block-end: 0.5rem;
+
+            & b {
+                display: inline;
+            }
+
+            & img {
+                display: inline;
+            }
+
+            & i {
+                font-weight: bold;
+
+                color: #3d4402;
+            }
+        }
+
+        &>b {
+            display: inline-block;
+
+            margin-block-end: 1rem;
+        }
+
+        & .order-price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-block-end: 1rem;
+            padding: 0.5rem;
+
+            font-size: 1.5rem;
+            font-weight: bold;
+
+            color: #3d4402;
+        }
+
+        & .status {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1;
+
+            height: 2.5rem;
+        }
+
+        & .order-btns {
+            & .order-btns-buyer {
+                position: absolute;
+                bottom: 1rem;
+                left: 1rem;
+
+                opacity: 1;
+
+                & button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.5rem;
+
+                    height: 2.5rem;
+                }
+
+
+
+
+
+            }
+        }
+
+
+
     }
 }

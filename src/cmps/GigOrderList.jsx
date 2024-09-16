@@ -12,6 +12,7 @@ export function GigOrderList({ orders, filterBy }) {
             {user?.isSeller ? <span>Bought by</span> : <span>Bought from</span>}
             <span>Created at</span>
             <span>Price</span>
+            <span>Actions</span>
             <span>Status</span>
         </div>
         <ul className="">

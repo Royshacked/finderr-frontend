@@ -1,7 +1,7 @@
 .gig-orders {
     position: relative;
     padding-block-end: 3rem;
-    padding-inline: 1rem;
+    // padding-inline: 1rem;
 
     background-color: white;
 
@@ -9,6 +9,8 @@
     header {
         position: sticky;
         top: 0;
+        z-index: 2;
+
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -17,6 +19,7 @@
 
         margin-block-end: 1rem;
         padding-block: 1.5rem;
+        padding-inline: 1rem;
         border-block-end: 1px solid lightgray;
 
         background-color: white;
@@ -40,5 +43,25 @@
 
             cursor: pointer;
         }
+    }
+
+    @include for-medium-layout {
+        & header {
+            padding-inline: 0;
+
+            & h2 {
+                margin: auto;
+            }
+
+            & nav {
+                gap: 0.5rem;
+                margin: auto;
+
+                & .status {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
     }
 }

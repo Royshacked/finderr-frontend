@@ -33,13 +33,20 @@ export function GigOrderPreview({ order, filterBy }) {
         return word
     }
 
-
-
     return <article className="gig-order-preview">
         <div className="order-title">
             <img src={order.gig.imgUrl} alt="" />
-            <span>{shortGigName(20)}</span>
+            <span>{shortGigName(80)}</span>
         </div>
+
+        <div className="order-buyer">
+            {user?.isSeller ? <b>Bought from:</b> : <b>Sold by:</b>}
+            <img src={fromUser.imgUrl} alt="" />
+            <i>{capitalizeFirstLetter(fromUser.fullname)}</i></div>
+
+        <b>Created at: </b><span>{presentDate()}</span>
+        <span className="order-price">{order.gig.price}$</span>
+
         <div className="order-btns">
             {user?.isSeller && <div className="order-btns-buyer">
                 {order.status === 'pending' && <button onClick={() => onStatus('approved')} className="btn-approve">Approve</button>}
@@ -48,13 +55,6 @@ export function GigOrderPreview({ order, filterBy }) {
                 {(order.status === 'rejected' || order.status === 'completed') && <button className="no-actions">No actions</button>}
             </div>}
         </div>
-
-        <div className="order-buyer">
-            <img src={fromUser.imgUrl} alt="" />
-            <i>{capitalizeFirstLetter(fromUser.fullname)}</i></div>
-        <span>{presentDate()}</span>
-
-        <span>{order.gig.price}$</span>
         <span className={`status ${order.status}`}>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
     </article>
 }
