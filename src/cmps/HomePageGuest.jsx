@@ -21,7 +21,7 @@ export function HomePageGuest() {
                     <div className="search-bunner-container flex">
                         <h1>Find the right <span>freelance</span> <br />service, right away
                         </h1>
-                        <div className="stam">
+                        <div className="filter-co">
                             <GigFilter />
                         </div>
 
