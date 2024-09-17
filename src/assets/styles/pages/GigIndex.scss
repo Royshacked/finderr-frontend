@@ -1,10 +1,16 @@
 .gig-index {
+    min-height: calc(100vh - 200px);
+
+    margin-block-end: 2rem;
+
     .gig-index-category {
         display: flex;
         justify-content: start;
         align-items: center;
 
         gap: 0.5rem;
+
+
 
         padding-block-start: 2rem;
 
