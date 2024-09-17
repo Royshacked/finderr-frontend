@@ -15,6 +15,7 @@ function getStatus() {
 function getDefaultOrderFilter() {
     return {
         status: '',
+        isSeller: false,
     }
 }
 

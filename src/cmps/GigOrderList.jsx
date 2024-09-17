@@ -3,13 +3,14 @@ import { GigOrderPreview } from "./GigOrderPreview.jsx";
 
 
 
-export function GigOrderList({ orders, filterBy }) {
+export function GigOrderList({ orders, filterBy, isSeller }) {
     const user = useSelector(state => state.userModule.user)
 
+    if (!orders.length) return <h2>No orders</h2>
     return <section className="gig-order-list">
         <div className="order-grid">
             {<b>{filterBy.status ? filterBy.status.toUpperCase() : 'ALL ORDERS'}</b>}
-            {user?.isSeller ? <span>Bought by</span> : <span>Bought from</span>}
+            {isSeller ? <span>Bought by</span> : <span>Bought from</span>}
             <span>Created at</span>
             <span>Price</span>
             <span>Actions</span>
@@ -19,7 +20,7 @@ export function GigOrderList({ orders, filterBy }) {
 
             {orders.map(order =>
                 <li key={order._id}>
-                    <GigOrderPreview order={order} filterBy={filterBy} />
+                    <GigOrderPreview order={order} filterBy={filterBy} isSeller={isSeller} />
                 </li>
             )}
         </ul>

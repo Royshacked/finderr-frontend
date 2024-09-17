@@ -5,13 +5,13 @@ import { OrderBuyer } from "./OrderBuyer.jsx";
 
 import { GigOrderList } from "../cmps/GigOrderList.jsx";
 
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 
-export function GigOrderIndex() {
+export function GigOrderIndex({ isSeller }) {
     const user = useSelector(state => state.userModule.user)
     const orders = useSelector(state => state.orderModule.orders)
     const filterBy = useSelector(state => state.orderModule.filterBy)
@@ -21,6 +21,10 @@ export function GigOrderIndex() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, isSeller } })
+    }, [isSeller])
+
+    useEffect(() => {
         loadGigOrders()
         setSearchParams(filterBy)
     }, [filterBy])
@@ -28,6 +32,7 @@ export function GigOrderIndex() {
     async function loadGigOrders() {
         try {
             await loadOrders(filterBy)
+            // await loadOrders({ ...filterBy, isSeller })
         } catch (error) {
             console.log(error)
         }
@@ -38,8 +43,8 @@ export function GigOrderIndex() {
     }
 
     return <section className="gig-orders main-layout">
-        <header className="full">
-            {user?.isSeller ? <h2>Dashboard</h2> : <h2>My orders</h2>}
+        <header className="">
+            {isSeller ? <h2>Dashboard</h2> : <h2>My orders</h2>}
             <nav>
                 {status.map(stat => stat === filterBy.status ?
                     <b key={stat} className={`status ${stat}`} onClick={() => handleClick(stat)} style={{ color: 'black' }}>{stat.toUpperCase()} </b> :
@@ -48,6 +53,6 @@ export function GigOrderIndex() {
             </nav>
         </header>
 
-        <GigOrderList orders={orders} filterBy={filterBy} />
+        <GigOrderList orders={orders} filterBy={filterBy} isSeller={isSeller} />
     </section>
 }

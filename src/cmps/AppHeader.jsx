@@ -71,9 +71,11 @@ export function AppHeader() {
 					</div>
 					<div className="side-bar-menu">
 						<Link to="/" className="sidebar-item">Home</Link>
-						{user?.isSeller && <Link to="/order" className="sidebar-item">Dashboard</Link>}
-						{user?.isSeller === false && <Link to="/order" className="sidebar-item">My orders</Link>}
-						{!user && <a className="sidebar-item" href="" onClick={(ev) => openModal(ev, false)}>Login</a>}
+
+						{user?.isSeller && <Link to="/dashboard" className="sidebar-item">Dashboard</Link>}
+						{user && <Link to="/order" className="sidebar-item">My orders</Link>}
+
+						{!user && <a className="sidebar-item" href="" onClick={(ev) => openModal(ev, false)}>Sign in</a>}
 						{user && <a className="sidebar-item" href="" onClick={onHandleLogout}>Logout</a>}
 					</div>
 				</div>
@@ -114,8 +116,8 @@ export function AppHeader() {
 					</button> */}
 
 						{/* <a href="/start_selling?source=top_nav" rel="nofollow">Become a Seller</a> */}
-						{user?.isSeller && <Link to="/order">Dashboard</Link>}
-						{user?.isSeller === false && <Link to="/order">My orders</Link>}
+						{user?.isSeller && <Link to="/dashboard">Dashboard</Link>}
+						{user && <Link to="/order">My orders</Link>}
 						{!user && <button onClick={(ev) => openModal(ev, false)}>Sign in</button>}
 						{!user && <button className="link-join" onClick={(ev) => openModal(ev, true)}>Join</button>}
 						{/* {!user && <a rel="nofollow" href="/login?source=top_nav">Sign in</a>}

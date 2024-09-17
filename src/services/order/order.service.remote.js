@@ -50,6 +50,7 @@ async function addOrderMsg(orderId, txt) {
 function getDefaultOrderFilter() {
     return {
         status: 'all',
+        isSeller: false,
     }
 }
 

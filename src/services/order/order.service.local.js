@@ -91,6 +91,7 @@ async function save(order) {
 function getDefaultOrderFilter() {
     return {
         status: '',
+        isSeller: false,
     }
 }
 

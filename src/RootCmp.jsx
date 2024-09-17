@@ -33,7 +33,8 @@ export function RootCmp() {
                             <Route path="/review/:gigId/:reviewId" element={<ReviewEdit />} />
 
                             {/* <Route path="/order" element={<GigOrderIndex />} /> */}
-                            <Route path="/order" element={<GigOrderIndex />} />
+                            <Route path="/order" element={<GigOrderIndex isSeller={false} />} />
+                            <Route path="/dashboard" element={<GigOrderIndex isSeller={true} />} />
                             <Route path="/gig/:gigId" element={<GigDetails />} />
                             <Route path="/login" element={<LoginSignup isLogin={true} />} />
                             <Route path="/signup" element={<LoginSignup isLogin={false} />} />
