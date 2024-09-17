@@ -1,6 +1,6 @@
 import { GigFilter } from './GigFilter.jsx'
 
-import { DemoCarousel } from "../cmps/Carusela"
+import { HomePageCategories } from "./HomePageCategories.jsx"
 import { MadeOnFiver } from "./MadeOnFiver"
 
 import Meta from '../assets/svg/homepage/meta.svg?react'
@@ -38,7 +38,7 @@ export function HomePageGuest() {
 
                 </div>
             </div>
-            <DemoCarousel />
+            <HomePageCategories />
 
             <div className="popular-services">
                 <PopularServices />

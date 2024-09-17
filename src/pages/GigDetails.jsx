@@ -111,40 +111,40 @@ export function GigDetails() {
           <h3>Compare packages</h3>
           <table>
             <tbody>
-              <tr class="package-type">
-                <th class="package-row-label">Package</th>
-                <th class="package-type-price" >
-                  <div class="price-wrapper">
-                    <p class="price">{gig.price}$</p>
+              <tr className="package-type">
+                <th className="package-row-label">Package</th>
+                <th className="package-type-price" >
+                  <div className="price-wrapper">
+                    <p className="price">{gig.price}$</p>
                   </div>
-                  <b class="type">Basic</b>
-                  <b class="title">{gig.tags}</b>
+                  <b className="type">Basic</b>
+                  <b className="title">{gig.tags}</b>
                 </th>
-                <th class="package-type-price">
-                  <div class="price-wrapper">
-                    <p class="price">{gig.price * 1.5}$</p>
+                <th className="package-type-price">
+                  <div className="price-wrapper">
+                    <p className="price">{gig.price * 1.5}$</p>
                   </div>
-                  <b class="type">Standard</b>
-                  <b class="title">{gig.tags}</b>
+                  <b className="type">Standard</b>
+                  <b className="title">{gig.tags}</b>
                 </th>
-                <th class="package-type-price">
-                  <div class="price-wrapper">
-                    <p class="price">{gig.price * 2}$</p>
+                <th className="package-type-price">
+                  <div className="price-wrapper">
+                    <p className="price">{gig.price * 2}$</p>
                   </div>
-                  <b class="type">Premium</b>
-                  <b class="title">{gig.tags}</b>
+                  <b className="type">Premium</b>
+                  <b className="title">{gig.tags}</b>
                 </th>
               </tr>
-              <tr class="description">
-                <td class="package-row-label"></td>
+              <tr className="description">
+                <td className="package-row-label"></td>
                 <td>One small {gig.tags} issue with WordPress</td>
                 <td>Normal {gig.tags} or JS issue with WordPress upto 30 minute fix</td>
                 <td>Complex {gig.tags} or JS Issue with WordPress upto 1 hour fix</td>
               </tr>
               <tr>
-                <td class="package-row-label">
-                  <div class="">
-                    <span class="">Revisions</span>
+                <td className="package-row-label">
+                  <div className="">
+                    <span className="">Revisions</span>
                   </div>
                 </td>
                 <td>Unlimited</td>
@@ -152,32 +152,32 @@ export function GigDetails() {
                 <td>Unlimited</td>
               </tr>
 
-              <tr class="delivery-time">
-                <td class="package-row-label">Delivery Time</td>
+              <tr className="delivery-time">
+                <td className="package-row-label">Delivery Time</td>
                 <td>3 days</td>
                 <td>2 days</td>
                 <td>1 day</td>
               </tr>
 
-              <tr class="select-package">
-                <td class="package-row-label">Total</td>
+              <tr className="select-package">
+                <td className="package-row-label">Total</td>
                 <td>
-                  <div class="price-wrapper">
-                    <p class="tbody-5">{gig.price}$</p>
+                  <div className="price-wrapper">
+                    <p className="tbody-5">{gig.price}$</p>
                   </div>
-                  <button class="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
+                  <button className="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
                 </td>
                 <td>
-                  <div class="price-wrapper">
-                    <p class="tbody-5">{gig.price * 1.5}$</p>
+                  <div className="price-wrapper">
+                    <p className="tbody-5">{gig.price * 1.5}$</p>
                   </div>
-                  <button class="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
+                  <button className="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
                 </td>
                 <td>
-                  <div class="price-wrapper">
-                    <p class="tbody-5">{gig.price * 2}$</p>
+                  <div className="price-wrapper">
+                    <p className="tbody-5">{gig.price * 2}$</p>
                   </div>
-                  <button class="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
+                  <button className="co-white btn-select-package bg-co-black" onClick={(ev) => createOrder(ev)}>Select</button>
                 </td>
               </tr>
             </tbody>

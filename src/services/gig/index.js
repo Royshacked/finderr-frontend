@@ -6,7 +6,7 @@ import { getRandomIntInclusive, makeId, makeLorem } from '../util.service'
 import { gigService as local } from './gig.service.local'
 import { gigService as remote } from './gig.service.remote'
 
-const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital marketing', 'consulting']
+const categories = ['logo-design', 'wordpress', 'voice-over', 'artisitic', 'proffesional', 'accessible', 'programming', 'digital-marketing', 'consulting']
 
 function getCategories() {
     return categories

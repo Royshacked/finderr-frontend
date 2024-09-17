@@ -1,19 +1,16 @@
 import { orderService } from "../services/order/index.js";
 import { loadOrders, removeOrder } from "../store/actions/order.actions.js";
-import { OrderSeller } from "./OrdersSeller.jsx";
-import { OrderBuyer } from "./OrderBuyer.jsx";
 
 import { GigOrderList } from "../cmps/GigOrderList.jsx";
 
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
 
 export function GigOrderIndex({ isSeller }) {
-    const user = useSelector(state => state.userModule.user)
     const orders = useSelector(state => state.orderModule.orders)
     const filterBy = useSelector(state => state.orderModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
