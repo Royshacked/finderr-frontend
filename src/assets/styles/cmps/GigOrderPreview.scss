@@ -1,6 +1,6 @@
 .gig-order-preview {
     display: grid;
-    grid-template-columns: minmax(200px, 2fr) 1fr 1fr 0.5fr 1fr 1fr;
+    grid-template-columns: minmax(200px, 2fr) 1fr 1fr 1fr 1fr 1fr;
     justify-content: start;
     align-items: center;
 
@@ -68,6 +68,10 @@
                 &.btn-deliver {
                     color: #1dbf73;
                 }
+
+                &.btn-cancel {
+                    color: rgb(247, 128, 128);
+                }
             }
 
             &:hover.no-actions {
@@ -91,6 +95,7 @@
 
         & img {
             width: 2rem;
+            border-radius: 50%;
         }
 
         & i {

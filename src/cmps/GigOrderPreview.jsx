@@ -1,7 +1,7 @@
 import { updateOrder } from "../store/actions/order.actions"
 import { useSelector } from "react-redux"
 
-export function GigOrderPreview({ order, filterBy, isSeller }) {
+export function GigOrderPreview({ order, filterBy, isSeller, onRemoveOrder }) {
     const user = useSelector(state => state.userModule.user)
     const fromUser = user?.isSeller ? order.buyer : order.seller
     async function onStatus(status) {
@@ -32,7 +32,7 @@ export function GigOrderPreview({ order, filterBy, isSeller }) {
 
         return word
     }
-    console.log(isSeller)
+
     return <article className="gig-order-preview">
         <div className="order-title">
             <img src={order.gig.imgUrl} alt="" />
@@ -53,6 +53,11 @@ export function GigOrderPreview({ order, filterBy, isSeller }) {
                 {order.status === 'pending' && <button onClick={() => onStatus('rejected')} className="btn-reject">Reject</button>}
                 {order.status === 'approved' && <button onClick={() => onStatus('completed')} className="btn-deliver">Deliver</button>}
                 {(order.status === 'rejected' || order.status === 'completed') && <button className="no-actions">No actions</button>}
+            </div>}
+
+            {!isSeller && <div className="order-btns-buyer">
+                {order.status !== 'approved' && <button onClick={() => onRemoveOrder(order._id)} className="btn-cancel">Cancel</button>}
+                {(order.status === 'approved' || order.status === 'completed') && <button className="no-actions">No actions</button>}
             </div>}
         </div>
         <span className={`status ${order.status}`}>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>

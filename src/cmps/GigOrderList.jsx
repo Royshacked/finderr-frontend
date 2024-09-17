@@ -3,7 +3,7 @@ import { GigOrderPreview } from "./GigOrderPreview.jsx";
 
 
 
-export function GigOrderList({ orders, filterBy, isSeller }) {
+export function GigOrderList({ orders, filterBy, isSeller, onRemoveOrder }) {
     const user = useSelector(state => state.userModule.user)
 
     if (!orders.length) return <h2>No orders</h2>
@@ -20,7 +20,7 @@ export function GigOrderList({ orders, filterBy, isSeller }) {
 
             {orders.map(order =>
                 <li key={order._id}>
-                    <GigOrderPreview order={order} filterBy={filterBy} isSeller={isSeller} />
+                    <GigOrderPreview order={order} filterBy={filterBy} isSeller={isSeller} onRemoveOrder={onRemoveOrder} />
                 </li>
             )}
         </ul>

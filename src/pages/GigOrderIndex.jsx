@@ -1,5 +1,5 @@
 import { orderService } from "../services/order/index.js";
-import { loadOrders } from "../store/actions/order.actions.js";
+import { loadOrders, removeOrder } from "../store/actions/order.actions.js";
 import { OrderSeller } from "./OrdersSeller.jsx";
 import { OrderBuyer } from "./OrderBuyer.jsx";
 
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
 
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
 
 export function GigOrderIndex({ isSeller }) {
     const user = useSelector(state => state.userModule.user)
@@ -32,7 +33,6 @@ export function GigOrderIndex({ isSeller }) {
     async function loadGigOrders() {
         try {
             await loadOrders(filterBy)
-            // await loadOrders({ ...filterBy, isSeller })
         } catch (error) {
             console.log(error)
         }
@@ -40,6 +40,16 @@ export function GigOrderIndex({ isSeller }) {
 
     function handleClick(status) {
         dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status } })
+    }
+
+    async function onRemoveOrder(orderId) {
+        try {
+            await removeOrder(orderId)
+            showSuccessMsg('Order removed')
+        } catch (error) {
+            console.log(error)
+            showErrorMsg('Could\'nt remove order')
+        }
     }
 
     return <section className="gig-orders main-layout">
@@ -53,6 +63,6 @@ export function GigOrderIndex({ isSeller }) {
             </nav>
         </header>
 
-        <GigOrderList orders={orders} filterBy={filterBy} isSeller={isSeller} />
+        <GigOrderList orders={orders} filterBy={filterBy} isSeller={isSeller} onRemoveOrder={onRemoveOrder} />
     </section>
 }
