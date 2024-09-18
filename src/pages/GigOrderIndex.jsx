@@ -19,7 +19,11 @@ export function GigOrderIndex({ isSeller }) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, isSeller } })
+        dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status: 'all' } })
+    }, [])
+
+    useEffect(() => {
+        dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status: 'all', isSeller } })
     }, [isSeller])
 
     useEffect(() => {
