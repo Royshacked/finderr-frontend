@@ -60,14 +60,13 @@ export function GigListFilter() {
     function onClearFilter({ target }) {
         const { name } = target
         const cleanFilter = gigService.getDefaultFilter()[name]
+        console.log(cleanFilter)
         const newFilter = { ...filterByToEdit, [name]: cleanFilter }
 
         setFilterByToEdit({ ...newFilter })
         dispatch({ type: SET_FILTER_BY, filterBy: { ...newFilter } })
         setCmpType('')
     }
-
-    // var proBtnClass = isPro ? 'pro-btn-on' : ''
 
     return <>
         {cmpType && <div className="back-drop" onClick={() => setCmpType('')}></div>}
