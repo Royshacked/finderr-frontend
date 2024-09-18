@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: minmax(auto, 0.5fr) 1fr;
 
+    margin-block-end: 2rem;
     padding: 64px 32px 0;
 
     @include for-medium-layout {

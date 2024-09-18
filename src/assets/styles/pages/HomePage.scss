@@ -378,6 +378,8 @@ $clr3: #fff;
 }
 
 .hompage-video {
+    margin-block-end: 2rem;
+
     & h2 {
         margin-block-end: 2rem;
         font-size: 2.5rem;
@@ -387,9 +389,7 @@ $clr3: #fff;
         @include for-mobile-layout {
             font-size: 2rem;
         }
-
     }
-
 
     video {
         display: flex;
