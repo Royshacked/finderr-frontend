@@ -20,11 +20,12 @@ export function AppFooter() {
 				</div>
 				<div className="app-footer__bottom">
 					<div className="app-footer__brand">
-						<span className="app-footer__brand--name">finderr</span>
-						<span className="app-footer__brand--dot">.</span>
+						<span className="app-footer__brand--name">finderr<span className="app-footer__brand--dot">.</span></span>
+
+						<p>© 2024 Finderr. All rights reserved.</p>
 					</div>
 
-					<p>© 2024 Finderr. All rights reserved.</p>
+					{/* <p>© 2024 Finderr. All rights reserved.</p> */}
 					<div className="app-footer__socials">
 						<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
 							<InstagramLogo />

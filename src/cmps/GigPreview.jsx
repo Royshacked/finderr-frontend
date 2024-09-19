@@ -20,7 +20,7 @@ export function GigPreview({ gig }) {
         <div className="gig-owner">
             <div className="gig-owner-name">
                 <img src={gig.owner.imgUrl} alt="" />
-                <span>Ad By <b>{gig.owner.fullname}</b></span>
+                <span>Ad By <b>{gig.owner.fullname.charAt(0).toUpperCase() + gig.owner.fullname.slice(1)}</b></span>
             </div>
             {gig.owner.rate > 0 && gig.owner.rate < 3 && <div className="gig-owner-rate">
                 <b>Level</b> {gig.owner.rate}

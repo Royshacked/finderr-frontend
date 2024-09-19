@@ -4,6 +4,7 @@
 
     gap: 2rem;
 
+    min-height: calc(100vh - 80px - 72px - 38px - 80px - 220px);
     margin: auto;
 
     @include for-mobile-layout {

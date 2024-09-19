@@ -24,6 +24,10 @@
 
 
             &>.header-logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
                 .logo {
                     @include for-medium-layout {
                         // position: absolute;

@@ -93,6 +93,8 @@ h2 {
     grid-template-columns: 1fr 1fr;
     background-color: white;
     border-radius: 14px;
+
+    height: 645px;
     width: 875px;
 
     position: absolute;
@@ -100,9 +102,19 @@ h2 {
 
     font: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
 
-    .banner {
+    @include for-mobile-layout {
+        grid-template-columns: 1fr;
+        width: 300px;
+        top: 100px;
+        left: 50px;
+    }
 
+    .banner {
         max-width: 437px;
+
+        @include for-mobile-layout {
+            display: none;
+        }
     }
 
     img {
@@ -118,6 +130,8 @@ h2 {
         li {
             line-height: 42px;
         }
+
+
     }
 
     .text-box * {

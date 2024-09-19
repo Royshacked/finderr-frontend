@@ -86,7 +86,7 @@ export function GigDetails() {
           <img src={gig.owner.imgUrl} alt="" />
 
           <div >
-            <span><b>{gig.owner.fullname}</b></span>
+            <span><b>{gig.owner.fullname.charAt(0).toUpperCase() + gig.owner.fullname.slice(1)} </b></span>
             {gig.owner.level === 'pro' && <span>{gig.owner.level}</span>}
 
             <div className="flex">

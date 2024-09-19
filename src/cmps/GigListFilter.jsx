@@ -60,7 +60,7 @@ export function GigListFilter() {
     function onClearFilter({ target }) {
         const { name } = target
         const cleanFilter = gigService.getDefaultFilter()[name]
-        console.log(cleanFilter)
+
         const newFilter = { ...filterByToEdit, [name]: cleanFilter }
 
         setFilterByToEdit({ ...newFilter })

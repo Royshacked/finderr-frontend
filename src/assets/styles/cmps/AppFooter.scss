@@ -2,8 +2,9 @@
   // position: fixed;
   // bottom: 0;
   // width: 100vw;
+  max-height: 50px;
   background-color: #ffffff;
-  border-block-start: 1px solid lightgray;
+  // border-block-start: 1px solid lightgray;
 
   .app-footer {
 
@@ -19,16 +20,26 @@
       align-items: baseline;
 
       &--name {
-        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
         font-weight: bold;
+        letter-spacing: 0px;
         color: #8b8b8b;
       }
 
       &--dot {
-        font-size: 24px;
+        font-size: 2rem;
         font-weight: bold;
         color: #1dbf73;
-        margin-left: 4px;
+        margin-right: 4px;
+      }
+
+      @include for-mobile-layout {
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
       }
     }
 
@@ -74,8 +85,14 @@
 
     &__socials {
       display: flex;
+      justify-content: center;
+      align-items: center;
 
       .social-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         margin-right: 20px;
         color: #fff;
         text-decoration: none;

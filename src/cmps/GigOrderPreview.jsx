@@ -44,7 +44,7 @@ export function GigOrderPreview({ order, filterBy, isSeller, onRemoveOrder }) {
             <img src={fromUser.imgUrl} alt="" />
             <i>{capitalizeFirstLetter(fromUser.fullname)}</i></div>
 
-        <b>Created at: </b><span>{presentDate()}</span>
+        <b>Created at:</b><span> {presentDate()}</span>
         <span className="order-price">{order.gig.price}$</span>
 
         <div className="order-btns">

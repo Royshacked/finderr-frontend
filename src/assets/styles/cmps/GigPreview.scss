@@ -34,7 +34,11 @@
         .gig-owner-name {
             display: flex;
 
-            img {
+            & span {
+                margin-inline-start: 0.5rem;
+            }
+
+            & img {
                 width: 24px;
                 height: 24px;
 

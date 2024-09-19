@@ -26,39 +26,6 @@ export function PlansDescription({ planType, gig, createOrder }) {
         setUserPlan(planType.planType)
     }, [userPlan])
 
-    // async function createOrder(ev) {
-    //     ev.preventDefault()
-    //     if (!user) return showErrorMsg('Please signup')
-
-    //     const order = {
-    //         buyer: {
-    //             id: user._id,
-    //             fullname: user.fullname
-    //         },
-    //         seller: {
-    //             id: gig.owner._id,
-    //             fullname: gig.owner.fullname
-    //         },
-    //         gig: {              // mini-gig
-    //             _id: gig._id,
-    //             name: gig.title,
-    //             imgUrl: gig.imgUrls[0],
-    //             price: gig.price
-    //         },
-    //         createdAt: new Date(Date.now()).toDateString(),
-    //         status: 'pending',
-    //         price: priceKombo.price
-    //     }
-
-    //     try {
-    //         await addOrder(order)
-    //         showSuccessMsg('Your order accepted')
-    //     } catch (error) {
-    //         showErrorMsg('Could\'nt complete purchase')
-    //         console.log(error)
-    //     }
-    // }
-
     function setUserChoise(userPlan, price) {
         switch (userPlan) {
             case 'entry':
