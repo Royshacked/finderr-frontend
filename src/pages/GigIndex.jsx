@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { GigList } from "../cmps/GigList.jsx";
 import { GigListFilter } from "../cmps/GigListFilter.jsx";
 import { GigCategoriesBar } from "../cmps/GigCategoriesBar.jsx";
@@ -6,23 +6,12 @@ import { loadGigs } from "../store/actions/gig.actions.js";
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { GigListSort } from "../cmps/GigListSort.jsx";
-import { gigService } from "../services/gig/index.js";
-import { SET_FILTER_BY } from "../store/reducers/gig.reducer.js";
 
 export function GigIndex() {
     const gigs = useSelector(state => state.gigModule.gigs)
 
     const filterBy = useSelector(state => state.gigModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
-
-    const dispatch = useDispatch()
-
-    // useEffect(() => {
-
-    //     return () => {
-    //         dispatch({ type: SET_FILTER_BY, filterBy: gigService.getDefaultFilter() })
-    //     }
-    // }, [])
 
     useEffect(() => {
         getGigs()
@@ -36,7 +25,7 @@ export function GigIndex() {
             console.log(error)
         }
     }
-    console.log(filterBy)
+
     return (
         <section className="gig-index main-layout">
             <GigCategoriesBar />
