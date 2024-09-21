@@ -1,7 +1,7 @@
 import { gigService } from "../services/gig/index.js"
 
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router"
 
 import { SET_FILTER_BY } from "../store/reducers/gig.reducer"

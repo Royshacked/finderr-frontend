@@ -18,7 +18,9 @@ export function GigCategoriesBar() {
     const navigate = useNavigate()
 
     function onHandleCategory(category) {
-        dispatch({ type: SET_FILTER_BY, filterBy: { ...filterBy, category } })
+        const cleanFilter = gigService.getDefaultFilter()
+        dispatch({ type: SET_FILTER_BY, filterBy: { ...cleanFilter, category } })
+        dispatch({ type: SET_FILTER_BY, filterBy: { ...cleanFilter, category } })
         navigate('/gig')
     }
 
