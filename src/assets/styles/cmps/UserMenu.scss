@@ -1,22 +1,23 @@
 .user-menu {
-    position: absolute;
-    z-index: 2;
-    top: 75px;
-    right: 5%;
+    position: fixed;
+    z-index: 300;
+    top: 100px;
+    right: 0;
 
-    width: 260px;
+    width: 200px;
     height: min-content;
 
-    border: 1px solid lightgray;
     border-radius: 0.25rem;
+    box-shadow: 0 0 6px 0 lightgray;
 
     background-color: white;
+    transition: 1s;
 
     nav {
         display: flex;
         flex-direction: column;
 
-        padding: 1rem;
+        padding: 0.5rem 1rem;
 
         & a {
             padding-block: 0.5rem;

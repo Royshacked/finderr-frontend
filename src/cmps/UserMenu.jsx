@@ -1,14 +1,7 @@
-import { logout } from "../store/actions/user.actions"
-
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { Link } from "react-router-dom"
 
 export function UserMenu({ isOpen, onHandleLogout }) {
-    const [isMenuOpen, setIsMenuOpen] = useState(isOpen)
-    const navigate = useNavigate()
-
-    if (!isMenuOpen) return
+    if (!isOpen) return
 
     return <section className="user-menu">
         <nav>
