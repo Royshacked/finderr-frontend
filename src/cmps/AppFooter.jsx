@@ -21,7 +21,7 @@ export function AppFooter() {
 				<div className="app-footer__bottom">
 					<div className="brand">
 						{/* <span className="app-footer__brand--name">finderr<span className="app-footer__brand--dot">.</span></span> */}
-						<span className="logo" onClick={() => navigate('/')}>finderr<span className="dot"></span></span>
+						<span className="logo">finderr<span className="dot"></span></span>
 						<small>© 2024 Finderr. All rights reserved.</small>
 					</div>
 
