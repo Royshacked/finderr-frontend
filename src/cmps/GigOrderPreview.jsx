@@ -56,8 +56,8 @@ export function GigOrderPreview({ order, filterBy, isSeller, onRemoveOrder }) {
             </div>}
 
             {!isSeller && <div className="order-btns-buyer">
-                {order.status !== 'approved' && <button onClick={() => onRemoveOrder(order._id)} className="btn-cancel">Cancel</button>}
-                {(order.status === 'approved' || order.status === 'completed') && <button className="no-actions">No actions</button>}
+                {order.status === 'pending' && <button onClick={() => onRemoveOrder(order._id)} className="btn-cancel">Cancel</button>}
+                {order.status !== 'pending' && <button className="no-actions">No actions</button>}
             </div>}
         </div>
         <span className={`status ${order.status}`}>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
