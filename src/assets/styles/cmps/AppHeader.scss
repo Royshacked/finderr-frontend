@@ -28,6 +28,38 @@
                 justify-content: center;
                 align-items: center;
 
+                width: max-content;
+                // height: 1.5rem;
+
+
+                & .logo {
+                    position: relative;
+
+                    margin-inline-end: 1rem;
+
+                    font-family: macan;
+                    font-size: 2rem;
+                    letter-spacing: none;
+                    font-weight: bold;
+
+                    cursor: pointer;
+
+                    & .dot {
+                        position: absolute;
+                        bottom: 15px;
+                        right: -5px;
+
+                        width: 0.5rem;
+                        height: 0.5rem;
+
+                        border: 0;
+                        border-radius: 50%;
+
+                        background-color: green;
+                    }
+
+                }
+
                 .logo {
                     @include for-medium-layout {
                         // position: absolute;
