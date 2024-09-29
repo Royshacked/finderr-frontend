@@ -2,17 +2,11 @@
 import { useState, useEffect } from 'react'
 
 import ToolTipp from '../src/assets/svg/details/tooltip-price.svg?react'
-//import Share from '../assets/svg/details/share.svg?react'
 import QMark from '../src/assets/svg/details/question-mark.svg?react'
 import Time from '../src/assets/svg/details/time.svg?react'
 import Revisions from '../src/assets/svg/details/revision.svg?react'
-import V from '../src/assets/svg/details/v.svg?react'
 import { Tooltip } from 'react-tooltip'
 import ContinueArrow from '../src/assets/svg/details/continue-arrow.svg?react'
-//import {ff} from '../src/assets/svg/details/tooltip-price.svg'
-import { addOrder } from '../../store/actions/order.actions'
-import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
 
 
@@ -20,7 +14,6 @@ export function PlansDescription({ planType, gig, createOrder }) {
     var priceKombo = setUserChoise(planType, gig.price)
 
     const [userPlan, setUserPlan] = useState(null)
-    const [userPrice, setGigPrice] = useState(null)
 
     useEffect(() => {
         setUserPlan(planType.planType)
@@ -91,29 +84,6 @@ export function PlansDescription({ planType, gig, createOrder }) {
                                 <b className='a14'>{priceKombo.revisions} revisions</b>
                             </span>
                         </div>
-                        {/* <ul className='detailes-plan'>
-                            <li className='flex a16'>
-                                <span className="vsvg-container"><V /></span>
-                                <span>abra abra cadabarar</span>
-                            </li>
-                            <li className='flex a16'>
-                                <span className="vsvg-container"><V /></span>
-                                <span>abra abra cadabarar</span>
-                            </li>
-                            <li className='flex a16'>
-                                <span className="vsvg-container"><V /></span>
-                                <span>abra abra cadabarar</span>
-                            </li>
-                            <li className='flex a16'>
-                                <span className="vsvg-container"><V /></span>
-                                <span>abra abra cadabarar</span>
-                            </li>
-                            <li className='flex a16'>
-                                <span className="vsvg-container"><V /></span>
-                                <span>abra abra cadabarar</span>
-                            </li>
-
-                        </ul> */}
                     </div>
                 </header>
                 <footer className='flex footer-plan'>
@@ -125,16 +95,7 @@ export function PlansDescription({ planType, gig, createOrder }) {
                 </footer>
 
             </div>
-
-            {/* <footer className="app-footer full">
-                <p>Coffeerights &copy; 2024</p>
-
-                {import.meta.env.VITE_LOCAL ?
-                    <span className="local-services">Local Services</span> :
-                    <span className="remote-services">Remote Services</span>}
-            </footer> */}
         </div>
-
     </>
     )
 }

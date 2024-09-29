@@ -27,10 +27,6 @@ export function AppHeader() {
 
 	const navigate = useNavigate()
 
-	function onToggleProMenu() {
-		setIsShowProMenu(!isShowProMenu)
-	}
-
 	function onToggleUserMenu() {
 		setIsPopUserMenu(!isPopUserMenu)
 	}

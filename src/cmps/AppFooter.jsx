@@ -8,19 +8,8 @@ export function AppFooter() {
 	return (
 		<section className='footer main-layout full'>
 			<footer className="app-footer">
-				{/* <div className="app-footer__top"> */}
-				{/* *{ *<nav className="app-footer__nav">
-			  <ul>
-				<li><a href="/about-us">About Us</a></li>
-				<li><a href="/services">Services</a></li>
-				<li><a href="/contact">Contact</a></li>
-				<li><a href="/faq">FAQ</a></li>
-			  </ul>
-			</nav> */}
-				{/* </div> */}
 				<div className="app-footer__bottom">
 					<div className="brand">
-						{/* <span className="app-footer__brand--name">finderr<span className="app-footer__brand--dot">.</span></span> */}
 						<span className="logo">finderr<span className="dot"></span></span>
 						<small>© 2024 Finderr. All rights reserved.</small>
 					</div>
