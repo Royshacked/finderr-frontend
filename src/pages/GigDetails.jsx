@@ -1,27 +1,21 @@
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { SimpleSlider } from "../cmps/Carusela copy"
 
-import { ReviewDetailes } from "../cmps/details/Reviews.jsx"
-import { useNavigate } from "react-router-dom"
-
-
-import StarFull from '../assets/svg/details/star-full.svg?react'
-import StarEmpty from '../assets/svg/details/star-empty.svg?react'
-import Heart from '../assets/svg/details/heart.svg?react'
-import Share from '../assets/svg/details/share.svg?react'
-import { PlansDescription } from "../cmps/details/PlansDescription"
-import { UserDetailsRevies } from "../cmps/details/UserDetails&Revies"
 import { loadGig } from "../store/actions/gig.actions.js"
 import { useSelector } from "react-redux"
 import { GigPreviewCarousel } from "../cmps/GigPreviewCarousel.jsx"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { addOrder } from "../store/actions/order.actions.js"
 
+import StarFull from '../assets/svg/details/star-full.svg?react'
+import StarEmpty from '../assets/svg/details/star-empty.svg?react'
+
+
 export function GigDetails() {
   const user = useSelector(state => state.userModule.user)
   const gig = useSelector(state => state.gigModule.gig)
-  const [userPlan, setUserPlan] = useState('entry')
+  const [userPlan, setUserPlan] = useState('basic')
+  const [userPlanPrice, setUserPlanPrice] = useState(0)
   const { gigId } = useParams()
 
   useEffect(() => {
@@ -31,14 +25,16 @@ export function GigDetails() {
 
   async function setGig() {
     try {
-      await loadGig(gigId)
+      const loadedGig = await loadGig(gigId)
+      setUserPlanPrice(loadedGig.price)
     } catch (error) {
       console.log(error)
     }
   }
 
-  function setPlan(plan) {
+  function setPlan(plan, price) {
     setUserPlan(plan)
+    setUserPlanPrice(price)
   }
 
   async function createOrder(ev) {
@@ -60,7 +56,7 @@ export function GigDetails() {
         _id: gig._id,
         name: gig.title,
         imgUrl: gig.imgUrls[0],
-        price: gig.price
+        price: userPlanPrice
       },
       createdAt: Date.now(),
       status: 'pending',
@@ -187,120 +183,38 @@ export function GigDetails() {
       </div>
 
       <div className="side-bar-container">
-        <div className="side-bar">
-          <div className="side-bar-btns flex">
-            <div className={userPlan === 'entry' ? 'entry active' : 'entry'} onClick={() => setPlan('entry')} >Basic</div>
-            <div className={userPlan === 'commun' ? 'commun active' : 'commun'} onClick={() => setPlan('commun')} >Standard</div>
-            <div className={userPlan === 'premium' ? 'premium active' : 'premium'} onClick={() => setPlan('premium')}>Premium</div>
-          </div>
-
-          {gig.price && <PlansDescription planType={userPlan} gig={gig} createOrder={createOrder} />}
-
-          <div className="side-bar-contact flex">
-            <div className='contact-container-inner flex'>
-              <button>contact me</button>
-            </div>
-          </div>
-
+        <div className="side-bar-btns flex">
+          <div className={userPlan === 'basic' ? 'basic active' : 'basic'} onClick={() => setPlan('basic', gig.price)} >Basic</div>
+          <div className={userPlan === 'standard' ? 'standard active' : 'standard'} onClick={() => setPlan('standard', gig.price * 1.5)} >Standard</div>
+          <div className={userPlan === 'premium' ? 'premium active' : 'premium'} onClick={() => setPlan('premium', gig.price * 2)}>Premium</div>
         </div>
-      </div>
 
+        <div className="side-bar-title">
+          <span>{userPlan}</span>
+          <span>{userPlanPrice}$</span>
+        </div>
+
+        <div className="side-bar-details">
+          <span className="title">The {userPlan} plan in {gig.tags}</span>
+          <span className="plan">
+            <svg width="11" height="9" viewBox="0 0 11 9" xmlns="http://www.w3.org/2000/svg"><path d="M3.64489 8.10164L0.158292 4.61504C-0.0511769 4.40557 -0.0511769 4.06594 0.158292 3.85645L0.916858 3.09786C1.12633 2.88837 1.46598 2.88837 1.67545 3.09786L4.02419 5.44658L9.05493 0.41586C9.2644 0.206391 9.60405 0.206391 9.81352 0.41586L10.5721 1.17445C10.7816 1.38392 10.7816 1.72355 10.5721 1.93303L4.40348 8.10166C4.19399 8.31113 3.85436 8.31113 3.64489 8.10164V8.10164Z"></path></svg>
+            Includes a {userPlan} product with {userPlan} QA
+          </span>
+        </div>
+
+        <div className="side-bar-purchase">
+          <button onClick={(ev) => createOrder(ev)}>
+            Purchase
+            <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z"></path></svg>
+          </button>
+        </div>
+
+        <div className="side-bar-contact">
+          <button>Contact</button>
+        </div>
+
+      </div>
     </section>
   </main>
 }
-//   return <section className="gig-details main-layout">
-//     <article className="gig-page flex">
-//       <main class="gig-main-layout">
-//         {/* <aside className="sidebar-content">hhhhh</aside> */}
-//         <h1 className="gig-title-details flex">{gig.title}</h1>
-//         <div className="mini-user-container flex">
-//           <div className="user-details-container flex">
-//             <div className="mini-user-name&level flex">
-//               <div className="mini-user-name flex">{gig.owner.fullname}</div>
-//               <div className="mini-user-level flex">
-//                 <div className={gig.owner.level < 3 ? "mini-user-level-txt" : "mini-user-level-txt user-premium"
-//                 }>
-//                   {gig.owner.level < 3 ? `level ${gig.owner.level}` :
-//                     `top rated ${gig.owner.level}`}
-//                 </div>
-//                 <div className="mini-user-level-stars flex">
-//                   <StarFull />
-//                   {gig.owner.level > 1 ? <StarFull /> : <StarEmpty />}
-//                   {gig.owner.level > 2 ? <StarFull /> : <StarEmpty />}
 
-
-//                 </div>
-//               </div>
-
-
-//             </div>
-//             <div className="mini-user-orders&rating">
-//               <div className="mini-user-rating">
-//                 <div className="mini-user-stars"></div>
-//                 <div className="mini-user-score"></div>
-//                 <div className="mini-user-review-numbers"></div>
-//               </div>
-//               <div className="mini-user-orders">
-//                 <div></div>
-//               </div>
-
-//             </div>
-//           </div>
-
-//           <div className="mini-user-img-container">
-//             <img src="https://fiverr-res.cloudinary.com/image/upload/t_profile_original,q_auto,f_auto/v1/attachments/profile/photo/161c166093aab986aac2d70cfdf82ad9-1497643481685049984.203679/8E7C2C6F-DCAF-4181-A913-1EE6D61BA282" alt=""
-//               className="mini-user-img" />
-
-//           </div>
-//         </div>
-//         <SimpleSlider />
-//         {/* <span><b>Ad By</b> {gig.owner.fullname}</span> */}
-//         {/* <span>{gig.title}</span> */}
-//         {/* <span>{gig._id}</span> */}
-//         {/* <img src={gig.imgUrls[0]} alt="" /> */}
-//         {/* <img src="../assets/images/homepage/4.jpeg" alt="" /> */}
-//         {/* <span><b>Rate </b>{gig.owner.rate}</span> */}
-//         {/* <span><b>From</b> {gig.price}$</span> */}
-//         {gig && <UserDetailsRevies gig={gig} />}
-//         {gig && <ReviewDetailes gig={gig} />}
-//       </main>
-//       <div className="side-bar-container">
-//         <div className="side-bar-inner-container">
-//           <div className="side-bar-content">
-//             <div className="side-bar-header flex">
-//               <div className="side-bar-header-collect flex">
-//                 <div className="heart-container">
-//                   <Heart />
-//                 </div>
-//                 <span className="collect-num">509</span>
-//               </div>
-//               <span className="collect-num">
-//                 <Share />
-//               </span>
-
-//             </div>
-//             <div className="side-bar-plans">
-//               <div className="plans-picker flex">
-//                 <div className={userPlan === 'entry' ? 'entry active' : 'entry '} onClick={() => setPlan('entry')} >entry</div>
-//                 <div className={userPlan === 'commun' ? 'commun active' : 'commun '} onClick={() => setPlan('commun')} >commun</div>
-//                 <div className={userPlan === 'premium' ? 'premium active' : 'premium '} onClick={() => setPlan('premium')}>premium</div>
-//               </div>
-//               {gig.price && <PlansDescription planType={userPlan} gig={gig} />}
-
-
-//             </div>
-//             <div className="side-bar-contact flex">
-
-//               <div className='contact-container-inner flex'>
-//                 <button>contact me</button>
-//               </div>
-
-
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//     </article>
-//   </section>
-// }

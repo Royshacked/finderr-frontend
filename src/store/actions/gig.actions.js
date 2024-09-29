@@ -16,6 +16,7 @@ export async function loadGig(gigId) {
     try {
         const gig = await gigService.getById(gigId)
         store.dispatch(getCmdSetGig(gig))
+        return gig
     } catch (err) {
         console.log('Cannot load gig', err)
         throw err
