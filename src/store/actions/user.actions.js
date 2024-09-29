@@ -5,6 +5,7 @@ import { store } from '../store'
 import { showErrorMsg } from '../../services/event-bus.service'
 // import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer.js'
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from '../reducers/user.reducer'
+import { socketService } from '../../services/socket.service.js'
 
 export async function loadUsers() {
     try {
@@ -30,13 +31,11 @@ export async function removeUser(userId) {
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
-
-
         store.dispatch({
             type: SET_USER,
             user
         })
-        //socketService.login(user._id)
+        socketService.login(user._id)
         return user
     } catch (err) {
         console.log('Cannot login', err)
@@ -51,7 +50,7 @@ export async function signup(credentials) {
             type: SET_USER,
             user
         })
-        //socketService.login(user._id)
+        socketService.login(user._id)
         return user
     } catch (err) {
         console.log('Cannot signup', err)
@@ -66,7 +65,7 @@ export async function logout() {
             type: SET_USER,
             user: null
         })
-        // socketService.logout()
+        socketService.logout()
     } catch (err) {
         console.log('Cannot logout', err)
         throw err

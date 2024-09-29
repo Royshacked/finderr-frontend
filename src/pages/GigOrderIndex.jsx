@@ -1,5 +1,5 @@
 import { orderService } from "../services/order/index.js";
-import { loadOrders, removeOrder } from "../store/actions/order.actions.js";
+import { getCmdRemoveOrder, getCmdAddOrder, loadOrders, removeOrder, updateOrder, getCmdUpdateOrder } from "../store/actions/order.actions.js";
 
 import { GigOrderList } from "../cmps/GigOrderList.jsx";
 
@@ -9,6 +9,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { SET_ORDER_FILTER_BY } from "../store/reducers/order.reducer.js";
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
+import { socketService } from "../services/socket.service.js";
 
 export function GigOrderIndex({ isSeller }) {
     const orders = useSelector(state => state.orderModule.orders)
@@ -19,7 +20,20 @@ export function GigOrderIndex({ isSeller }) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({ type: SET_ORDER_FILTER_BY, filterBy: { ...filterBy, status: 'all' } })
+        socketService.on('add-order', order => {
+            dispatch(getCmdAddOrder(order))
+            showSuccessMsg(`${order.buyer.fullname} ordered from you`)
+        })
+
+        socketService.on('remove-order', orderId => {
+            dispatch(getCmdRemoveOrder(orderId))
+            showSuccessMsg(`order removed`)
+        })
+
+        socketService.on('update-order', order => {
+            dispatch(getCmdUpdateOrder(order))
+            showSuccessMsg(`order updated by ${order.seller.fullname}`)
+        })
     }, [])
 
     useEffect(() => {
@@ -53,6 +67,15 @@ export function GigOrderIndex({ isSeller }) {
         }
     }
 
+    async function onChangeStatus(order, status) {
+        try {
+            await updateOrder({ ...order, status }, filterBy)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     return <section className="gig-orders main-layout">
         <header className="">
             {isSeller ? <h2>Dashboard</h2> : <h2>My orders</h2>}
@@ -64,6 +87,6 @@ export function GigOrderIndex({ isSeller }) {
             </nav>
         </header>
 
-        <GigOrderList orders={orders} filterBy={filterBy} isSeller={isSeller} onRemoveOrder={onRemoveOrder} />
+        <GigOrderList orders={orders} filterBy={filterBy} isSeller={isSeller} onRemoveOrder={onRemoveOrder} onChangeStatus={onChangeStatus} />
     </section>
 }

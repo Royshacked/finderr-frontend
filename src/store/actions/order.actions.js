@@ -46,12 +46,9 @@ export async function addOrder(order) {
 }
 
 export async function updateOrder(order, filterBy) {
-    ;
-
     try {
         const savedOrder = await orderService.save(order)
         store.dispatch(getCmdUpdateOrder(savedOrder))
-        console.log(order)
         loadOrders(filterBy)
         return savedOrder
     } catch (err) {
@@ -84,19 +81,19 @@ function getCmdSetOrder(order) {
         order
     }
 }
-function getCmdRemoveOrder(orderId) {
+export function getCmdRemoveOrder(orderId) {
     return {
         type: REMOVE_ORDER,
         orderId
     }
 }
-function getCmdAddOrder(order) {
+export function getCmdAddOrder(order) {
     return {
         type: ADD_ORDER,
         order
     }
 }
-function getCmdUpdateOrder(order) {
+export function getCmdUpdateOrder(order) {
     return {
         type: UPDATE_ORDER,
         order

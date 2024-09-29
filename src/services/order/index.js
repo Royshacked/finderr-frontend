@@ -1,7 +1,4 @@
 const { DEV, VITE_LOCAL } = import.meta.env
-import { useEffect } from 'react'
-
-import { getRandomIntInclusive, makeId, makeLorem } from '../util.service'
 
 import { orderService as local } from './order.service.local'
 import { orderService as remote } from './order.service.remote'

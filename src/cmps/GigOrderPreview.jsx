@@ -1,16 +1,8 @@
-import { updateOrder } from "../store/actions/order.actions"
 import { useSelector } from "react-redux"
 
-export function GigOrderPreview({ order, filterBy, isSeller, onRemoveOrder }) {
+export function GigOrderPreview({ order, isSeller, onRemoveOrder, onChangeStatus }) {
     const user = useSelector(state => state.userModule.user)
     const fromUser = user?.isSeller ? order.buyer : order.seller
-    async function onStatus(status) {
-        try {
-            await updateOrder({ ...order, status }, filterBy)
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     function presentDate() {
         const dateFormat = new Date(order.createdAt).toDateString()
@@ -49,9 +41,9 @@ export function GigOrderPreview({ order, filterBy, isSeller, onRemoveOrder }) {
 
         <div className="order-btns">
             {isSeller && <div className="order-btns-buyer">
-                {order.status === 'pending' && <button onClick={() => onStatus('approved')} className="btn-approve">Approve</button>}
-                {order.status === 'pending' && <button onClick={() => onStatus('rejected')} className="btn-reject">Reject</button>}
-                {order.status === 'approved' && <button onClick={() => onStatus('completed')} className="btn-deliver">Deliver</button>}
+                {order.status === 'pending' && <button onClick={() => onChangeStatus(order, 'approved')} className="btn-approve">Approve</button>}
+                {order.status === 'pending' && <button onClick={() => onChangeStatus(order, 'rejected')} className="btn-reject">Reject</button>}
+                {order.status === 'approved' && <button onClick={() => onChangeStatus(order, 'completed')} className="btn-deliver">Deliver</button>}
                 {(order.status === 'rejected' || order.status === 'completed') && <button className="no-actions">No actions</button>}
             </div>}
 
